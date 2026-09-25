@@ -7,6 +7,7 @@ Natija repo ildiziga yoziladi: index.html, loyihalar/<slug>/, blog/, blog/<slug>
 """
 import html
 import os
+import re
 
 from data import POSTS, PROJECTS, SERVICES, SITE, SUPPORT
 
@@ -47,13 +48,13 @@ def page(title, description, body, path, og_image="/assets/og.png"):
   <meta name="twitter:card" content="summary_large_image" />
   <link rel="icon" href="/assets/avatar.jpg" />
   <script>try{{var t=localStorage.getItem("theme");if(t)document.documentElement.dataset.theme=t}}catch(e){{}}</script>
-  <link rel="stylesheet" href="/style.css" />
+  <link rel="stylesheet" href="/style.min.css" />
 </head>
 <body>
   <header class="nav">
     <div class="wrap nav-in">
       <a class="brand" href="/" aria-label="Bosh sahifa">
-        <img src="/assets/avatar.jpg" alt="" width="32" height="32" />
+        <img src="/assets/avatar-96.webp" alt="" width="32" height="32" />
         <span>{E(SITE['name'])}</span>
       </a>
       <nav class="nav-links" aria-label="Bo'limlar">
@@ -70,7 +71,7 @@ def page(title, description, body, path, og_image="/assets/og.png"):
 {body}
   <aside class="nudge" id="nudge" aria-live="polite" hidden>
     <button class="nudge-x" type="button" aria-label="Yopish">×</button>
-    <img src="/assets/avatar.jpg" alt="" width="44" height="44" />
+    <img src="/assets/avatar-96.webp" alt="" loading="lazy" decoding="async" width="44" height="44" />
     <div>
       <b>Loyihangiz bormi yoki biznesingizni avtomatlashtirish kerakmi?</b>
       <p>Vazifani yozing — qanday qilish mumkinligini birga ko‘ramiz.</p>
@@ -238,7 +239,11 @@ def build_index():
         </ul>
       </div>
       <figure class="hero-photo">
-        <img src="/assets/dinmuhammad.jpg" alt="{E(SITE['name'])}" width="900" height="1350" />
+        <picture>
+          <source type="image/webp" srcset="/assets/dinmuhammad-480.webp 480w, /assets/dinmuhammad-760.webp 760w" sizes="(max-width: 960px) min(420px, 100vw), 400px" />
+          <img src="/assets/dinmuhammad-760.jpg" srcset="/assets/dinmuhammad-480.jpg 480w, /assets/dinmuhammad-760.jpg 760w"
+               sizes="(max-width: 960px) min(420px, 100vw), 400px" alt="{E(SITE['name'])}" width="760" height="1140" fetchpriority="high" decoding="async" />
+        </picture>
       </figure>
     </section>
 
@@ -306,7 +311,7 @@ def build_index():
 def contact():
     return f"""    <section id="aloqa" class="wrap section contact">
       <div class="contact-card">
-        <img src="/assets/avatar.jpg" alt="" width="72" height="72" />
+        <img src="/assets/avatar-96.webp" alt="" loading="lazy" decoding="async" width="72" height="72" />
         <div>
           <h2>Loyihangiz bormi yoki biznesingizni avtomatlashtirish kerakmi?</h2>
           <p class="muted">CRM, ERP, SaaS, Telegram bot, SMS eslatmalar, to‘lov integratsiyasi yoki mavjud loyihani qo‘llab-quvvatlash — vazifani yozing, qanday avtomatlashtirish mumkinligini birga ko‘ramiz.</p>
@@ -456,7 +461,17 @@ def write(rel, content):
         f.write(content)
 
 
+def minify_css():
+    css = open(os.path.join(ROOT, "style.css"), encoding="utf-8").read()
+    css = re.sub(r"/\*.*?\*/", "", css, flags=re.S)
+    css = re.sub(r"\s+", " ", css)
+    css = re.sub(r"\s*([{};:,>])\s*", r"\1", css)
+    css = css.replace(";}", "}")
+    write("style.min.css", css.strip())
+
+
 def main():
+    minify_css()
     write("index.html", build_index())
     for i, p in enumerate(PROJECTS):
         write(f"loyihalar/{p['slug']}/index.html", build_project(i, p))
