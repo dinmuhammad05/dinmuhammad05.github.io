@@ -399,3 +399,9 @@ p { margin: 0; }
 .nudge-cta { display: flex; gap: 8px; flex-wrap: wrap; }
 .card-top .tag { white-space: nowrap; }
 .card.compact .site { font-size: 13px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; min-width: 0; }
+
+/* ---------- brend ikonkalari (Simple Icons, CC0) ---------- */
+.btn svg.brand { fill: currentColor; stroke: none; width: 18px; height: 18px; }
+.btn svg.brand.wa { fill: #25d366; }
+.btn.primary svg.brand.wa { fill: currentColor; }
+.btn:not(.primary) svg.brand.tg { fill: #26a5e4; }
