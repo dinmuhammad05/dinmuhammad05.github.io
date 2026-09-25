@@ -105,12 +105,12 @@
       document.getElementById("y").textContent = new Date().getFullYear();
 
       // Eslatma: bir marta, sahifaning yarmidan keyin yoki 25 soniyadan keyin.
-      // Yopilsa — 7 kun ko'rsatilmaydi. Aloqa bo'limi ko'rinib turganda chiqmaydi.
+      // Yopilsa — 1 kun ko‘rsatilmaydi. Aloqa bo'limi ko'rinib turganda chiqmaydi.
       var nudge = document.getElementById("nudge");
       var KEY = "nudge-closed";
       var closedAt = 0, shown = false, contactVisible = false;
       try { closedAt = +localStorage.getItem(KEY) || 0; if (sessionStorage.getItem("nudge-shown")) shown = true; } catch (e) {}
-      if (Date.now() - closedAt < 7 * 864e5) shown = true;
+      if (Date.now() - closedAt < 864e5) shown = true;
       var contact = document.getElementById("aloqa");
       if (contact && "IntersectionObserver" in window) {
         new IntersectionObserver(function (es) {
