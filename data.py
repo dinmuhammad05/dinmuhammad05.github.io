@@ -9,7 +9,7 @@ SITE = {
     "github_url": "https://github.com/dinmuhammad05",
     # WhatsApp raqami xalqaro formatda, faqat raqamlar (masalan "998901234567").
     # Bo'sh bo'lsa, bosh sahifada WhatsApp o'rniga GitHub tugmasi chiqadi.
-    "whatsapp": "",
+    "whatsapp": "992908199751",
     "other_projects": "10+",
 }
 
@@ -311,7 +311,7 @@ PROJECTS = [
         "tag": "ERP · SMS",
         "title": "Klinika ERP — qabul va SMS eslatmalar",
         "name": "Klinika ERP",
-        "site": ("https://www.proktologmirzohid.uz/", "Mijoz: proktologmirzohid.uz"),
+        "site": ("https://www.proktologmirzohid.uz/", "proktologmirzohid.uz"),
         "visit_label": "Shifokor saytini ochish",
         "role": "Full-stack · ichki ERP (shifokor sayti boshqa jamoa ishi)",
         "summary": "Shifokor uchun ichki tizim: bemorlarning qabul vaqtlari saqlanadi va har bir bemorga kelishidan oldin <b>SMS eslatma</b> yuboriladi. Qancha vaqt oldin eslatilishini shifokorning o‘zi tanlaydi.",

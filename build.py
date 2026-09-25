@@ -77,7 +77,10 @@ def page(title, description, body, path, og_image="/assets/og.png"):
     <div>
       <b>Loyihangiz bormi yoki biznesingizni avtomatlashtirish kerakmi?</b>
       <p>Vazifani yozing — qanday qilish mumkinligini birga ko‘ramiz.</p>
-      <a class="btn primary" href="{SITE['telegram_url']}" target="_blank" rel="noopener">Telegramda yozish</a>
+      <span class="nudge-cta">
+        <a class="btn primary" href="{SITE['telegram_url']}" target="_blank" rel="noopener">Telegram</a>
+        {second_contact(icon=False)}
+      </span>
     </div>
   </aside>
   <footer class="wrap foot">
@@ -151,8 +154,8 @@ def site_link(p, cls="site"):
 
 
 def project_card(p):
-    cls = "card clickable" + (" featured" if p.get("featured") else "") + (" wide" if p.get("wide") else "")
-    points = "".join(f"<li>{E(x)}</li>" for x in p["points"])
+    cls = "card clickable compact" + (" featured" if p.get("featured") else "")
+    chips = p["stack"][:4] + ([f"+{len(p['stack']) - 4}"] if len(p["stack"]) > 4 else [])
     return f"""        <article class="{cls}">
           <div class="card-top">
             <span class="tag">{E(p['tag'])}</span>
@@ -160,9 +163,8 @@ def project_card(p):
           </div>
           <h3><a class="stretch" href="/loyihalar/{p['slug']}/">{E(p['title'])}</a></h3>
           <p class="who">{E(p['role'])}</p>
-          <p>{p['summary']}</p>
-          <ul class="points">{points}</ul>
-          {stack(p['stack'])}
+          <p class="clamp">{p['summary']}</p>
+          {stack(chips)}
           <span class="open">Batafsil →</span>
         </article>"""
 
@@ -240,7 +242,6 @@ def build_index():
       </div>
       <figure class="hero-photo">
         <img src="/assets/dinmuhammad.jpg" alt="{E(SITE['name'])}" width="900" height="1350" />
-        <figcaption><span class="status"></span><span>NestJS · Next.js · PostgreSQL</span></figcaption>
       </figure>
     </section>
 
@@ -263,7 +264,7 @@ def build_index():
         <p class="muted">Ko‘p loyihalar mijozlar uchun, shuning uchun kodlari yopiq. Kartani bosib, har
           birining ichiga kiring: muammo, mening rolim, arxitektura va muhim qarorlar.</p>
       </div>
-      <div class="grid">
+      <div class="grid projects">
 {cards}
       </div>
     </section>
