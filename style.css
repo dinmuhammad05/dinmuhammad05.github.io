@@ -365,3 +365,18 @@ p { margin: 0; }
   .services { grid-template-columns: 1fr; }
   .nudge { right: 16px; left: 16px; bottom: 16px; width: auto; }
 }
+
+/* ---------- support ---------- */
+.support {
+  margin-top: 16px; display: grid; grid-template-columns: 1.1fr 1fr; gap: 24px; align-items: center;
+  padding: 26px; border-radius: 18px; background: var(--surface); border: 1px solid var(--border);
+}
+.support-head { display: grid; grid-template-columns: auto 1fr; gap: 16px; align-items: start; }
+.support h3 { font-size: 20px; }
+.support-head p { margin-top: 6px; color: var(--muted); font-size: 15px; }
+.support ul {
+  margin: 0; padding-left: 18px; display: grid; grid-template-columns: 1fr 1fr; gap: 6px 20px; font-size: 14.5px;
+}
+.support li::marker { color: var(--accent); }
+@media (max-width: 960px) { .support { grid-template-columns: 1fr; } }
+@media (max-width: 560px) { .support ul { grid-template-columns: 1fr; } }

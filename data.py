@@ -7,6 +7,10 @@ SITE = {
     "telegram": "@dinMuhammad05",
     "telegram_url": "https://t.me/dinMuhammad05",
     "github_url": "https://github.com/dinmuhammad05",
+    # WhatsApp raqami xalqaro formatda, faqat raqamlar (masalan "998901234567").
+    # Bo'sh bo'lsa, bosh sahifada WhatsApp o'rniga GitHub tugmasi chiqadi.
+    "whatsapp": "",
+    "other_projects": "10+",
 }
 
 SERVICES = [
@@ -40,6 +44,19 @@ SERVICES = [
         "examples": ["almazpro", "techjobs", "talim"],
     },
 ]
+
+SUPPORT = {
+    "title": "Loyihani qo‘llab-quvvatlash",
+    "text": "Ishga tushirish — yo‘lning yarmi. Tizim ishlab turishi, xatolar tez tuzatilishi va biznes o‘sishi bilan birga o‘zgarishi uchun loyihani keyin ham yuritaman.",
+    "items": [
+        "Monitoring, loglar va xatolarni tez tuzatish",
+        "Yangi imkoniyatlar va o‘zgarishlar",
+        "Server, deploy, SSL va zaxira nusxalar",
+        "Kutubxona va xavfsizlik yangilanishlari",
+        "Ko‘chirish: yangi serverga yoki bulutga",
+        "Boshqa jamoa yozgan loyihani qabul qilib olish",
+    ],
+}
 
 PROJECTS = [
     {

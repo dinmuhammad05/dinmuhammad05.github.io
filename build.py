@@ -8,7 +8,7 @@ Natija repo ildiziga yoziladi: index.html, loyihalar/<slug>/, blog/, blog/<slug>
 import html
 import os
 
-from data import POSTS, PROJECTS, SERVICES, SITE
+from data import POSTS, PROJECTS, SERVICES, SITE, SUPPORT
 
 ROOT = os.path.dirname(os.path.abspath(__file__))
 E = html.escape
@@ -17,6 +17,18 @@ ICON_TG = '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M21 4 3 11l6 2 2
 ICON_GH = ('<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 19c-4 1.5-4-2-6-2.5m12 5v-3.5c0-1 .1-1.4-.5-2 '
            '2.8-.3 5.5-1.4 5.5-6a4.6 4.6 0 0 0-1.3-3.2 4.2 4.2 0 0 0-.1-3.2s-1-.3-3.4 1.3a11.6 11.6 0 0 0-6 0C6.8 '
            '2.4 5.8 2.7 5.8 2.7a4.2 4.2 0 0 0-.1 3.2A4.6 4.6 0 0 0 4.4 9c0 4.6 2.7 5.7 5.5 6-.6.6-.6 1.2-.5 2V21" /></svg>')
+
+ICON_WA = ('<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 20l1.2-3.6A8 8 0 1 1 8 19.3z"/>'
+           '<path d="M9 9.5c0 3 2.5 5.5 5.5 5.5l1-1.4-1.8-1-1 .8a4 4 0 0 1-2.1-2.1l.8-1-1-1.8z"/></svg>')
+
+
+def second_contact(label_wa="WhatsApp", label_gh="GitHub", icon=True):
+    """WhatsApp raqami berilgan bo'lsa — WhatsApp, aks holda GitHub."""
+    if SITE.get("whatsapp"):
+        return (f'<a class="btn" href="https://wa.me/{SITE["whatsapp"]}" target="_blank" rel="noopener">'
+                f'{ICON_WA if icon else ""} {label_wa}</a>')
+    return (f'<a class="btn" href="{SITE["github_url"]}" target="_blank" rel="noopener">'
+            f'{ICON_GH if icon else ""} {label_gh}</a>')
 
 
 def page(title, description, body, path, og_image="/assets/og.png"):
@@ -159,6 +171,7 @@ SERVICE_ICONS = {
     "workflow": '<rect x="3" y="3" width="7" height="6" rx="1.5"/><rect x="14" y="15" width="7" height="6" rx="1.5"/><rect x="14" y="3" width="7" height="6" rx="1.5"/><path d="M10 6h4M17.5 9v6M6.5 9v5a2 2 0 0 0 2 2H14"/>',
     "bot": '<rect x="4" y="8" width="16" height="11" rx="3"/><path d="M12 8V4.5M9.5 4.5h5"/><circle cx="9" cy="13.5" r="1.2"/><circle cx="15" cy="13.5" r="1.2"/><path d="M2 12.5v2M22 12.5v2"/>',
     "layers": '<path d="M12 3 3 7.5l9 4.5 9-4.5z"/><path d="m3 12 9 4.5 9-4.5"/><path d="m3 16.5 9 4.5 9-4.5"/>',
+    "support": '<path d="M12 3 4.5 6v5.5c0 4.3 3.1 8.2 7.5 9.5 4.4-1.3 7.5-5.2 7.5-9.5V6z"/><path d="m8.8 12 2.2 2.2 4.2-4.4"/>',
     "card": '<rect x="2.5" y="5" width="19" height="14" rx="2.5"/><path d="M2.5 10h19M6.5 15h4"/>',
 }
 
@@ -190,10 +203,21 @@ def build_index():
     cards = "\n".join(project_card(p) for p in PROJECTS)
     posts = "\n".join(post_card(p) for p in POSTS[:3])
     services_html = "\n".join(service_card(x) for x in SERVICES)
+    support_items = "".join(f"<li>{E(i)}</li>" for i in SUPPORT["items"])
+    support_html = f"""      <div class="support">
+        <div class="support-head">
+          <span class="service-icon" aria-hidden="true"><svg viewBox="0 0 24 24">{SERVICE_ICONS['support']}</svg></span>
+          <div>
+            <h3>{E(SUPPORT['title'])}</h3>
+            <p>{E(SUPPORT['text'])}</p>
+          </div>
+        </div>
+        <ul>{support_items}</ul>
+      </div>"""
     body = f"""  <main id="top">
     <section class="hero wrap">
       <div class="hero-text">
-        <p class="kicker"><span class="dot"></span> Veb-ilovalar · Biznesni avtomatlashtirish · Integratsiyalar</p>
+        <p class="kicker"><span class="dot"></span> Veb-ilovalar · Biznesni avtomatlashtirish · Qo‘llab-quvvatlash</p>
         <h1>{E(SITE['name'])}</h1>
         <p class="role">{E(SITE['role'])}</p>
         <p class="lead">
@@ -205,13 +229,13 @@ def build_index():
         </p>
         <div class="cta">
           <a class="btn primary" href="{SITE['telegram_url']}" target="_blank" rel="noopener">{ICON_TG} Telegramda yozish</a>
-          <a class="btn" href="{SITE['github_url']}" target="_blank" rel="noopener">{ICON_GH} GitHub</a>
+          {second_contact()}
           <a class="btn ghost" href="#loyihalar">Loyihalarni ko‘rish ↓</a>
         </div>
         <ul class="facts">
           <li><b>{len(PROJECTS)}</b><span>asosiy loyiha</span></li>
+          <li><b>{SITE['other_projects']}</b><span>boshqa loyihalar</span></li>
           <li><b>{len(POSTS)}</b><span>o‘zbekcha darslik</span></li>
-          <li><b>uz · ru · en</b><span>ko‘p tilli mahsulotlar</span></li>
         </ul>
       </div>
       <figure class="hero-photo">
@@ -229,6 +253,7 @@ def build_index():
       <div class="services">
 {services_html}
       </div>
+{support_html}
     </section>
 
     <section id="loyihalar" class="wrap section">
@@ -286,11 +311,11 @@ def contact():
         <img src="/assets/avatar.jpg" alt="" width="72" height="72" />
         <div>
           <h2>Loyihangiz bormi yoki biznesingizni avtomatlashtirish kerakmi?</h2>
-          <p class="muted">CRM, ERP, SaaS, Telegram bot, SMS eslatmalar yoki to‘lov integratsiyasi — vazifani yozing, qanday avtomatlashtirish mumkinligini birga ko‘ramiz.</p>
+          <p class="muted">CRM, ERP, SaaS, Telegram bot, SMS eslatmalar, to‘lov integratsiyasi yoki mavjud loyihani qo‘llab-quvvatlash — vazifani yozing, qanday avtomatlashtirish mumkinligini birga ko‘ramiz.</p>
         </div>
         <div class="cta">
           <a class="btn primary" href="{SITE['telegram_url']}" target="_blank" rel="noopener">{E(SITE['telegram'])}</a>
-          <a class="btn" href="{SITE['github_url']}" target="_blank" rel="noopener">GitHub</a>
+          {second_contact(icon=False)}
         </div>
       </div>
     </section>"""
