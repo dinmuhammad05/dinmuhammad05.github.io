@@ -9,6 +9,38 @@ SITE = {
     "github_url": "https://github.com/dinmuhammad05",
 }
 
+SERVICES = [
+    {
+        "icon": "⚙️",
+        "title": "Biznesni avtomatlashtirish",
+        "text": "Qo‘lda, daftar va jadvalda qilinadigan ishlarni bitta tizimga o‘tkazish.",
+        "items": ["CRM va ichki ERP", "Kassa, ombor va hisobotlar", "Qabul yozuvi va SMS eslatmalar", "Rollar va xodimlar nazorati"],
+        "examples": ["apteka-crm", "klinika-erp", "techjobs"],
+        "accent": True,
+    },
+    {
+        "icon": "✈️",
+        "title": "Telegram botlar",
+        "text": "Mijoz va jamoa allaqachon o‘tirgan joyda ishlaydigan avtomatika.",
+        "items": ["Kanalga avtomatik postlar", "Ommaviy va shaxsiy xabarnomalar", "Bot orqali ariza va buyurtma", "Signal va monitoring botlari"],
+        "examples": ["techjobs", "topkan", "autotrad"],
+    },
+    {
+        "icon": "🧩",
+        "title": "SaaS va veb-ilovalar",
+        "text": "Bir nechta mijoz yoki filialga xizmat qiladigan to‘liq mahsulot.",
+        "items": ["Ko‘p tashkilotli arxitektura", "Obuna va tariflar", "Admin va super-admin panellar", "Ko‘p tilli interfeys"],
+        "examples": ["topkan", "apteka-crm", "falaq"],
+    },
+    {
+        "icon": "🔌",
+        "title": "Integratsiyalar",
+        "text": "Tizimingizni to‘lov, SMS va boshqa xizmatlar bilan ulash.",
+        "items": ["Payme, Click, Uzum", "SMS (Eskiz) va OTP", "Google, Apple, LinkedIn orqali kirish", "AI (LLM) va fayl omborlari"],
+        "examples": ["almazpro", "falaq", "topkan"],
+    },
+]
+
 PROJECTS = [
     {
         "slug": "topkan",

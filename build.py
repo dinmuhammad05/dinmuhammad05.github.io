@@ -8,7 +8,7 @@ Natija repo ildiziga yoziladi: index.html, loyihalar/<slug>/, blog/, blog/<slug>
 import html
 import os
 
-from data import POSTS, PROJECTS, SITE
+from data import POSTS, PROJECTS, SERVICES, SITE
 
 ROOT = os.path.dirname(os.path.abspath(__file__))
 E = html.escape
@@ -48,9 +48,9 @@ def page(title, description, body, path, og_image="/assets/og.png"):
         <span>{E(SITE['name'])}</span>
       </a>
       <nav class="nav-links" aria-label="Bo'limlar">
+        <a href="/#xizmatlar">Xizmatlar</a>
         <a href="/#loyihalar">Loyihalar</a>
         <a href="/blog/">Blog</a>
-        <a href="/#konikmalar">Ko‘nikmalar</a>
         <a href="/#aloqa">Aloqa</a>
       </nav>
       <button class="theme" type="button" aria-label="Rangli rejimni almashtirish" title="Yorug‘ / qorong‘i">
@@ -59,6 +59,15 @@ def page(title, description, body, path, og_image="/assets/og.png"):
     </div>
   </header>
 {body}
+  <aside class="nudge" id="nudge" aria-live="polite" hidden>
+    <button class="nudge-x" type="button" aria-label="Yopish">×</button>
+    <img src="/assets/avatar.jpg" alt="" width="44" height="44" />
+    <div>
+      <b>Loyihangiz bormi yoki biznesingizni avtomatlashtirish kerakmi?</b>
+      <p>Vazifani yozing — qanday qilish mumkinligini birga ko‘ramiz.</p>
+      <a class="btn primary" href="{SITE['telegram_url']}" target="_blank" rel="noopener">Telegramda yozish</a>
+    </div>
+  </aside>
   <footer class="wrap foot">
     <span>© <span id="y">2026</span> {E(SITE['name'])}</span>
     <span class="foot-links">
@@ -77,6 +86,40 @@ def page(title, description, body, path, og_image="/assets/og.png"):
         try {{ localStorage.setItem("theme", root.dataset.theme); }} catch (e) {{}}
       }});
       document.getElementById("y").textContent = new Date().getFullYear();
+
+      // Eslatma: bir marta, sahifaning yarmidan keyin yoki 25 soniyadan keyin.
+      // Yopilsa — 7 kun ko'rsatilmaydi. Aloqa bo'limi ko'rinib turganda chiqmaydi.
+      var nudge = document.getElementById("nudge");
+      var KEY = "nudge-closed";
+      var closedAt = 0, shown = false, contactVisible = false;
+      try {{ closedAt = +localStorage.getItem(KEY) || 0; if (sessionStorage.getItem("nudge-shown")) shown = true; }} catch (e) {{}}
+      if (Date.now() - closedAt < 7 * 864e5) shown = true;
+      var contact = document.getElementById("aloqa");
+      if (contact && "IntersectionObserver" in window) {{
+        new IntersectionObserver(function (es) {{
+          contactVisible = es[0].isIntersecting;
+          if (contactVisible) nudge.classList.remove("show");
+        }}).observe(contact);
+      }}
+      function show() {{
+        if (shown || contactVisible) return;
+        shown = true;
+        try {{ sessionStorage.setItem("nudge-shown", "1"); }} catch (e) {{}}
+        nudge.hidden = false;
+        requestAnimationFrame(function () {{ nudge.classList.add("show"); }});
+        window.removeEventListener("scroll", onScroll);
+      }}
+      function onScroll() {{
+        var max = document.documentElement.scrollHeight - innerHeight;
+        if (max > 0 && scrollY / max > 0.5) show();
+      }}
+      window.addEventListener("scroll", onScroll, {{ passive: true }});
+      setTimeout(show, 25000);
+      nudge.querySelector(".nudge-x").addEventListener("click", function () {{
+        nudge.classList.remove("show");
+        try {{ localStorage.setItem(KEY, String(Date.now())); }} catch (e) {{}}
+        setTimeout(function () {{ nudge.hidden = true; }}, 250);
+      }});
     }})();
   </script>
 </body>
@@ -112,6 +155,20 @@ def project_card(p):
         </article>"""
 
 
+def service_card(x):
+    by_slug = {p["slug"]: p for p in PROJECTS}
+    ex = ", ".join(f'<a href="/loyihalar/{sl}/">{E(by_slug[sl]["name"])}</a>' for sl in x["examples"])
+    items = "".join(f"<li>{E(i)}</li>" for i in x["items"])
+    cls = "service accent" if x.get("accent") else "service"
+    return f"""        <div class="{cls}">
+          <span class="service-icon" aria-hidden="true">{x['icon']}</span>
+          <h3>{E(x['title'])}</h3>
+          <p>{E(x['text'])}</p>
+          <ul>{items}</ul>
+          <p class="examples">Misollar: {ex}</p>
+        </div>"""
+
+
 def post_card(post):
     return f"""        <article class="card clickable post-card">
           <span class="tag">Darslik</span>
@@ -124,10 +181,11 @@ def post_card(post):
 def build_index():
     cards = "\n".join(project_card(p) for p in PROJECTS)
     posts = "\n".join(post_card(p) for p in POSTS[:3])
+    services_html = "\n".join(service_card(x) for x in SERVICES)
     body = f"""  <main id="top">
     <section class="hero wrap">
       <div class="hero-text">
-        <p class="kicker"><span class="dot"></span> Backend · Frontend · Integratsiyalar</p>
+        <p class="kicker"><span class="dot"></span> Veb-ilovalar · Biznesni avtomatlashtirish · Integratsiyalar</p>
         <h1>{E(SITE['name'])}</h1>
         <p class="role">{E(SITE['role'])}</p>
         <p class="lead">
@@ -135,6 +193,7 @@ def build_index():
           <strong>PostgreSQL</strong> ustida modulli arxitektura, <strong>Next.js / React</strong>
           da interfeys, va ular orasidagi hamma narsa — navbatlar, to‘lov tizimlari,
           fayl omborlari, Telegram botlar va sun’iy intellekt integratsiyalari.
+          Qo‘lda qilinadigan ishlarni — hisob, qabul, eslatma, xabarnoma — tizimga topshiraman.
         </p>
         <div class="cta">
           <a class="btn primary" href="{SITE['telegram_url']}" target="_blank" rel="noopener">{ICON_TG} Telegramda yozish</a>
@@ -151,6 +210,17 @@ def build_index():
         <img src="/assets/dinmuhammad.jpg" alt="{E(SITE['name'])}" width="900" height="1350" />
         <figcaption><span class="status"></span><span>NestJS · Next.js · PostgreSQL</span></figcaption>
       </figure>
+    </section>
+
+    <section id="xizmatlar" class="wrap section">
+      <div class="section-head">
+        <p class="eyebrow">Xizmatlar</p>
+        <h2>Nima qila olaman</h2>
+        <p class="muted">Har bir yo‘nalish bo‘yicha ishlab turgan loyihalar bor — misollarni bosib ko‘ring.</p>
+      </div>
+      <div class="services">
+{services_html}
+      </div>
     </section>
 
     <section id="loyihalar" class="wrap section">
@@ -207,8 +277,8 @@ def contact():
       <div class="contact-card">
         <img src="/assets/avatar.jpg" alt="" width="72" height="72" />
         <div>
-          <h2>Loyihangiz bormi?</h2>
-          <p class="muted">SaaS, CRM, ERP, to‘lov integratsiyasi, bot yoki murakkab backend — yozing, muhokama qilamiz.</p>
+          <h2>Loyihangiz bormi yoki biznesingizni avtomatlashtirish kerakmi?</h2>
+          <p class="muted">CRM, ERP, SaaS, Telegram bot, SMS eslatmalar yoki to‘lov integratsiyasi — vazifani yozing, qanday avtomatlashtirish mumkinligini birga ko‘ramiz.</p>
         </div>
         <div class="cta">
           <a class="btn primary" href="{SITE['telegram_url']}" target="_blank" rel="noopener">{E(SITE['telegram'])}</a>

@@ -25,9 +25,9 @@
         <span>Dinmuhammad</span>
       </a>
       <nav class="nav-links" aria-label="Bo'limlar">
+        <a href="/#xizmatlar">Xizmatlar</a>
         <a href="/#loyihalar">Loyihalar</a>
         <a href="/blog/">Blog</a>
-        <a href="/#konikmalar">Ko‘nikmalar</a>
         <a href="/#aloqa">Aloqa</a>
       </nav>
       <button class="theme" type="button" aria-label="Rangli rejimni almashtirish" title="Yorug‘ / qorong‘i">
@@ -41,6 +41,15 @@
     <div class="cta"><a class="btn primary" href="/">Bosh sahifaga</a><a class="btn" href="/blog/">Blog</a></div>
   </main>
 
+  <aside class="nudge" id="nudge" aria-live="polite" hidden>
+    <button class="nudge-x" type="button" aria-label="Yopish">×</button>
+    <img src="/assets/avatar.jpg" alt="" width="44" height="44" />
+    <div>
+      <b>Loyihangiz bormi yoki biznesingizni avtomatlashtirish kerakmi?</b>
+      <p>Vazifani yozing — qanday qilish mumkinligini birga ko‘ramiz.</p>
+      <a class="btn primary" href="https://t.me/dinMuhammad05" target="_blank" rel="noopener">Telegramda yozish</a>
+    </div>
+  </aside>
   <footer class="wrap foot">
     <span>© <span id="y">2026</span> Dinmuhammad</span>
     <span class="foot-links">
@@ -59,6 +68,40 @@
         try { localStorage.setItem("theme", root.dataset.theme); } catch (e) {}
       });
       document.getElementById("y").textContent = new Date().getFullYear();
+
+      // Eslatma: bir marta, sahifaning yarmidan keyin yoki 25 soniyadan keyin.
+      // Yopilsa — 7 kun ko'rsatilmaydi. Aloqa bo'limi ko'rinib turganda chiqmaydi.
+      var nudge = document.getElementById("nudge");
+      var KEY = "nudge-closed";
+      var closedAt = 0, shown = false, contactVisible = false;
+      try { closedAt = +localStorage.getItem(KEY) || 0; if (sessionStorage.getItem("nudge-shown")) shown = true; } catch (e) {}
+      if (Date.now() - closedAt < 7 * 864e5) shown = true;
+      var contact = document.getElementById("aloqa");
+      if (contact && "IntersectionObserver" in window) {
+        new IntersectionObserver(function (es) {
+          contactVisible = es[0].isIntersecting;
+          if (contactVisible) nudge.classList.remove("show");
+        }).observe(contact);
+      }
+      function show() {
+        if (shown || contactVisible) return;
+        shown = true;
+        try { sessionStorage.setItem("nudge-shown", "1"); } catch (e) {}
+        nudge.hidden = false;
+        requestAnimationFrame(function () { nudge.classList.add("show"); });
+        window.removeEventListener("scroll", onScroll);
+      }
+      function onScroll() {
+        var max = document.documentElement.scrollHeight - innerHeight;
+        if (max > 0 && scrollY / max > 0.5) show();
+      }
+      window.addEventListener("scroll", onScroll, { passive: true });
+      setTimeout(show, 25000);
+      nudge.querySelector(".nudge-x").addEventListener("click", function () {
+        nudge.classList.remove("show");
+        try { localStorage.setItem(KEY, String(Date.now())); } catch (e) {}
+        setTimeout(function () { nudge.hidden = true; }, 250);
+      });
     })();
   </script>
 </body>
