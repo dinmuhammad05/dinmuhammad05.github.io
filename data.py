@@ -11,7 +11,7 @@ SITE = {
 
 SERVICES = [
     {
-        "icon": "⚙️",
+        "icon": "workflow",
         "title": "Biznesni avtomatlashtirish",
         "text": "Qo‘lda, daftar va jadvalda qilinadigan ishlarni bitta tizimga o‘tkazish.",
         "items": ["CRM va ichki ERP", "Kassa, ombor va hisobotlar", "Qabul yozuvi va SMS eslatmalar", "Rollar va xodimlar nazorati"],
@@ -19,25 +19,25 @@ SERVICES = [
         "accent": True,
     },
     {
-        "icon": "✈️",
+        "icon": "bot",
         "title": "Telegram botlar",
         "text": "Mijoz va jamoa allaqachon o‘tirgan joyda ishlaydigan avtomatika.",
         "items": ["Kanalga avtomatik postlar", "Ommaviy va shaxsiy xabarnomalar", "Bot orqali ariza va buyurtma", "Signal va monitoring botlari"],
         "examples": ["techjobs", "topkan", "autotrad"],
     },
     {
-        "icon": "🧩",
+        "icon": "layers",
         "title": "SaaS va veb-ilovalar",
         "text": "Bir nechta mijoz yoki filialga xizmat qiladigan to‘liq mahsulot.",
-        "items": ["Ko‘p tashkilotli arxitektura", "Obuna va tariflar", "Admin va super-admin panellar", "Ko‘p tilli interfeys"],
+        "items": ["Ko‘p tashkilotli arxitektura", "Obuna va tariflar", "Admin va super-admin panellar", "SMS, OAuth va AI integratsiyalari"],
         "examples": ["topkan", "apteka-crm", "falaq"],
     },
     {
-        "icon": "🔌",
-        "title": "Integratsiyalar",
-        "text": "Tizimingizni to‘lov, SMS va boshqa xizmatlar bilan ulash.",
-        "items": ["Payme, Click, Uzum", "SMS (Eskiz) va OTP", "Google, Apple, LinkedIn orqali kirish", "AI (LLM) va fayl omborlari"],
-        "examples": ["almazpro", "falaq", "topkan"],
+        "icon": "card",
+        "title": "To‘lov tizimlari",
+        "text": "Qaysi bozorda sotsangiz ham — mahalliy, xalqaro yoki kripto to‘lovni ulash.",
+        "items": ["O‘zbekiston: Payme, Click, Uzum", "Rossiya: Pay4Game", "Yevropa va global: Paddle", "Kripto: Binance Pay", "Obunalar, webhook’lar va qaytarishlar"],
+        "examples": ["almazpro", "techjobs", "talim"],
     },
 ]
 

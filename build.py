@@ -155,13 +155,21 @@ def project_card(p):
         </article>"""
 
 
+SERVICE_ICONS = {
+    "workflow": '<rect x="3" y="3" width="7" height="6" rx="1.5"/><rect x="14" y="15" width="7" height="6" rx="1.5"/><rect x="14" y="3" width="7" height="6" rx="1.5"/><path d="M10 6h4M17.5 9v6M6.5 9v5a2 2 0 0 0 2 2H14"/>',
+    "bot": '<rect x="4" y="8" width="16" height="11" rx="3"/><path d="M12 8V4.5M9.5 4.5h5"/><circle cx="9" cy="13.5" r="1.2"/><circle cx="15" cy="13.5" r="1.2"/><path d="M2 12.5v2M22 12.5v2"/>',
+    "layers": '<path d="M12 3 3 7.5l9 4.5 9-4.5z"/><path d="m3 12 9 4.5 9-4.5"/><path d="m3 16.5 9 4.5 9-4.5"/>',
+    "card": '<rect x="2.5" y="5" width="19" height="14" rx="2.5"/><path d="M2.5 10h19M6.5 15h4"/>',
+}
+
+
 def service_card(x):
     by_slug = {p["slug"]: p for p in PROJECTS}
     ex = ", ".join(f'<a href="/loyihalar/{sl}/">{E(by_slug[sl]["name"])}</a>' for sl in x["examples"])
     items = "".join(f"<li>{E(i)}</li>" for i in x["items"])
     cls = "service accent" if x.get("accent") else "service"
     return f"""        <div class="{cls}">
-          <span class="service-icon" aria-hidden="true">{x['icon']}</span>
+          <span class="service-icon" aria-hidden="true"><svg viewBox="0 0 24 24">{SERVICE_ICONS[x['icon']]}</svg></span>
           <h3>{E(x['title'])}</h3>
           <p>{E(x['text'])}</p>
           <ul>{items}</ul>
@@ -258,7 +266,7 @@ def build_index():
         <div class="skill"><h3>Backend</h3><p>NestJS, Node.js, TypeScript, REST va Swagger, WebSocket, gRPC, mikroservislar va modulli monolit</p></div>
         <div class="skill"><h3>Frontend</h3><p>Next.js (App Router), React, Vite, Tailwind, shadcn/ui, TanStack Query, Zustand, i18n</p></div>
         <div class="skill"><h3>Ma’lumotlar</h3><p>PostgreSQL, Prisma, TypeORM, Redis, BullMQ navbatlari, indekslar va so‘rov optimallashtirish</p></div>
-        <div class="skill"><h3>Integratsiyalar</h3><p>Payme, Click, Uzum; Eskiz SMS; Google, Apple, LinkedIn OAuth; Telegram botlar; S3 / R2; LLM API</p></div>
+        <div class="skill"><h3>Integratsiyalar</h3><p>To‘lovlar: Payme, Click, Uzum, Pay4Game, Paddle, Binance Pay; Eskiz SMS; Google, Apple, LinkedIn OAuth; Telegram botlar; S3 / R2; LLM API</p></div>
         <div class="skill"><h3>Infratuzilma</h3><p>Docker, docker-compose, PM2, VPS’ga deploy, CI/CD, loglash va yuklama testlari (k6)</p></div>
         <div class="skill"><h3>Muhandislik</h3><p>Texnik topshiriq va hujjat bilan boshlash, tizim dizayni, xavfsizlik (shifrlash, JWT rotatsiyasi, rate limit)</p></div>
       </div>
