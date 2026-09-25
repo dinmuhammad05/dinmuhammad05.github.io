@@ -1,0 +1,117 @@
+<!doctype html>
+<html lang="uz">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Klinika ERP — qabul va SMS eslatmalar — Dinmuhammad</title>
+  <meta name="description" content="Shifokor uchun ichki tizim: bemorlarning qabul vaqtlari saqlanadi va har bir bemorga kelishidan oldin SMS eslatma yuboriladi. Qancha vaqt oldin eslatilishini shifokorning o‘zi tanlaydi." />
+  <meta name="author" content="Dinmuhammad" />
+  <link rel="canonical" href="https://dinmuhammad05.github.io/loyihalar/klinika-erp/" />
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="Klinika ERP — qabul va SMS eslatmalar — Dinmuhammad" />
+  <meta property="og:description" content="Shifokor uchun ichki tizim: bemorlarning qabul vaqtlari saqlanadi va har bir bemorga kelishidan oldin SMS eslatma yuboriladi. Qancha vaqt oldin eslatilishini shifokorning o‘zi tanlaydi." />
+  <meta property="og:image" content="https://dinmuhammad05.github.io/assets/og.png" />
+  <meta property="og:url" content="https://dinmuhammad05.github.io/loyihalar/klinika-erp/" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <link rel="icon" href="/assets/avatar.jpg" />
+  <script>try{var t=localStorage.getItem("theme");if(t)document.documentElement.dataset.theme=t}catch(e){}</script>
+  <link rel="stylesheet" href="/style.css" />
+</head>
+<body>
+  <header class="nav">
+    <div class="wrap nav-in">
+      <a class="brand" href="/" aria-label="Bosh sahifa">
+        <img src="/assets/avatar.jpg" alt="" width="32" height="32" />
+        <span>Dinmuhammad</span>
+      </a>
+      <nav class="nav-links" aria-label="Bo'limlar">
+        <a href="/#loyihalar">Loyihalar</a>
+        <a href="/blog/">Blog</a>
+        <a href="/#konikmalar">Ko‘nikmalar</a>
+        <a href="/#aloqa">Aloqa</a>
+      </nav>
+      <button class="theme" type="button" aria-label="Rangli rejimni almashtirish" title="Yorug‘ / qorong‘i">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3a9 9 0 1 0 9 9 7 7 0 0 1-9-9z" /></svg>
+      </button>
+    </div>
+  </header>
+  <main>
+    <article class="wrap detail">
+      <a class="back" href="/#loyihalar">← Barcha loyihalar</a>
+      <header class="detail-head">
+        <div class="card-top"><span class="tag">ERP · SMS</span><a class="site" href="https://www.proktologmirzohid.uz/" target="_blank" rel="noopener">Mijoz: proktologmirzohid.uz ↗</a></div>
+        <h1>Klinika ERP — qabul va SMS eslatmalar</h1>
+        <p class="who">Full-stack · ichki ERP (shifokor sayti boshqa jamoa ishi)</p>
+        <p class="lead">Shifokor uchun ichki tizim: bemorlarning qabul vaqtlari saqlanadi va har bir bemorga kelishidan oldin <b>SMS eslatma</b> yuboriladi. Qancha vaqt oldin eslatilishini shifokorning o‘zi tanlaydi.</p>
+        <ul class="stack"><li>NestJS</li><li>React</li><li>Redis</li><li>BullMQ</li><li>SMS xizmati</li></ul>
+        <div class="cta"><a class="btn primary" href="https://www.proktologmirzohid.uz/" target="_blank" rel="noopener">Shifokor saytini ochish ↗</a><a class="btn" href="https://t.me/dinMuhammad05" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M21 4 3 11l6 2 2 6 3-4 5 4z" /></svg> Loyiha haqida so‘rash</a></div>
+        
+      </header>
+
+      <section class="block">
+        <h2>Muammo</h2>
+        <p>Bemor qabul vaqtini unutib qo‘ysa, shifokorning vaqti bo‘sh ketadi, navbatdagi boshqa bemor esa o‘sha vaqtni ololmaydi. Qo‘ng‘iroq qilib eslatish har kuni qo‘lda qilinadigan ish. Tizim buni avtomatlashtiradi: qabul yozilgan zahoti eslatma rejalashtiriladi.</p>
+      </section>
+
+      <section class="block">
+        <h2>Mening rolim</h2>
+        <p>Shifokorning ichki ERP tizimini qildim: NestJS backend, React interfeys, SMS eslatmalar. Ommaviy sayt (proktologmirzohid.uz) boshqa jamoa tomonidan qilingan — u bu yerda faqat mijozni ko‘rsatish uchun.</p>
+      </section>
+
+      <section class="block">
+        <h2>Imkoniyatlar</h2>
+        <div class="feats"><div class="feat"><h3>Qabul</h3><ul><li>Bemorni va qabul vaqtini kiritish</li><li>Qabullar jadvali</li></ul></div><div class="feat"><h3>SMS eslatmalar</h3><ul><li>Har bir qabul uchun kelishdan oldin avtomatik SMS</li><li>Eslatish muddatini shifokor o‘zi tanlaydi (masalan, bir kun yoki bir necha soat oldin)</li><li>Eslatmalar navbatda rejalashtiriladi va vaqti kelganda yuboriladi</li></ul></div></div>
+      </section>
+
+      <section class="block">
+        <h2>Arxitektura</h2>
+        <div class="arch"><div class="layer"><span class="layer-name">Interfeys</span><div class="boxes"><span class="box">React (shifokor paneli)</span></div></div><div class="layer"><span class="layer-name">API</span><div class="boxes"><span class="box">NestJS</span><span class="box">Qabullar</span><span class="box">Sozlamalar</span></div></div><div class="layer"><span class="layer-name">Fon ishlari</span><div class="boxes"><span class="box">BullMQ navbati</span><span class="box">Redis</span></div></div><div class="layer"><span class="layer-name">Tashqi</span><div class="boxes"><span class="box">SMS xizmati</span></div></div></div>
+      </section>
+
+      <section class="block">
+        <h2>Muhim muhandislik qarorlari</h2>
+        <div class="decisions"><div class="decision"><span class="num">1</span><div><h3>Eslatma — navbatdagi rejalashtirilgan vazifa</h3><p>Eslatma vaqti = qabul vaqti − shifokor tanlagan muddat. Qabul saqlanganda shu vaqtga vazifa BullMQ navbatiga qo‘yiladi; Redis uni saqlaydi va vaqti kelganda ishchi SMS yuboradi. Server qayta ishga tushsa ham rejalashtirilgan eslatmalar yo‘qolmaydi.</p></div></div><div class="decision"><span class="num">2</span><div><h3>Muddat — sozlama, kodda emas</h3><p>Qancha oldin eslatish kerakligi shifokorning sozlamasida turadi. Uni o‘zgartirish uchun dasturchi kerak emas — shifokor o‘zi tanlaydi.</p></div></div></div>
+      </section>
+
+      <nav class="pager" aria-label="Loyihalar">
+        <a href="/loyihalar/almazpro/"><span>← Oldingi</span><b>Almazpro</b></a>
+        <a class="next" href="/loyihalar/autotrad/"><span>Keyingi →</span><b>AutoTrad bot</b></a>
+      </nav>
+    </article>
+    <section id="aloqa" class="wrap section contact">
+      <div class="contact-card">
+        <img src="/assets/avatar.jpg" alt="" width="72" height="72" />
+        <div>
+          <h2>Loyihangiz bormi?</h2>
+          <p class="muted">SaaS, CRM, ERP, to‘lov integratsiyasi, bot yoki murakkab backend — yozing, muhokama qilamiz.</p>
+        </div>
+        <div class="cta">
+          <a class="btn primary" href="https://t.me/dinMuhammad05" target="_blank" rel="noopener">@dinMuhammad05</a>
+          <a class="btn" href="https://github.com/dinmuhammad05" target="_blank" rel="noopener">GitHub</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="wrap foot">
+    <span>© <span id="y">2026</span> Dinmuhammad</span>
+    <span class="foot-links">
+      <a href="/blog/">Blog</a>
+      <a href="https://t.me/dinMuhammad05" target="_blank" rel="noopener">Telegram</a>
+      <a href="https://github.com/dinmuhammad05" target="_blank" rel="noopener">GitHub</a>
+    </span>
+  </footer>
+  <script>
+    (function () {
+      var root = document.documentElement;
+      document.querySelector(".theme").addEventListener("click", function () {
+        var dark = root.dataset.theme ? root.dataset.theme === "dark"
+          : window.matchMedia("(prefers-color-scheme: dark)").matches;
+        root.dataset.theme = dark ? "light" : "dark";
+        try { localStorage.setItem("theme", root.dataset.theme); } catch (e) {}
+      });
+      document.getElementById("y").textContent = new Date().getFullYear();
+    })();
+  </script>
+</body>
+</html>

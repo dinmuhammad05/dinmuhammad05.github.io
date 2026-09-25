@@ -238,7 +238,8 @@ def build_project(i, p):
     visit = ""
     if p.get("site"):
         href, label = p["site"]
-        visit = f'<a class="btn primary" href="{href}" target="_blank" rel="noopener">{E(label)} saytini ochish ↗</a>'
+        text = p.get("visit_label") or f"{label} saytini ochish"
+        visit = f'<a class="btn primary" href="{href}" target="_blank" rel="noopener">{E(text)} ↗</a>'
     body = f"""  <main>
     <article class="wrap detail">
       <a class="back" href="/#loyihalar">← Barcha loyihalar</a>

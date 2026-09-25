@@ -258,6 +258,47 @@ PROJECTS = [
         ],
     },
     {
+        "slug": "klinika-erp",
+        "tag": "ERP · SMS",
+        "title": "Klinika ERP — qabul va SMS eslatmalar",
+        "name": "Klinika ERP",
+        "site": ("https://www.proktologmirzohid.uz/", "Mijoz: proktologmirzohid.uz"),
+        "visit_label": "Shifokor saytini ochish",
+        "role": "Full-stack · ichki ERP (shifokor sayti boshqa jamoa ishi)",
+        "summary": "Shifokor uchun ichki tizim: bemorlarning qabul vaqtlari saqlanadi va har bir bemorga kelishidan oldin <b>SMS eslatma</b> yuboriladi. Qancha vaqt oldin eslatilishini shifokorning o‘zi tanlaydi.",
+        "points": [
+            "Bemorlar va qabul vaqtlari jadvali",
+            "Qabuldan oldin avtomatik SMS eslatma",
+            "Eslatish muddati dinamik — shifokor o‘zi sozlaydi",
+            "Eslatmalar Redis va BullMQ navbati orqali rejalashtiriladi",
+        ],
+        "stack": ["NestJS", "React", "Redis", "BullMQ", "SMS xizmati"],
+        "featured": False,
+        "problem": "Bemor qabul vaqtini unutib qo‘ysa, shifokorning vaqti bo‘sh ketadi, navbatdagi boshqa bemor esa o‘sha vaqtni ololmaydi. Qo‘ng‘iroq qilib eslatish har kuni qo‘lda qilinadigan ish. Tizim buni avtomatlashtiradi: qabul yozilgan zahoti eslatma rejalashtiriladi.",
+        "my_role": "Shifokorning ichki ERP tizimini qildim: NestJS backend, React interfeys, SMS eslatmalar. Ommaviy sayt (proktologmirzohid.uz) boshqa jamoa tomonidan qilingan — u bu yerda faqat mijozni ko‘rsatish uchun.",
+        "features": [
+            ("Qabul", [
+                "Bemorni va qabul vaqtini kiritish",
+                "Qabullar jadvali",
+            ]),
+            ("SMS eslatmalar", [
+                "Har bir qabul uchun kelishdan oldin avtomatik SMS",
+                "Eslatish muddatini shifokor o‘zi tanlaydi (masalan, bir kun yoki bir necha soat oldin)",
+                "Eslatmalar navbatda rejalashtiriladi va vaqti kelganda yuboriladi",
+            ]),
+        ],
+        "arch": [
+            ("Interfeys", ["React (shifokor paneli)"]),
+            ("API", ["NestJS", "Qabullar", "Sozlamalar"]),
+            ("Fon ishlari", ["BullMQ navbati", "Redis"]),
+            ("Tashqi", ["SMS xizmati"]),
+        ],
+        "decisions": [
+            ("Eslatma — navbatdagi rejalashtirilgan vazifa", "Eslatma vaqti = qabul vaqti − shifokor tanlagan muddat. Qabul saqlanganda shu vaqtga vazifa BullMQ navbatiga qo‘yiladi; Redis uni saqlaydi va vaqti kelganda ishchi SMS yuboradi. Server qayta ishga tushsa ham rejalashtirilgan eslatmalar yo‘qolmaydi."),
+            ("Muddat — sozlama, kodda emas", "Qancha oldin eslatish kerakligi shifokorning sozlamasida turadi. Uni o‘zgartirish uchun dasturchi kerak emas — shifokor o‘zi tanlaydi."),
+        ],
+    },
+    {
         "slug": "autotrad",
         "tag": "Bot",
         "title": "AutoTrad — bozor signallari boti",
@@ -315,7 +356,6 @@ PROJECTS = [
         ],
         "stack": ["NestJS", "Prisma", "BullMQ", "Socket.IO", "Electron", "React", "PostgreSQL"],
         "featured": False,
-        "wide": True,
         "problem": "Ikki xil ta’lim muammosi. Birinchisi — o‘zbek tilida yapon tilini (JLPT N5 / N4) tizimli o‘rganish imkoniyati kam. Ikkinchisi — haydovchilik maktablarida test dasturi internetsiz ishlashi kerak, savollar esa markazlashgan holda yangilanishi kerak.",
         "my_role": "Ikkala loyihada ham backend va mijoz qismini qildim.",
         "features": [
