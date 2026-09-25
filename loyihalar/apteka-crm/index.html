@@ -1,0 +1,117 @@
+<!doctype html>
+<html lang="uz">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Apteka CRM — dorixonalar uchun kassa va ombor — Dinmuhammad</title>
+  <meta name="description" content="Ko‘p dorixonali SaaS: kassa, ombor, hisobotlar va super-admin konsoli (obuna tugasa dorixona avtomatik bloklanadi)." />
+  <meta name="author" content="Dinmuhammad" />
+  <link rel="canonical" href="https://dinmuhammad05.github.io/loyihalar/apteka-crm/" />
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="Apteka CRM — dorixonalar uchun kassa va ombor — Dinmuhammad" />
+  <meta property="og:description" content="Ko‘p dorixonali SaaS: kassa, ombor, hisobotlar va super-admin konsoli (obuna tugasa dorixona avtomatik bloklanadi)." />
+  <meta property="og:image" content="https://dinmuhammad05.github.io/assets/og.png" />
+  <meta property="og:url" content="https://dinmuhammad05.github.io/loyihalar/apteka-crm/" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <link rel="icon" href="/assets/avatar.jpg" />
+  <script>try{var t=localStorage.getItem("theme");if(t)document.documentElement.dataset.theme=t}catch(e){}</script>
+  <link rel="stylesheet" href="/style.css" />
+</head>
+<body>
+  <header class="nav">
+    <div class="wrap nav-in">
+      <a class="brand" href="/" aria-label="Bosh sahifa">
+        <img src="/assets/avatar.jpg" alt="" width="32" height="32" />
+        <span>Dinmuhammad</span>
+      </a>
+      <nav class="nav-links" aria-label="Bo'limlar">
+        <a href="/#loyihalar">Loyihalar</a>
+        <a href="/blog/">Blog</a>
+        <a href="/#konikmalar">Ko‘nikmalar</a>
+        <a href="/#aloqa">Aloqa</a>
+      </nav>
+      <button class="theme" type="button" aria-label="Rangli rejimni almashtirish" title="Yorug‘ / qorong‘i">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3a9 9 0 1 0 9 9 7 7 0 0 1-9-9z" /></svg>
+      </button>
+    </div>
+  </header>
+  <main>
+    <article class="wrap detail">
+      <a class="back" href="/#loyihalar">← Barcha loyihalar</a>
+      <header class="detail-head">
+        <div class="card-top"><span class="tag">SaaS · POS</span><span class="site plain">Apteka CRM</span></div>
+        <h1>Apteka CRM — dorixonalar uchun kassa va ombor</h1>
+        <p class="who">Full-stack · backend va frontend</p>
+        <p class="lead">Ko‘p dorixonali SaaS: kassa, ombor, hisobotlar va super-admin konsoli (obuna tugasa dorixona avtomatik bloklanadi).</p>
+        <ul class="stack"><li>NestJS</li><li>Prisma</li><li>PostgreSQL</li><li>React 19</li><li>Vite</li><li>TanStack Query</li><li>Tailwind</li></ul>
+        <div class="cta"><a class="btn" href="https://t.me/dinMuhammad05" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M21 4 3 11l6 2 2 6 3-4 5 4z" /></svg> Loyiha haqida so‘rash</a></div>
+        
+      </header>
+
+      <section class="block">
+        <h2>Muammo</h2>
+        <p>Kichik dorixonalar ko‘pincha daftar yoki eski dasturda ishlaydi: qoldiq noaniq, muddati o‘tgan dori vaqtida ko‘rinmaydi, yangi partiyani kiritish soatlab vaqt oladi. Kerak bo‘lgani — tez kassa, aniq ombor va hisobotlar, va bir nechta dorixonaga xizmat qiladigan bitta tizim.</p>
+      </section>
+
+      <section class="block">
+        <h2>Mening rolim</h2>
+        <p>Backend va frontendni to‘liq qildim: multi-tenant ma’lumotlar modeli, kassa, ombor, importlar, hisobotlar va super-admin konsoli.</p>
+      </section>
+
+      <section class="block">
+        <h2>Imkoniyatlar</h2>
+        <div class="feats"><div class="feat"><h3>Kassa</h3><ul><li>USB shtrix-kod skaneri: tugmalar orasidagi vaqtga qarab skanerni odam yozishidan ajratish</li><li>Qadoq yoki dona bo‘yicha sotish, foiz yoki summa chegirma</li><li>Savat brauzerda saqlanadi — sahifa yangilansa sotuv yo‘qolmaydi</li></ul></div><div class="feat"><h3>Ombor</h3><ul><li>Qoldiq donalarda hisoblanadi, partiyalar va yaroqlilik muddati bilan</li><li>Muddati yaqin va kam qolgan tovarlar ogohlantirishi</li><li>Yetkazib beruvchi nakladnoylari va boshlang‘ich katalogni Excel’dan import</li></ul></div><div class="feat"><h3>Boshqaruv</h3><ul><li>Smenalar, xarajatlar, mijozlar, yetkazib beruvchilar</li><li>Sotuvlar tahlili: kunlik dinamika, eng ko‘p sotilganlar</li><li>Super-admin: dorixonalar, obunalar, bloklash</li><li>Uch til: o‘zbek, rus, tojik</li></ul></div></div>
+      </section>
+
+      <section class="block">
+        <h2>Arxitektura</h2>
+        <div class="arch"><div class="layer"><span class="layer-name">Mijoz</span><div class="boxes"><span class="box">React 19 + Vite</span><span class="box">TanStack Query</span><span class="box">Kassa savati (localStorage)</span></div></div><div class="layer"><span class="layer-name">API</span><div class="boxes"><span class="box">NestJS</span><span class="box">Rollar: super-admin / admin / kassir</span><span class="box">Multi-tenant</span></div></div><div class="layer"><span class="layer-name">Ma’lumot</span><div class="boxes"><span class="box">PostgreSQL (Prisma)</span><span class="box">Partiyalar va sotuvlar</span></div></div></div>
+      </section>
+
+      <section class="block">
+        <h2>Muhim muhandislik qarorlari</h2>
+        <div class="decisions"><div class="decision"><span class="num">1</span><div><h3>Hisob-kitob ikki tomonda bir xil</h3><p>Chegirma va jami summa formulasi mijozda ham, serverda ham aynan bir xil. Kassir ekranda ko‘rgan summa server hisoblagan summaga har doim teng.</p></div></div><div class="decision"><span class="num">2</span><div><h3>Qoldiq — donada</h3><p>Tovar qadoqda ham, donada ham sotiladi. Qoldiq faqat donada saqlanadi, qadoq esa hisoblanadi — shunda “yarim qadoq” xatolari bo‘lmaydi.</p></div></div><div class="decision"><span class="num">3</span><div><h3>Og‘ir kutubxona — faqat kerak joyda</h3><p>Excel o‘qish kutubxonasi katta, shuning uchun import sahifalari alohida yuklanadi (lazy). Kassa sahifasi tez ochiladi.</p></div></div></div>
+      </section>
+
+      <nav class="pager" aria-label="Loyihalar">
+        <a href="/loyihalar/techjobs/"><span>← Oldingi</span><b>TechJobs</b></a>
+        <a class="next" href="/loyihalar/almazpro/"><span>Keyingi →</span><b>Almazpro</b></a>
+      </nav>
+    </article>
+    <section id="aloqa" class="wrap section contact">
+      <div class="contact-card">
+        <img src="/assets/avatar.jpg" alt="" width="72" height="72" />
+        <div>
+          <h2>Loyihangiz bormi?</h2>
+          <p class="muted">SaaS, CRM, ERP, to‘lov integratsiyasi, bot yoki murakkab backend — yozing, muhokama qilamiz.</p>
+        </div>
+        <div class="cta">
+          <a class="btn primary" href="https://t.me/dinMuhammad05" target="_blank" rel="noopener">@dinMuhammad05</a>
+          <a class="btn" href="https://github.com/dinmuhammad05" target="_blank" rel="noopener">GitHub</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="wrap foot">
+    <span>© <span id="y">2026</span> Dinmuhammad</span>
+    <span class="foot-links">
+      <a href="/blog/">Blog</a>
+      <a href="https://t.me/dinMuhammad05" target="_blank" rel="noopener">Telegram</a>
+      <a href="https://github.com/dinmuhammad05" target="_blank" rel="noopener">GitHub</a>
+    </span>
+  </footer>
+  <script>
+    (function () {
+      var root = document.documentElement;
+      document.querySelector(".theme").addEventListener("click", function () {
+        var dark = root.dataset.theme ? root.dataset.theme === "dark"
+          : window.matchMedia("(prefers-color-scheme: dark)").matches;
+        root.dataset.theme = dark ? "light" : "dark";
+        try { localStorage.setItem("theme", root.dataset.theme); } catch (e) {}
+      });
+      document.getElementById("y").textContent = new Date().getFullYear();
+    })();
+  </script>
+</body>
+</html>

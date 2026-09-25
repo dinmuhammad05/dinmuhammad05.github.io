@@ -1,0 +1,117 @@
+<!doctype html>
+<html lang="uz">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Falaq — audio va elektron kitoblar — Dinmuhammad</title>
+  <meta name="description" content="Kitobni bir marta sotib olib, uni onlayn tinglash va o‘qish, hamda internetsiz ishlatish mumkin bo‘lgan platforma. Asosiy muhandislik vazifasi — kontentni himoyalash: fayllar shifrlangan, kalit qurilmaga bog‘langan." />
+  <meta name="author" content="Dinmuhammad" />
+  <link rel="canonical" href="https://dinmuhammad05.github.io/loyihalar/falaq/" />
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="Falaq — audio va elektron kitoblar — Dinmuhammad" />
+  <meta property="og:description" content="Kitobni bir marta sotib olib, uni onlayn tinglash va o‘qish, hamda internetsiz ishlatish mumkin bo‘lgan platforma. Asosiy muhandislik vazifasi — kontentni himoyalash: fayllar shifrlangan, kalit qurilmaga bog‘langan." />
+  <meta property="og:image" content="https://dinmuhammad05.github.io/assets/og.png" />
+  <meta property="og:url" content="https://dinmuhammad05.github.io/loyihalar/falaq/" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <link rel="icon" href="/assets/avatar.jpg" />
+  <script>try{var t=localStorage.getItem("theme");if(t)document.documentElement.dataset.theme=t}catch(e){}</script>
+  <link rel="stylesheet" href="/style.css" />
+</head>
+<body>
+  <header class="nav">
+    <div class="wrap nav-in">
+      <a class="brand" href="/" aria-label="Bosh sahifa">
+        <img src="/assets/avatar.jpg" alt="" width="32" height="32" />
+        <span>Dinmuhammad</span>
+      </a>
+      <nav class="nav-links" aria-label="Bo'limlar">
+        <a href="/#loyihalar">Loyihalar</a>
+        <a href="/blog/">Blog</a>
+        <a href="/#konikmalar">Ko‘nikmalar</a>
+        <a href="/#aloqa">Aloqa</a>
+      </nav>
+      <button class="theme" type="button" aria-label="Rangli rejimni almashtirish" title="Yorug‘ / qorong‘i">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3a9 9 0 1 0 9 9 7 7 0 0 1-9-9z" /></svg>
+      </button>
+    </div>
+  </header>
+  <main>
+    <article class="wrap detail">
+      <a class="back" href="/#loyihalar">← Barcha loyihalar</a>
+      <header class="detail-head">
+        <div class="card-top"><span class="tag">Platforma</span><span class="site plain">Falaq nashriyoti</span></div>
+        <h1>Falaq — audio va elektron kitoblar</h1>
+        <p class="who">Backend, veb-sayt va admin panel · mobil ilova boshqa jamoa a’zosida</p>
+        <p class="lead">Kitobni bir marta sotib olib, uni onlayn tinglash va o‘qish, hamda internetsiz ishlatish mumkin bo‘lgan platforma. Asosiy muhandislik vazifasi — <b>kontentni himoyalash</b>: fayllar shifrlangan, kalit qurilmaga bog‘langan.</p>
+        <ul class="stack"><li>NestJS 11</li><li>TypeORM</li><li>PostgreSQL</li><li>Redis · BullMQ</li><li>Cloudflare R2</li><li>Next.js</li><li>React</li></ul>
+        <div class="cta"><a class="btn" href="https://t.me/dinMuhammad05" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M21 4 3 11l6 2 2 6 3-4 5 4z" /></svg> Loyiha haqida so‘rash</a></div>
+        
+      </header>
+
+      <section class="block">
+        <h2>Muammo</h2>
+        <p>Nashriyot audio va elektron kitoblarni sotmoqchi, lekin bitta shart bilan: sotib olingan kitob internetsiz ham ishlashi kerak, va shu bilan birga fayl ko‘chirib tarqatilmasligi kerak. Bu ikki talab bir-biriga zid: fayl qurilmada bo‘lishi kerak, lekin undan foydalanib bo‘lmasligi kerak.</p>
+      </section>
+
+      <section class="block">
+        <h2>Mening rolim</h2>
+        <p>Backend (NestJS, modulli monolit), mijozlar uchun veb-sayt va admin panelni qildim. Mobil ilova (Flutter) boshqa jamoa a’zosi tomonidan qilingan — men unga API va integratsiya hujjatlarini tayyorladim.</p>
+      </section>
+
+      <section class="block">
+        <h2>Imkoniyatlar</h2>
+        <div class="feats"><div class="feat"><h3>Kontent va himoya</h3><ul><li>Har bir fayl uchun alohida tasodifiy kalit (DEK), fayl AES-256-CTR bilan shifrlanadi — audio’ni surish va HTTP Range uchun</li><li>Kalitlar master kalit (KEK) bilan AES-256-GCM da o‘raladi; bazada faqat o‘ralgan kalit turadi</li><li>Omborda (R2) hech qachon ochiq fayl turmaydi — hatto bepul namuna ham shifrlangan</li><li>Katta fayllar brauzerdan to‘g‘ridan-to‘g‘ri R2 ga yuklanadi (presigned PUT), shifrlash navbatda</li></ul></div><div class="feat"><h3>Kirish va litsenziya</h3><ul><li>Bir martalik xarid: bitta xarid kitobning audio va elektron variantini ochadi</li><li>Oflayn litsenziya 30 kun amal qiladi, keyin internetga ulanib yangilanadi</li><li>Qurilmalar ro‘yxati va nazorati</li><li>Telefon OTP (Eskiz SMS) + Google / Apple OAuth, JWT rotatsiyasi bilan</li></ul></div><div class="feat"><h3>Platforma</h3><ul><li>Katalog, kutubxona, sharh va reyting, bildirishnomalar, obunalar</li><li>4 tilli API: o‘zbek (lotin va kirill), rus, ingliz</li><li>Admin panel: kitoblar, nashrlar, fayllar yuklash, foydalanuvchilar</li></ul></div></div>
+      </section>
+
+      <section class="block">
+        <h2>Arxitektura</h2>
+        <div class="arch"><div class="layer"><span class="layer-name">Mijozlar</span><div class="boxes"><span class="box">Flutter ilova</span><span class="box">Next.js sayt</span><span class="box">React admin panel</span></div></div><div class="layer"><span class="layer-name">API</span><div class="boxes"><span class="box">NestJS modulli monolit</span><span class="box">Auth + OTP</span><span class="box">Kirish va litsenziya</span></div></div><div class="layer"><span class="layer-name">Fon ishlari</span><div class="boxes"><span class="box">BullMQ: shifrlash</span><span class="box">Preview tayyorlash</span></div></div><div class="layer"><span class="layer-name">Ma’lumot</span><div class="boxes"><span class="box">PostgreSQL (TypeORM)</span><span class="box">Redis (OTP, navbat)</span><span class="box">Cloudflare R2</span></div></div></div>
+      </section>
+
+      <section class="block">
+        <h2>Muhim muhandislik qarorlari</h2>
+        <div class="decisions"><div class="decision"><span class="num">1</span><div><h3>Envelope encryption</h3><p>Har fayl o‘z kaliti bilan shifrlanadi, kalitlar esa master kalit bilan o‘raladi. Master kalitni almashtirish kerak bo‘lsa, 500 MB li fayllarni qayta shifrlash shart emas — faqat kichik kalitlar qayta o‘raladi. Har faylning alohida kaliti tufayli bepul namuna kaliti pullik kontentni ochmaydi.</p></div></div><div class="decision"><span class="num">2</span><div><h3>CTR rejimi — audio uchun</h3><p>Kontent AES-CTR bilan shifrlangan: bu faylning istalgan joyidan o‘qish imkonini beradi. Foydalanuvchi audio’ni o‘rtasiga sursa, butun faylni ochish shart emas.</p></div></div><div class="decision"><span class="num">3</span><div><h3>Fayllar API dan o‘tmaydi</h3><p>Yuklash ham, yuklab olish ham presigned URL orqali to‘g‘ridan-to‘g‘ri R2 bilan. Server faqat kalitlar va ruxsatlar bilan ishlaydi — katta fayllar uning xotirasini band qilmaydi. R2 tanlovi ham shu bilan bog‘liq: chiqish trafigi bepul.</p></div></div><div class="decision"><span class="num">4</span><div><h3>Muddatli oflayn litsenziya</h3><p>Oflayn kalit 30 kunlik. Obuna yoki huquq tugasa, qurilma keyingi ulanishda kalitni yangilay olmaydi — fayl o‘chirilmasa ham foydasiz bo‘ladi.</p></div></div></div>
+      </section>
+
+      <nav class="pager" aria-label="Loyihalar">
+        <a href="/loyihalar/topkan/"><span>← Oldingi</span><b>Topkan</b></a>
+        <a class="next" href="/loyihalar/techjobs/"><span>Keyingi →</span><b>TechJobs</b></a>
+      </nav>
+    </article>
+    <section id="aloqa" class="wrap section contact">
+      <div class="contact-card">
+        <img src="/assets/avatar.jpg" alt="" width="72" height="72" />
+        <div>
+          <h2>Loyihangiz bormi?</h2>
+          <p class="muted">SaaS, CRM, ERP, to‘lov integratsiyasi, bot yoki murakkab backend — yozing, muhokama qilamiz.</p>
+        </div>
+        <div class="cta">
+          <a class="btn primary" href="https://t.me/dinMuhammad05" target="_blank" rel="noopener">@dinMuhammad05</a>
+          <a class="btn" href="https://github.com/dinmuhammad05" target="_blank" rel="noopener">GitHub</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="wrap foot">
+    <span>© <span id="y">2026</span> Dinmuhammad</span>
+    <span class="foot-links">
+      <a href="/blog/">Blog</a>
+      <a href="https://t.me/dinMuhammad05" target="_blank" rel="noopener">Telegram</a>
+      <a href="https://github.com/dinmuhammad05" target="_blank" rel="noopener">GitHub</a>
+    </span>
+  </footer>
+  <script>
+    (function () {
+      var root = document.documentElement;
+      document.querySelector(".theme").addEventListener("click", function () {
+        var dark = root.dataset.theme ? root.dataset.theme === "dark"
+          : window.matchMedia("(prefers-color-scheme: dark)").matches;
+        root.dataset.theme = dark ? "light" : "dark";
+        try { localStorage.setItem("theme", root.dataset.theme); } catch (e) {}
+      });
+      document.getElementById("y").textContent = new Date().getFullYear();
+    })();
+  </script>
+</body>
+</html>

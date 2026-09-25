@@ -1,0 +1,97 @@
+<!doctype html>
+<html lang="uz">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Blog — Dinmuhammad</title>
+  <meta name="description" content="Dinmuhammadning o‘zbek tilidagi darslik va kurslari: tizim dizayni, JavaScript, backend." />
+  <meta name="author" content="Dinmuhammad" />
+  <link rel="canonical" href="https://dinmuhammad05.github.io/blog/" />
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="Blog — Dinmuhammad" />
+  <meta property="og:description" content="Dinmuhammadning o‘zbek tilidagi darslik va kurslari: tizim dizayni, JavaScript, backend." />
+  <meta property="og:image" content="https://dinmuhammad05.github.io/assets/og.png" />
+  <meta property="og:url" content="https://dinmuhammad05.github.io/blog/" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <link rel="icon" href="/assets/avatar.jpg" />
+  <script>try{var t=localStorage.getItem("theme");if(t)document.documentElement.dataset.theme=t}catch(e){}</script>
+  <link rel="stylesheet" href="/style.css" />
+</head>
+<body>
+  <header class="nav">
+    <div class="wrap nav-in">
+      <a class="brand" href="/" aria-label="Bosh sahifa">
+        <img src="/assets/avatar.jpg" alt="" width="32" height="32" />
+        <span>Dinmuhammad</span>
+      </a>
+      <nav class="nav-links" aria-label="Bo'limlar">
+        <a href="/#loyihalar">Loyihalar</a>
+        <a href="/blog/">Blog</a>
+        <a href="/#konikmalar">Ko‘nikmalar</a>
+        <a href="/#aloqa">Aloqa</a>
+      </nav>
+      <button class="theme" type="button" aria-label="Rangli rejimni almashtirish" title="Yorug‘ / qorong‘i">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3a9 9 0 1 0 9 9 7 7 0 0 1-9-9z" /></svg>
+      </button>
+    </div>
+  </header>
+  <main>
+    <section class="wrap section">
+      <a class="back" href="/">← Bosh sahifa</a>
+      <div class="section-head">
+        <p class="eyebrow">Blog</p>
+        <h1 class="h1">Darsliklarim</h1>
+        <p class="muted">O‘zbek tilida dasturlash va tizim dizayni bo‘yicha yozgan darslik va kurslarim.
+          Har birida — nima haqida, kim uchun va qanday qurilgani.</p>
+      </div>
+      <div class="grid">
+        <article class="card clickable post-card">
+          <span class="tag">Darslik</span>
+          <h3><a class="stretch" href="/blog/system-design-15-case-studies/">15 ta mashhur tizim noldan: System Design darsligi</a></h3>
+          <p class="muted">ChatGPT, YouTube, Spotify, Google Docs va boshqa tizimlar qanday ishlaydi — eng sodda yechimdan bugungi arxitekturagacha, hisob-kitob va amaliy topshiriqlar bilan.</p>
+          <span class="open">O‘qish →</span>
+        </article>
+        <article class="card clickable post-card">
+          <span class="tag">Darslik</span>
+          <h3><a class="stretch" href="/blog/kodla/">Kodla: JavaScript’dan DevOps’gacha, o‘zbek tilida</a></h3>
+          <p class="muted">226 ta dars va 559 ta interaktiv kod maydonchasi — dasturlashni noldan, chuqur va o‘zbek tilida o‘rganish uchun.</p>
+          <span class="open">O‘qish →</span>
+        </article>
+        <article class="card clickable post-card">
+          <span class="tag">Darslik</span>
+          <h3><a class="stretch" href="/blog/tizim-dizayni-kursi/">Tizim dizayni kursi: 15 mavzu, ikki qatlam</a></h3>
+          <p class="muted">Mikroservislar, modulli monolit, keshlash, sharding, replikatsiya va boshqalar — har mavzu “Core” va chuqur “Deep/Senior” qatlami bilan, NestJS misollari bilan.</p>
+          <span class="open">O‘qish →</span>
+        </article>
+        <article class="card clickable post-card">
+          <span class="tag">Darslik</span>
+          <h3><a class="stretch" href="/blog/tizim-dizayni-chuqur-kurs/">Tizim dizayni: kompyuterning o‘zidan boshlab</a></h3>
+          <p class="muted">Katta tizimlarni eng pastki qatlamdan o‘rganish: kompyuter anatomiyasi, operatsion tizim, protsess va thread, virtual xotira.</p>
+          <span class="open">O‘qish →</span>
+        </article>
+      </div>
+    </section>
+  </main>
+
+  <footer class="wrap foot">
+    <span>© <span id="y">2026</span> Dinmuhammad</span>
+    <span class="foot-links">
+      <a href="/blog/">Blog</a>
+      <a href="https://t.me/dinMuhammad05" target="_blank" rel="noopener">Telegram</a>
+      <a href="https://github.com/dinmuhammad05" target="_blank" rel="noopener">GitHub</a>
+    </span>
+  </footer>
+  <script>
+    (function () {
+      var root = document.documentElement;
+      document.querySelector(".theme").addEventListener("click", function () {
+        var dark = root.dataset.theme ? root.dataset.theme === "dark"
+          : window.matchMedia("(prefers-color-scheme: dark)").matches;
+        root.dataset.theme = dark ? "light" : "dark";
+        try { localStorage.setItem("theme", root.dataset.theme); } catch (e) {}
+      });
+      document.getElementById("y").textContent = new Date().getFullYear();
+    })();
+  </script>
+</body>
+</html>

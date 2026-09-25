@@ -1,0 +1,117 @@
+<!doctype html>
+<html lang="uz">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>AutoTrad — bozor signallari boti — Dinmuhammad</title>
+  <meta name="description" content="Binance Futures juftliklarini real vaqtda kuzatib, “M” va “W” grafik naqshlarini topadigan va Telegram’ga signal yuboradigan bot." />
+  <meta name="author" content="Dinmuhammad" />
+  <link rel="canonical" href="https://dinmuhammad05.github.io/loyihalar/autotrad/" />
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="AutoTrad — bozor signallari boti — Dinmuhammad" />
+  <meta property="og:description" content="Binance Futures juftliklarini real vaqtda kuzatib, “M” va “W” grafik naqshlarini topadigan va Telegram’ga signal yuboradigan bot." />
+  <meta property="og:image" content="https://dinmuhammad05.github.io/assets/og.png" />
+  <meta property="og:url" content="https://dinmuhammad05.github.io/loyihalar/autotrad/" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <link rel="icon" href="/assets/avatar.jpg" />
+  <script>try{var t=localStorage.getItem("theme");if(t)document.documentElement.dataset.theme=t}catch(e){}</script>
+  <link rel="stylesheet" href="/style.css" />
+</head>
+<body>
+  <header class="nav">
+    <div class="wrap nav-in">
+      <a class="brand" href="/" aria-label="Bosh sahifa">
+        <img src="/assets/avatar.jpg" alt="" width="32" height="32" />
+        <span>Dinmuhammad</span>
+      </a>
+      <nav class="nav-links" aria-label="Bo'limlar">
+        <a href="/#loyihalar">Loyihalar</a>
+        <a href="/blog/">Blog</a>
+        <a href="/#konikmalar">Ko‘nikmalar</a>
+        <a href="/#aloqa">Aloqa</a>
+      </nav>
+      <button class="theme" type="button" aria-label="Rangli rejimni almashtirish" title="Yorug‘ / qorong‘i">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3a9 9 0 1 0 9 9 7 7 0 0 1-9-9z" /></svg>
+      </button>
+    </div>
+  </header>
+  <main>
+    <article class="wrap detail">
+      <a class="back" href="/#loyihalar">← Barcha loyihalar</a>
+      <header class="detail-head">
+        <div class="card-top"><span class="tag">Bot</span><span class="site plain">AutoTrad bot</span></div>
+        <h1>AutoTrad — bozor signallari boti</h1>
+        <p class="who">To‘liq o‘zim</p>
+        <p class="lead">Binance Futures juftliklarini real vaqtda kuzatib, “M” va “W” grafik naqshlarini topadigan va Telegram’ga signal yuboradigan bot.</p>
+        <ul class="stack"><li>TypeScript</li><li>Node.js</li><li>grammY</li><li>SQLite</li><li>Zod</li><li>Vitest</li><li>Docker</li></ul>
+        <div class="cta"><a class="btn" href="https://t.me/dinMuhammad05" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M21 4 3 11l6 2 2 6 3-4 5 4z" /></svg> Loyiha haqida so‘rash</a></div>
+        
+      </header>
+
+      <section class="block">
+        <h2>Muammo</h2>
+        <p>Yuzlab juftlikni bir necha taymfreymda qo‘lda kuzatish imkonsiz. Bot eng faol juftliklarni o‘zi tanlaydi, grafikni real vaqtda o‘qiydi va faqat sifatli naqsh paydo bo‘lganda xabar beradi.</p>
+      </section>
+
+      <section class="block">
+        <h2>Mening rolim</h2>
+        <p>Botni noldan yozdim: birja integratsiyasi, naqshlarni aniqlash algoritmi, signal formatlash va Telegram, saqlash va deploy.</p>
+      </section>
+
+      <section class="block">
+        <h2>Imkoniyatlar</h2>
+        <div class="feats"><div class="feat"><h3>Ma’lumot</h3><ul><li>Hajm bo‘yicha eng faol juftliklar REST orqali tanlanadi va davriy yangilanadi</li><li>Shamlar WebSocket orqali real vaqtda keladi va halqali buferda saqlanadi — xotira cheklangan</li></ul></div><div class="feat"><h3>Tahlil</h3><ul><li>Swing high / low nuqtalarini aniqlash</li><li>Double Top (M) va Double Bottom (W) naqshlari, har biri ishonchlilik bali bilan</li></ul></div><div class="feat"><h3>Signal</h3><ul><li>Bir xil signal qayta yuborilmasligi uchun SQLite’da dedup</li><li>grammY orqali formatlangan Telegram xabari</li><li>Zod bilan konfiguratsiya tekshiruvi, to‘g‘ri to‘xtash (graceful shutdown), Vitest testlari</li></ul></div></div>
+      </section>
+
+      <section class="block">
+        <h2>Arxitektura</h2>
+        <div class="arch"><div class="layer"><span class="layer-name">Manba</span><div class="boxes"><span class="box">Binance REST</span><span class="box">Binance WebSocket</span></div></div><div class="layer"><span class="layer-name">Yadro</span><div class="boxes"><span class="box">Candle store (ring buffer)</span><span class="box">Swing detector</span><span class="box">M / W detectorlar</span></div></div><div class="layer"><span class="layer-name">Chiqish</span><div class="boxes"><span class="box">SQLite dedup</span><span class="box">Telegram (grammY)</span><span class="box">Cron rejalashtiruvchi</span></div></div></div>
+      </section>
+
+      <section class="block">
+        <h2>Muhim muhandislik qarorlari</h2>
+        <div class="decisions"><div class="decision"><span class="num">1</span><div><h3>Halqali bufer</h3><p>Har juftlik uchun faqat oxirgi N sham kerak. Halqali bufer xotirani qat’iy cheklaydi — bot haftalab ishlaganda ham o‘smaydi.</p></div></div><div class="decision"><span class="num">2</span><div><h3>Signal — bir marta</h3><p>Bir naqsh bir necha sham davomida ko‘rinib turadi. SQLite’dagi dedup yozuvlari foydalanuvchiga bir xil signalni takror yubormaslikni kafolatlaydi.</p></div></div></div>
+      </section>
+
+      <nav class="pager" aria-label="Loyihalar">
+        <a href="/loyihalar/almazpro/"><span>← Oldingi</span><b>Almazpro</b></a>
+        <a class="next" href="/loyihalar/talim/"><span>Keyingi →</span><b>Ta’lim loyihalari</b></a>
+      </nav>
+    </article>
+    <section id="aloqa" class="wrap section contact">
+      <div class="contact-card">
+        <img src="/assets/avatar.jpg" alt="" width="72" height="72" />
+        <div>
+          <h2>Loyihangiz bormi?</h2>
+          <p class="muted">SaaS, CRM, ERP, to‘lov integratsiyasi, bot yoki murakkab backend — yozing, muhokama qilamiz.</p>
+        </div>
+        <div class="cta">
+          <a class="btn primary" href="https://t.me/dinMuhammad05" target="_blank" rel="noopener">@dinMuhammad05</a>
+          <a class="btn" href="https://github.com/dinmuhammad05" target="_blank" rel="noopener">GitHub</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="wrap foot">
+    <span>© <span id="y">2026</span> Dinmuhammad</span>
+    <span class="foot-links">
+      <a href="/blog/">Blog</a>
+      <a href="https://t.me/dinMuhammad05" target="_blank" rel="noopener">Telegram</a>
+      <a href="https://github.com/dinmuhammad05" target="_blank" rel="noopener">GitHub</a>
+    </span>
+  </footer>
+  <script>
+    (function () {
+      var root = document.documentElement;
+      document.querySelector(".theme").addEventListener("click", function () {
+        var dark = root.dataset.theme ? root.dataset.theme === "dark"
+          : window.matchMedia("(prefers-color-scheme: dark)").matches;
+        root.dataset.theme = dark ? "light" : "dark";
+        try { localStorage.setItem("theme", root.dataset.theme); } catch (e) {}
+      });
+      document.getElementById("y").textContent = new Date().getFullYear();
+    })();
+  </script>
+</body>
+</html>

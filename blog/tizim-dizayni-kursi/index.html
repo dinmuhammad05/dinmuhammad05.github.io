@@ -1,0 +1,78 @@
+<!doctype html>
+<html lang="uz">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Tizim dizayni kursi: 15 mavzu, ikki qatlam — Dinmuhammad</title>
+  <meta name="description" content="Mikroservislar, modulli monolit, keshlash, sharding, replikatsiya va boshqalar — har mavzu “Core” va chuqur “Deep/Senior” qatlami bilan, NestJS misollari bilan." />
+  <meta name="author" content="Dinmuhammad" />
+  <link rel="canonical" href="https://dinmuhammad05.github.io/blog/tizim-dizayni-kursi/" />
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="Tizim dizayni kursi: 15 mavzu, ikki qatlam — Dinmuhammad" />
+  <meta property="og:description" content="Mikroservislar, modulli monolit, keshlash, sharding, replikatsiya va boshqalar — har mavzu “Core” va chuqur “Deep/Senior” qatlami bilan, NestJS misollari bilan." />
+  <meta property="og:image" content="https://dinmuhammad05.github.io/assets/og.png" />
+  <meta property="og:url" content="https://dinmuhammad05.github.io/blog/tizim-dizayni-kursi/" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <link rel="icon" href="/assets/avatar.jpg" />
+  <script>try{var t=localStorage.getItem("theme");if(t)document.documentElement.dataset.theme=t}catch(e){}</script>
+  <link rel="stylesheet" href="/style.css" />
+</head>
+<body>
+  <header class="nav">
+    <div class="wrap nav-in">
+      <a class="brand" href="/" aria-label="Bosh sahifa">
+        <img src="/assets/avatar.jpg" alt="" width="32" height="32" />
+        <span>Dinmuhammad</span>
+      </a>
+      <nav class="nav-links" aria-label="Bo'limlar">
+        <a href="/#loyihalar">Loyihalar</a>
+        <a href="/blog/">Blog</a>
+        <a href="/#konikmalar">Ko‘nikmalar</a>
+        <a href="/#aloqa">Aloqa</a>
+      </nav>
+      <button class="theme" type="button" aria-label="Rangli rejimni almashtirish" title="Yorug‘ / qorong‘i">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3a9 9 0 1 0 9 9 7 7 0 0 1-9-9z" /></svg>
+      </button>
+    </div>
+  </header>
+  <main>
+    <article class="wrap detail post">
+      <a class="back" href="/blog/">← Blog</a>
+      <header class="detail-head">
+        <span class="tag">Darslik</span>
+        <h1>Tizim dizayni kursi: 15 mavzu, ikki qatlam</h1>
+        <p class="lead">Mikroservislar, modulli monolit, keshlash, sharding, replikatsiya va boshqalar — har mavzu “Core” va chuqur “Deep/Senior” qatlami bilan, NestJS misollari bilan.</p>
+        <div class="numbers"><div><b>15</b><span>mavzu</span></div><div><b>30</b><span>dars</span></div><div><b>NestJS</b><span>misollar</span></div></div>
+        <div class="cta"><a class="btn primary" href="https://dinmuhammad05.github.io/system-design/" target="_blank" rel="noopener">Kursni ochish ↗</a></div>
+      </header>
+      <div class="prose"><p>Bu kurs arxitektura naqshlariga bag‘ishlangan. Har bir mavzu ikki qatlamda yozilgan: Core — mavzuni noldan tushunish (nega kerak, asosiy g‘oya, NestJS’da qanday qilinadi), va Deep — ichki mexanika, nozik holatlar va senior darajadagi tekshiruv ro‘yxati.</p><p>Mavzular: mikroservislar, modulli monolit, hodisalarga asoslangan arxitektura, keshlash, yuklamani taqsimlash, sharding, replikatsiya, API gateway va boshqalar.</p><p>Case-study darsligidan farqi: u yerda bitta tizim ichidagi qarorlar ko‘riladi, bu yerda esa naqshlarning o‘zi — ularni keyin istalgan loyihada qo‘llash uchun.</p></div>
+      <div class="cta"><a class="btn primary" href="https://dinmuhammad05.github.io/system-design/" target="_blank" rel="noopener">Kursni ochish ↗</a></div>
+      <section class="block">
+        <h2>Boshqa yozuvlar</h2>
+        <ul class="others"><li><a href="/blog/system-design-15-case-studies/">15 ta mashhur tizim noldan: System Design darsligi</a></li><li><a href="/blog/kodla/">Kodla: JavaScript’dan DevOps’gacha, o‘zbek tilida</a></li><li><a href="/blog/tizim-dizayni-chuqur-kurs/">Tizim dizayni: kompyuterning o‘zidan boshlab</a></li></ul>
+      </section>
+    </article>
+  </main>
+
+  <footer class="wrap foot">
+    <span>© <span id="y">2026</span> Dinmuhammad</span>
+    <span class="foot-links">
+      <a href="/blog/">Blog</a>
+      <a href="https://t.me/dinMuhammad05" target="_blank" rel="noopener">Telegram</a>
+      <a href="https://github.com/dinmuhammad05" target="_blank" rel="noopener">GitHub</a>
+    </span>
+  </footer>
+  <script>
+    (function () {
+      var root = document.documentElement;
+      document.querySelector(".theme").addEventListener("click", function () {
+        var dark = root.dataset.theme ? root.dataset.theme === "dark"
+          : window.matchMedia("(prefers-color-scheme: dark)").matches;
+        root.dataset.theme = dark ? "light" : "dark";
+        try { localStorage.setItem("theme", root.dataset.theme); } catch (e) {}
+      });
+      document.getElementById("y").textContent = new Date().getFullYear();
+    })();
+  </script>
+</body>
+</html>

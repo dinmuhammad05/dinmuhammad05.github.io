@@ -1,0 +1,78 @@
+<!doctype html>
+<html lang="uz">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Tizim dizayni: kompyuterning o‘zidan boshlab — Dinmuhammad</title>
+  <meta name="description" content="Katta tizimlarni eng pastki qatlamdan o‘rganish: kompyuter anatomiyasi, operatsion tizim, protsess va thread, virtual xotira." />
+  <meta name="author" content="Dinmuhammad" />
+  <link rel="canonical" href="https://dinmuhammad05.github.io/blog/tizim-dizayni-chuqur-kurs/" />
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="Tizim dizayni: kompyuterning o‘zidan boshlab — Dinmuhammad" />
+  <meta property="og:description" content="Katta tizimlarni eng pastki qatlamdan o‘rganish: kompyuter anatomiyasi, operatsion tizim, protsess va thread, virtual xotira." />
+  <meta property="og:image" content="https://dinmuhammad05.github.io/assets/og.png" />
+  <meta property="og:url" content="https://dinmuhammad05.github.io/blog/tizim-dizayni-chuqur-kurs/" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <link rel="icon" href="/assets/avatar.jpg" />
+  <script>try{var t=localStorage.getItem("theme");if(t)document.documentElement.dataset.theme=t}catch(e){}</script>
+  <link rel="stylesheet" href="/style.css" />
+</head>
+<body>
+  <header class="nav">
+    <div class="wrap nav-in">
+      <a class="brand" href="/" aria-label="Bosh sahifa">
+        <img src="/assets/avatar.jpg" alt="" width="32" height="32" />
+        <span>Dinmuhammad</span>
+      </a>
+      <nav class="nav-links" aria-label="Bo'limlar">
+        <a href="/#loyihalar">Loyihalar</a>
+        <a href="/blog/">Blog</a>
+        <a href="/#konikmalar">Ko‘nikmalar</a>
+        <a href="/#aloqa">Aloqa</a>
+      </nav>
+      <button class="theme" type="button" aria-label="Rangli rejimni almashtirish" title="Yorug‘ / qorong‘i">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3a9 9 0 1 0 9 9 7 7 0 0 1-9-9z" /></svg>
+      </button>
+    </div>
+  </header>
+  <main>
+    <article class="wrap detail post">
+      <a class="back" href="/blog/">← Blog</a>
+      <header class="detail-head">
+        <span class="tag">Darslik</span>
+        <h1>Tizim dizayni: kompyuterning o‘zidan boshlab</h1>
+        <p class="lead">Katta tizimlarni eng pastki qatlamdan o‘rganish: kompyuter anatomiyasi, operatsion tizim, protsess va thread, virtual xotira.</p>
+        <div class="numbers"><div><b>7</b><span>dars hozircha</span></div><div><b>PWA</b><span>oflayn o‘qish</span></div></div>
+        <div class="cta"><a class="btn primary" href="https://dinmuhammad05.github.io/sys_design_44/kurs/" target="_blank" rel="noopener">Kursni ochish ↗</a></div>
+      </header>
+      <div class="prose"><p>Ko‘p tizim dizayni kurslari to‘g‘ridan-to‘g‘ri serverlar va ma’lumotlar bazalaridan boshlaydi. Bu kurs bir qadam pastdan boshlaydi: kompyuterning o‘zi qanday ishlaydi, resurslar qayerda tugaydi, operatsion tizim nimani yashiradi.</p><p>Hozircha ikki bo‘lim tayyor: kompyuter anatomiyasi (tizim yuragi, resurslar chegarasi, real rollar) va operatsion tizim (asosiy tushunchalar, protsess va thread, virtual xotira va izolyatsiya, tizim chaqiruvlari).</p><p>Sayt sof HTML/CSS/JS, build jarayonisiz; o‘rnatib, internetsiz o‘qish mumkin (PWA).</p></div>
+      <div class="cta"><a class="btn primary" href="https://dinmuhammad05.github.io/sys_design_44/kurs/" target="_blank" rel="noopener">Kursni ochish ↗</a></div>
+      <section class="block">
+        <h2>Boshqa yozuvlar</h2>
+        <ul class="others"><li><a href="/blog/system-design-15-case-studies/">15 ta mashhur tizim noldan: System Design darsligi</a></li><li><a href="/blog/kodla/">Kodla: JavaScript’dan DevOps’gacha, o‘zbek tilida</a></li><li><a href="/blog/tizim-dizayni-kursi/">Tizim dizayni kursi: 15 mavzu, ikki qatlam</a></li></ul>
+      </section>
+    </article>
+  </main>
+
+  <footer class="wrap foot">
+    <span>© <span id="y">2026</span> Dinmuhammad</span>
+    <span class="foot-links">
+      <a href="/blog/">Blog</a>
+      <a href="https://t.me/dinMuhammad05" target="_blank" rel="noopener">Telegram</a>
+      <a href="https://github.com/dinmuhammad05" target="_blank" rel="noopener">GitHub</a>
+    </span>
+  </footer>
+  <script>
+    (function () {
+      var root = document.documentElement;
+      document.querySelector(".theme").addEventListener("click", function () {
+        var dark = root.dataset.theme ? root.dataset.theme === "dark"
+          : window.matchMedia("(prefers-color-scheme: dark)").matches;
+        root.dataset.theme = dark ? "light" : "dark";
+        try { localStorage.setItem("theme", root.dataset.theme); } catch (e) {}
+      });
+      document.getElementById("y").textContent = new Date().getFullYear();
+    })();
+  </script>
+</body>
+</html>
