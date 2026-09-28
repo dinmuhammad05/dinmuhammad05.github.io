@@ -21,13 +21,16 @@ SITE = {
     "country": "O‘zbekiston",
     # Google Search Console / Bing / Yandex "meta tag" usulida tasdiqlash kodlari.
     # Bo'sh bo'lsa teg chiqmaydi. Masalan: "abc123...". Faqat content qiymatini yozing.
-    "google_verification": "",
-    "bing_verification": "",
-    "yandex_verification": "",
+    "google_verification": "GKLxHqTJXXOgeQ4a6_jAe7Ly_TOk8gRcAyoRdVyj2Ts",
+    "bing_verification": "C25B27324E2CC4F848884B8B8BFDDF7E",
+    "yandex_verification": "a7642a0c23866cfb",
     "url": "https://dinmuhammad.uz",
     "telegram": "@dinMuhammad05",
     "telegram_url": "https://t.me/dinMuhammad05",
     "github_url": "https://github.com/dinmuhammad05",
+    "telegram_channel": "@dws_dev",
+    "telegram_channel_url": "https://t.me/dws_dev",
+    "linkedin_url": "https://www.linkedin.com/in/dinmuhammad-qosimov-05a28134b/",
     # WhatsApp raqami xalqaro formatda, faqat raqamlar (masalan "998901234567").
     # Bo'sh bo'lsa, bosh sahifada WhatsApp o'rniga GitHub tugmasi chiqadi.
     "whatsapp": "992908199751",

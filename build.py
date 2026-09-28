@@ -55,7 +55,7 @@ def person():
         "url": SITE["url"] + "/",
         "mainEntityOfPage": SITE["url"] + "/",
         "image": SITE["url"] + "/assets/dinmuhammad-760.jpg",
-        "sameAs": [SITE["telegram_url"], SITE["github_url"]],
+        "sameAs": [SITE["telegram_url"], SITE["telegram_channel_url"], SITE["github_url"], SITE["linkedin_url"]],
         "address": {"@type": "PostalAddress", "addressLocality": SITE["city"], "addressCountry": "UZ"},
         "nationality": {"@type": "Country", "name": SITE["country"]},
         "knowsLanguage": ["uz", "ru", "en"],
@@ -148,7 +148,9 @@ def page(title, description, body, path, og_image="/assets/og.png", schema="", k
     <span class="foot-links">
       <a href="/blog/">Blog</a>
       <a href="{SITE['telegram_url']}" target="_blank" rel="noopener">Telegram</a>
+      <a href="{SITE['telegram_channel_url']}" target="_blank" rel="noopener">Kanal</a>
       <a href="{SITE['github_url']}" target="_blank" rel="noopener">GitHub</a>
+      <a href="{SITE['linkedin_url']}" target="_blank" rel="noopener">LinkedIn</a>
     </span>
   </footer>
   <script>
@@ -602,7 +604,9 @@ def build_llms(full=False):
            f"- Telegram: [{SITE['telegram']}]({SITE['telegram_url']})"]
     if SITE.get("whatsapp"):
         out.append(f"- WhatsApp: [+{SITE['whatsapp']}](https://wa.me/{SITE['whatsapp']})")
-    out += [f"- GitHub: [{SITE['github_url'].rsplit('/', 1)[-1]}]({SITE['github_url']})", "",
+    out += [f"- Telegram kanal: [{SITE['telegram_channel']}]({SITE['telegram_channel_url']})",
+            f"- GitHub: [{SITE['github_url'].rsplit('/', 1)[-1]}]({SITE['github_url']})",
+            f"- LinkedIn: {SITE['linkedin_url']}", "",
             "## Xizmatlar", ""]
     for x in SERVICES + [SUPPORT]:
         out.append(f"- **{x['title']}** — {x['text']} ({'; '.join(x['items'])})")
