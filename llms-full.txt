@@ -1,0 +1,337 @@
+# Dinmuhammad — Full-stack dasturchi
+
+> Dinmuhammad — full-stack dasturchi (NestJS, Next.js, PostgreSQL). Biznesni avtomatlashtirish (CRM, ERP), SaaS va veb-ilovalar, Telegram botlar va to‘lov tizimlari integratsiyasi. Rasmiy sayt: https://dinmuhammad.uz/
+
+## Aloqa
+
+- Telegram: [@dinMuhammad05](https://t.me/dinMuhammad05)
+- WhatsApp: [+992908199751](https://wa.me/992908199751)
+- GitHub: [dinmuhammad05](https://github.com/dinmuhammad05)
+
+## Xizmatlar
+
+- **Biznesni avtomatlashtirish** — Qo‘lda, daftar va jadvalda qilinadigan ishlarni bitta tizimga o‘tkazish. (CRM va ichki ERP; Kassa, ombor va hisobotlar; Qabul yozuvi va SMS eslatmalar; Rollar va xodimlar nazorati)
+- **Telegram botlar** — Mijoz va jamoa allaqachon o‘tirgan joyda ishlaydigan avtomatika. (Kanalga avtomatik postlar; Ommaviy va shaxsiy xabarnomalar; Bot orqali ariza va buyurtma; Signal va monitoring botlari)
+- **SaaS va veb-ilovalar** — Bir nechta mijoz yoki filialga xizmat qiladigan to‘liq mahsulot. (Ko‘p tashkilotli arxitektura; Obuna va tariflar; Admin va super-admin panellar; SMS, OAuth va AI integratsiyalari)
+- **To‘lov tizimlari** — Qaysi bozorda sotsangiz ham — mahalliy, xalqaro yoki kripto to‘lovni ulash. (O‘zbekiston: Payme, Click, Uzum; Rossiya: Pay4Game; Yevropa va global: Paddle; Kripto: Binance Pay; Obunalar, webhook’lar va qaytarishlar)
+- **Loyihani qo‘llab-quvvatlash** — Ishga tushirish — yo‘lning yarmi. Tizim ishlab turishi, xatolar tez tuzatilishi va biznes o‘sishi bilan birga o‘zgarishi uchun loyihani keyin ham yuritaman. (Monitoring, loglar va xatolarni tez tuzatish; Yangi imkoniyatlar va o‘zgarishlar; Server, deploy, SSL va zaxira nusxalar; Kutubxona va xavfsizlik yangilanishlari; Ko‘chirish: yangi serverga yoki bulutga; Boshqa jamoa yozgan loyihani qabul qilib olish)
+
+## Loyihalar
+
+- [Topkan — AI bilan nomzod tanlash](https://dinmuhammad.uz/loyihalar/topkan/): HR vakansiya yaratadi, tizim “smart-link” beradi, HR uni Telegram kanallarida ulashadi. Nomzodlar havola yoki bot orqali topshiradi, har bir rezyume esa vakansiya talablariga moslik bo‘yicha 0–100 ball bilan avtomatik baholanadi. Sayt: https://topkan.uz
+
+### Topkan — AI bilan nomzod tanlash
+
+Rol: Full-stack · backend, veb-ilova, AI va Telegram
+Texnologiyalar: NestJS, Prisma, PostgreSQL, Redis · BullMQ, Next.js, Claude API, Telegram Bot
+
+**Muammo.** Telegram kanaliga vakansiya joylagan HR yuzlab rezyume oladi va ularni qo‘lda o‘qib chiqadi. Qaysi kanal yaxshi nomzod berayotganini bilmaydi, eng mos nomzodlar esa ro‘yxat oxirida qolib ketadi. Topkan bu ishni avtomatlashtiradi: HR faqat saralangan eng yaxshi nomzodlar bilan ishlaydi.
+
+**Mening rolim.** Loyihani to‘liq qurdim: ma’lumotlar modeli va NestJS backend, Next.js veb-ilova (HR paneli va nomzod kabineti), AI baholash quvuri, Telegram bot, serverga joylash va avtomatik deploy.
+
+**HR uchun:**
+- Vakansiya yaratish va e’lon qilish — tokenli “smart-link” avtomatik yaratiladi
+- Har bir kanal uchun alohida link: klik, arizalar, o‘rtacha ball va konversiya bo‘yicha kanallarni solishtirish
+- Saralangan nomzodlar paneli: qidiruv, holat va minimal ball bo‘yicha filtr, bir nechtasini birdan o‘zgartirish, ichki izohlar
+- Nomzodlar voronkasi (kanban), intervyular va Google Calendar / Meet integratsiyasi
+- Jamoa: rekruter taklif qilish (link 7 kunda eskiradi), chiqarish — o‘chirish emas, deaktivatsiya
+
+**Nomzod uchun:**
+- Havola orqali yoki Telegram bot orqali ariza topshirish
+- Google / LinkedIn bilan kirish, shaxsiy kabinetda arizalar holati
+
+**AI baholash:**
+- Rezyume matni PDF va DOCX dan ajratiladi, vakansiya talablari bilan birga LLM ga yuboriladi
+- Natija — tuzilmali JSON (tool-use): 0–100 ball va asoslash
+- Skrining savollari: “knockout” javob kelsa ariza avtomatik rad etiladi va LLM ga umuman yuborilmaydi — token tejaladi
+- Baholash tugagach, tashkilotning Telegram chatiga xulosa keladi
+
+**Arxitektura:**
+- Mijozlar: Next.js veb-ilova, Telegram bot, Smart-link sahifasi
+- API: NestJS modullari, OAuth + JWT, Rollar va tashkilotlar
+- Fon ishlari: BullMQ navbati, Rezyume parser, LLM scoring worker
+- Ma’lumot: PostgreSQL (Prisma), Redis, S3 / MinIO
+
+**Muhim qarorlar:**
+- Baholash — so‘rov yo‘lida emas, navbatda: LLM javobi soniyalar oladi va ba’zan xato qaytaradi. Shuning uchun ariza darhol qabul qilinadi, baholash esa BullMQ navbatida alohida worker jarayonida bajariladi — qayta urinish bilan. Nomzod kutib qolmaydi, API tez qoladi.
+- LLM dan erkin matn emas, tuzilma: Model javobi tool-use orqali qat’iy JSON sxemasiga majburlanadi. Shunda ball va asoslashni to‘g‘ridan-to‘g‘ri bazaga yozish, filtrlash va saralash mumkin — matnni “parse” qilish kerak emas.
+- Arzon filtr — qimmat modeldan oldin: Skrining savollaridagi knockout javoblar LLM chaqiruvidan oldin tekshiriladi. Mos kelmaydigan arizalar uchun token sarflanmaydi.
+- Fayllar serverdan o‘tmaydi: Rezyume va fayllar presigned URL orqali to‘g‘ridan-to‘g‘ri S3 ga yuklanadi — API xotirasi va tarmog‘i band bo‘lmaydi.
+
+- [Falaq — audio va elektron kitoblar](https://dinmuhammad.uz/loyihalar/falaq/): Kitobni bir marta sotib olib, uni onlayn tinglash va o‘qish, hamda internetsiz ishlatish mumkin bo‘lgan platforma. Asosiy muhandislik vazifasi — kontentni himoyalash: fayllar shifrlangan, kalit qurilmaga bog‘langan.
+
+### Falaq — audio va elektron kitoblar
+
+Rol: Backend, veb-sayt va admin panel · mobil ilova boshqa jamoa a’zosida
+Texnologiyalar: NestJS 11, TypeORM, PostgreSQL, Redis · BullMQ, Cloudflare R2, Next.js, React
+
+**Muammo.** Nashriyot audio va elektron kitoblarni sotmoqchi, lekin bitta shart bilan: sotib olingan kitob internetsiz ham ishlashi kerak, va shu bilan birga fayl ko‘chirib tarqatilmasligi kerak. Bu ikki talab bir-biriga zid: fayl qurilmada bo‘lishi kerak, lekin undan foydalanib bo‘lmasligi kerak.
+
+**Mening rolim.** Backend (NestJS, modulli monolit), mijozlar uchun veb-sayt va admin panelni qildim. Mobil ilova (Flutter) boshqa jamoa a’zosi tomonidan qilingan — men unga API va integratsiya hujjatlarini tayyorladim.
+
+**Kontent va himoya:**
+- Har bir fayl uchun alohida tasodifiy kalit (DEK), fayl AES-256-CTR bilan shifrlanadi — audio’ni surish va HTTP Range uchun
+- Kalitlar master kalit (KEK) bilan AES-256-GCM da o‘raladi; bazada faqat o‘ralgan kalit turadi
+- Omborda (R2) hech qachon ochiq fayl turmaydi — hatto bepul namuna ham shifrlangan
+- Katta fayllar brauzerdan to‘g‘ridan-to‘g‘ri R2 ga yuklanadi (presigned PUT), shifrlash navbatda
+
+**Kirish va litsenziya:**
+- Bir martalik xarid: bitta xarid kitobning audio va elektron variantini ochadi
+- Oflayn litsenziya 30 kun amal qiladi, keyin internetga ulanib yangilanadi
+- Qurilmalar ro‘yxati va nazorati
+- Telefon OTP (Eskiz SMS) + Google / Apple OAuth, JWT rotatsiyasi bilan
+
+**Platforma:**
+- Katalog, kutubxona, sharh va reyting, bildirishnomalar, obunalar
+- 4 tilli API: o‘zbek (lotin va kirill), rus, ingliz
+- Admin panel: kitoblar, nashrlar, fayllar yuklash, foydalanuvchilar
+
+**Arxitektura:**
+- Mijozlar: Flutter ilova, Next.js sayt, React admin panel
+- API: NestJS modulli monolit, Auth + OTP, Kirish va litsenziya
+- Fon ishlari: BullMQ: shifrlash, Preview tayyorlash
+- Ma’lumot: PostgreSQL (TypeORM), Redis (OTP, navbat), Cloudflare R2
+
+**Muhim qarorlar:**
+- Envelope encryption: Har fayl o‘z kaliti bilan shifrlanadi, kalitlar esa master kalit bilan o‘raladi. Master kalitni almashtirish kerak bo‘lsa, 500 MB li fayllarni qayta shifrlash shart emas — faqat kichik kalitlar qayta o‘raladi. Har faylning alohida kaliti tufayli bepul namuna kaliti pullik kontentni ochmaydi.
+- CTR rejimi — audio uchun: Kontent AES-CTR bilan shifrlangan: bu faylning istalgan joyidan o‘qish imkonini beradi. Foydalanuvchi audio’ni o‘rtasiga sursa, butun faylni ochish shart emas.
+- Fayllar API dan o‘tmaydi: Yuklash ham, yuklab olish ham presigned URL orqali to‘g‘ridan-to‘g‘ri R2 bilan. Server faqat kalitlar va ruxsatlar bilan ishlaydi — katta fayllar uning xotirasini band qilmaydi. R2 tanlovi ham shu bilan bog‘liq: chiqish trafigi bepul.
+- Muddatli oflayn litsenziya: Oflayn kalit 30 kunlik. Obuna yoki huquq tugasa, qurilma keyingi ulanishda kalitni yangilay olmaydi — fayl o‘chirilmasa ham foydasiz bo‘ladi.
+
+- [TechJobs — ichki ERP va Telegram bot](https://dinmuhammad.uz/loyihalar/techjobs/): IT mutaxassislar va ish beruvchilarni bog‘laydigan platformaning ichki boshqaruv tizimi: ish beruvchilarni tekshirish, vakansiyalar moderatsiyasi, obunalar va to‘lovlar, statistika — va bularning hammasi bilan bog‘langan Telegram bot. Sayt: https://techjobs.uz
+
+### TechJobs — ichki ERP va Telegram bot
+
+Rol: Full-stack · ichki boshqaruv tizimi (ERP) va Telegram bot
+Texnologiyalar: NestJS, TypeORM, PostgreSQL, Redis, Next.js, TanStack Query, Telegram Bot API
+
+**Muammo.** Ochiq platformada har kuni yangi kompaniyalar, vakansiyalar va nomzodlar paydo bo‘ladi. Ularni tekshirish, soxta e’lonlarni to‘xtatish, obunalar va to‘lovlarni kuzatish va vakansiyalarni Telegram kanalga chiqarish uchun jamoaga ichki vosita kerak edi — qo‘lda, jadval va chatlar orqali bu ishlamaydi.
+
+**Mening rolim.** Platformaning ichki ERP qismini — admin API va boshqaruv panelini — hamda Telegram bot integratsiyasini qildim.
+
+**Moderatsiya:**
+- Yangi ish beruvchilarni tasdiqlash yoki rad etish (kutilayotganlar ro‘yxati)
+- Vakansiyalarni tekshirish, tahrirlash va o‘chirish
+- Nomzodlar holatini boshqarish
+
+**Tijorat:**
+- Ish beruvchilar obunalari va ularning tarixi
+- Promo-kodlar: yaratish, yoqish / o‘chirish
+- Click va Payme orqali to‘lovlar
+
+**Telegram:**
+- Yangi vakansiya tasdiqlanganda kanalga avtomatik post: kompaniya, lavozim, talablar, maosh va ariza havolasi
+- Nomzodlarga ommaviy xabar — filtr bo‘yicha, bo‘laklab (batch) yuborish bilan
+- Arizalar, holat o‘zgarishi va ishga olinish haqida shaxsiy xabarlar
+- Bot /start orqali foydalanuvchini platformadagi akkauntiga bog‘lash; webhook rejimi
+
+**Ma’lumotlar va statistika:**
+- Kategoriya, kasb va ko‘nikmalar katalogi — butun platforma uchun yagona manba
+- Statistika va tahlil paneli
+- Cron: eskirgan vakansiyalar va vaqtinchalik fayllarni tozalash
+
+**Arxitektura:**
+- Foydalanuvchilar: Admin panel (Next.js), Telegram kanal va bot
+- API: Admin modullari, Rollar: admin / super-admin, To‘lovlar
+- Integratsiyalar: Telegram Bot API (webhook), Click / Payme
+- Ma’lumot: PostgreSQL, Redis kesh, Cron vazifalar
+
+**Muhim qarorlar:**
+- Ommaviy xabar — bo‘laklab: Minglab nomzodga bir vaqtda xabar yuborish Telegram cheklovlariga uriladi. Xabarlar bo‘laklarga ajratilib, navbat bilan yuboriladi va har biri uchun natija hisoblanadi.
+- Vakansiya posti — shablondan: Kanalga chiqadigan post vakansiya ma’lumotidan avtomatik yig‘iladi: bir xil ko‘rinish, xatosiz havola, qo‘lda nusxalash yo‘q.
+- Katalog — yagona manba: Kategoriya, kasb va ko‘nikmalar bitta joyda boshqariladi; vakansiya, nomzod profili va qidiruv shu katalogga tayanadi.
+
+- [Apteka CRM — dorixonalar uchun kassa va ombor](https://dinmuhammad.uz/loyihalar/apteka-crm/): Ko‘p dorixonali SaaS: kassa, ombor, hisobotlar va super-admin konsoli (obuna tugasa dorixona avtomatik bloklanadi).
+
+### Apteka CRM — dorixonalar uchun kassa va ombor
+
+Rol: Full-stack · backend va frontend
+Texnologiyalar: NestJS, Prisma, PostgreSQL, React 19, Vite, TanStack Query, Tailwind
+
+**Muammo.** Kichik dorixonalar ko‘pincha daftar yoki eski dasturda ishlaydi: qoldiq noaniq, muddati o‘tgan dori vaqtida ko‘rinmaydi, yangi partiyani kiritish soatlab vaqt oladi. Kerak bo‘lgani — tez kassa, aniq ombor va hisobotlar, va bir nechta dorixonaga xizmat qiladigan bitta tizim.
+
+**Mening rolim.** Backend va frontendni to‘liq qildim: multi-tenant ma’lumotlar modeli, kassa, ombor, importlar, hisobotlar va super-admin konsoli.
+
+**Kassa:**
+- USB shtrix-kod skaneri: tugmalar orasidagi vaqtga qarab skanerni odam yozishidan ajratish
+- Qadoq yoki dona bo‘yicha sotish, foiz yoki summa chegirma
+- Savat brauzerda saqlanadi — sahifa yangilansa sotuv yo‘qolmaydi
+
+**Ombor:**
+- Qoldiq donalarda hisoblanadi, partiyalar va yaroqlilik muddati bilan
+- Muddati yaqin va kam qolgan tovarlar ogohlantirishi
+- Yetkazib beruvchi nakladnoylari va boshlang‘ich katalogni Excel’dan import
+
+**Boshqaruv:**
+- Smenalar, xarajatlar, mijozlar, yetkazib beruvchilar
+- Sotuvlar tahlili: kunlik dinamika, eng ko‘p sotilganlar
+- Super-admin: dorixonalar, obunalar, bloklash
+- Uch til: o‘zbek, rus, tojik
+
+**Arxitektura:**
+- Mijoz: React 19 + Vite, TanStack Query, Kassa savati (localStorage)
+- API: NestJS, Rollar: super-admin / admin / kassir, Multi-tenant
+- Ma’lumot: PostgreSQL (Prisma), Partiyalar va sotuvlar
+
+**Muhim qarorlar:**
+- Hisob-kitob ikki tomonda bir xil: Chegirma va jami summa formulasi mijozda ham, serverda ham aynan bir xil. Kassir ekranda ko‘rgan summa server hisoblagan summaga har doim teng.
+- Qoldiq — donada: Tovar qadoqda ham, donada ham sotiladi. Qoldiq faqat donada saqlanadi, qadoq esa hisoblanadi — shunda “yarim qadoq” xatolari bo‘lmaydi.
+- Og‘ir kutubxona — faqat kerak joyda: Excel o‘qish kutubxonasi katta, shuning uchun import sahifalari alohida yuklanadi (lazy). Kassa sahifasi tez ochiladi.
+
+- [Almazpro — o‘yin valyutasi do‘koni](https://dinmuhammad.uz/loyihalar/almazpro/): Bigo Live foydalanuvchilari uchun almaz sotuvchi do‘kon. To‘lovdan so‘ng almazlar foydalanuvchi ID’siga avtomatik, provayder API orqali yetkaziladi. Sayt: https://almazpro.uz
+
+### Almazpro — o‘yin valyutasi do‘koni
+
+Rol: Full-stack · backend va veb-sayt
+Texnologiyalar: NestJS, Prisma, PostgreSQL, BullMQ, Next.js, next-intl
+
+**Muammo.** Almaz sotuvchilar odatda buyurtmani qo‘lda bajaradi: to‘lovni tekshiradi, keyin almazni qo‘lda jo‘natadi. Bu sekin, xatoli va tunda ishlamaydi. Maqsad — odam aralashmasdan, to‘lovdan keyin soniyalarda yetkazib beradigan do‘kon.
+
+**Mening rolim.** Backend va veb-saytni qildim: buyurtmalar, to‘lov integratsiyasi, avtomatik yetkazish, narxlar va paketlar, admin panel.
+
+**Mijoz uchun:**
+- Paket tanlash, Bigo ID kiritish, to‘lov va buyurtma holatini kuzatish
+- To‘rt tilli interfeys
+
+**Avtomatik yetkazish:**
+- To‘lov tasdiqlangach buyurtma navbatga tushadi va provayder API orqali yetkaziladi
+- Xato bo‘lsa — navbatda qayta urinish, holat adminga ko‘rinadi
+- Limitlar va narxlash qoidalari
+
+**Admin:**
+- Buyurtmalar ro‘yxati va filtrlar, paketlar va narxlar
+- Ikki bosqichli kirish (TOTP), bildirishnomalar
+
+**Arxitektura:**
+- Mijoz: Next.js sayt, next-intl (4 til)
+- API: Buyurtmalar, To‘lovlar va webhook, Admin + TOTP
+- Fon ishlari: BullMQ: yetkazish, Bildirishnomalar
+- Tashqi: To‘lov provayderi, Bigo Open Platform
+
+**Muhim qarorlar:**
+- To‘lov va yetkazish — alohida qadamlar: Webhook faqat to‘lovni qayd qiladi va yetkazish vazifasini navbatga qo‘yadi. Provayder API sekin yoki ishlamay qolsa, to‘lov yo‘qolmaydi — yetkazish keyinroq qayta urinib ko‘riladi.
+- Admin uchun ikkinchi omil: Admin panel pulga bevosita ta’sir qiladi, shuning uchun parol yetarli emas — TOTP (ikki bosqichli autentifikatsiya) majburiy.
+
+- [Klinika ERP — qabul va SMS eslatmalar](https://dinmuhammad.uz/loyihalar/klinika-erp/): Shifokor uchun ichki tizim: bemorlarning qabul vaqtlari saqlanadi va har bir bemorga kelishidan oldin SMS eslatma yuboriladi. Qancha vaqt oldin eslatilishini shifokorning o‘zi tanlaydi. Sayt: https://www.proktologmirzohid.uz/
+
+### Klinika ERP — qabul va SMS eslatmalar
+
+Rol: Full-stack · ichki ERP (shifokor sayti boshqa jamoa ishi)
+Texnologiyalar: NestJS, React, Redis, BullMQ, SMS xizmati
+
+**Muammo.** Bemor qabul vaqtini unutib qo‘ysa, shifokorning vaqti bo‘sh ketadi, navbatdagi boshqa bemor esa o‘sha vaqtni ololmaydi. Qo‘ng‘iroq qilib eslatish har kuni qo‘lda qilinadigan ish. Tizim buni avtomatlashtiradi: qabul yozilgan zahoti eslatma rejalashtiriladi.
+
+**Mening rolim.** Shifokorning ichki ERP tizimini qildim: NestJS backend, React interfeys, SMS eslatmalar. Ommaviy sayt (proktologmirzohid.uz) boshqa jamoa tomonidan qilingan — u bu yerda faqat mijozni ko‘rsatish uchun.
+
+**Qabul:**
+- Bemorni va qabul vaqtini kiritish
+- Qabullar jadvali
+
+**SMS eslatmalar:**
+- Har bir qabul uchun kelishdan oldin avtomatik SMS
+- Eslatish muddatini shifokor o‘zi tanlaydi (masalan, bir kun yoki bir necha soat oldin)
+- Eslatmalar navbatda rejalashtiriladi va vaqti kelganda yuboriladi
+
+**Arxitektura:**
+- Interfeys: React (shifokor paneli)
+- API: NestJS, Qabullar, Sozlamalar
+- Fon ishlari: BullMQ navbati, Redis
+- Tashqi: SMS xizmati
+
+**Muhim qarorlar:**
+- Eslatma — navbatdagi rejalashtirilgan vazifa: Eslatma vaqti = qabul vaqti − shifokor tanlagan muddat. Qabul saqlanganda shu vaqtga vazifa BullMQ navbatiga qo‘yiladi; Redis uni saqlaydi va vaqti kelganda ishchi SMS yuboradi. Server qayta ishga tushsa ham rejalashtirilgan eslatmalar yo‘qolmaydi.
+- Muddat — sozlama, kodda emas: Qancha oldin eslatish kerakligi shifokorning sozlamasida turadi. Uni o‘zgartirish uchun dasturchi kerak emas — shifokor o‘zi tanlaydi.
+
+- [AutoTrad — bozor signallari boti](https://dinmuhammad.uz/loyihalar/autotrad/): Binance Futures juftliklarini real vaqtda kuzatib, “M” va “W” grafik naqshlarini topadigan va Telegram’ga signal yuboradigan bot.
+
+### AutoTrad — bozor signallari boti
+
+Rol: To‘liq o‘zim
+Texnologiyalar: TypeScript, Node.js, grammY, SQLite, Zod, Vitest, Docker
+
+**Muammo.** Yuzlab juftlikni bir necha taymfreymda qo‘lda kuzatish imkonsiz. Bot eng faol juftliklarni o‘zi tanlaydi, grafikni real vaqtda o‘qiydi va faqat sifatli naqsh paydo bo‘lganda xabar beradi.
+
+**Mening rolim.** Botni noldan yozdim: birja integratsiyasi, naqshlarni aniqlash algoritmi, signal formatlash va Telegram, saqlash va deploy.
+
+**Ma’lumot:**
+- Hajm bo‘yicha eng faol juftliklar REST orqali tanlanadi va davriy yangilanadi
+- Shamlar WebSocket orqali real vaqtda keladi va halqali buferda saqlanadi — xotira cheklangan
+
+**Tahlil:**
+- Swing high / low nuqtalarini aniqlash
+- Double Top (M) va Double Bottom (W) naqshlari, har biri ishonchlilik bali bilan
+
+**Signal:**
+- Bir xil signal qayta yuborilmasligi uchun SQLite’da dedup
+- grammY orqali formatlangan Telegram xabari
+- Zod bilan konfiguratsiya tekshiruvi, to‘g‘ri to‘xtash (graceful shutdown), Vitest testlari
+
+**Arxitektura:**
+- Manba: Binance REST, Binance WebSocket
+- Yadro: Candle store (ring buffer), Swing detector, M / W detectorlar
+- Chiqish: SQLite dedup, Telegram (grammY), Cron rejalashtiruvchi
+
+**Muhim qarorlar:**
+- Halqali bufer: Har juftlik uchun faqat oxirgi N sham kerak. Halqali bufer xotirani qat’iy cheklaydi — bot haftalab ishlaganda ham o‘smaydi.
+- Signal — bir marta: Bir naqsh bir necha sham davomida ko‘rinib turadi. SQLite’dagi dedup yozuvlari foydalanuvchiga bir xil signalni takror yubormaslikni kafolatlaydi.
+
+- [Ta’lim loyihalari](https://dinmuhammad.uz/loyihalar/talim/): Yapon tilini o‘rganish platformasi va o‘quv markazlari uchun haydovchilik imtihoni dasturi.
+
+### Ta’lim loyihalari
+
+Rol: Full-stack
+Texnologiyalar: NestJS, Prisma, BullMQ, Socket.IO, Electron, React, PostgreSQL
+
+**Muammo.** Ikki xil ta’lim muammosi. Birinchisi — o‘zbek tilida yapon tilini (JLPT N5 / N4) tizimli o‘rganish imkoniyati kam. Ikkinchisi — haydovchilik maktablarida test dasturi internetsiz ishlashi kerak, savollar esa markazlashgan holda yangilanishi kerak.
+
+**Mening rolim.** Ikkala loyihada ham backend va mijoz qismini qildim.
+
+**JLPT Master:**
+- Ketma-ket ochiladigan darslar: oldingi dars o‘tilmaguncha keyingisi yopiq
+- Video darslar, testlar va natijalar
+- AI orqali javoblarga izoh (bir nechta AI provayderi sozlanadi)
+- Payme orqali to‘lov va obuna, QR kodli PDF sertifikat
+- Push bildirishnomalar va real-vaqt (Socket.IO)
+
+**Yuksalish avtotest:**
+- Electron ilova, kiosk rejimi: o‘quvchi chiqib keta olmaydi
+- Internetsiz ishlaydi; savollar va rasmlar lokal nusxada
+- 1 197 savol uch tilda (o‘zbek lotin, kirill, rus), mavzular bo‘yicha
+- Server bilan sinxronlash: faqat o‘zgargan mavzular tortiladi, natijalar navbatda kutib, tarmoq paydo bo‘lganda yuboriladi
+
+**Arxitektura:**
+- JLPT Master: NestJS 11 + Prisma, BullMQ + Redis, S3 video, Socket.IO
+- Avtotest: Electron + React, Lokal ma’lumot qatlami, NestJS sinxronlash serveri
+
+**Muhim qarorlar:**
+- Oflayn-birinchi avtotest: Ilova ikki qatlamli ma’lumot bilan ishlaydi: o‘rnatilgan (faqat o‘qish) va yoziladigan qatlam. Natijalar “chiquvchi navbat”ga yoziladi va tarmoq bo‘lganda yuboriladi — internet uzilsa hech narsa yo‘qolmaydi.
+- Faqat o‘zgargan narsani yuklash: Server manifestini lokal holat bilan solishtirib, faqat o‘zgargan mavzular yuklanadi — sekin internetli markazlar uchun muhim.
+
+
+## Blog (o‘zbek tilidagi darsliklar)
+
+- [15 ta mashhur tizim noldan: System Design darsligi](https://dinmuhammad.uz/blog/system-design-15-case-studies/): ChatGPT, YouTube, Spotify, Google Docs va boshqa tizimlar qanday ishlaydi — eng sodda yechimdan bugungi arxitekturagacha, hisob-kitob va amaliy topshiriqlar bilan. Kurs: https://dinmuhammad05.github.io/15-case-studiesfo-software-engineers/
+
+Tizim dizaynini o‘rganishdagi eng katta muammo — mavzular havoda qoladi: “kesh qo‘ying”, “navbat qo‘shing”. Nega aynan shu yerda, qancha foyda beradi, va evaziga nima yo‘qotiladi — bu savollar ko‘pincha javobsiz qoladi.
+Bu darslikda har bir dars bitta haqiqiy tizim atrofida qurilgan va bir xil yo‘ldan boradi: muammo va raqamlar, eng sodda ishlaydigan yechim, u qayerda sinadi, va o‘n to‘rt qadamlik evolyutsiya — har bir qadamda nima yutilgani va nima yo‘qotilgani bilan. Keyin ishonchlilik, xavfsizlik, iqtisod, intervyu savollari va amaliy topshiriq.
+Har bir darsning dizayni o‘sha mahsulotga o‘xshaydi: Spotify darsi pleylist kabi, Google Docs darsi hujjat kabi, YouTube darsi video sahifasi kabi. Hozir tayyor: ChatGPT, URL qisqartiruvchi, Redis, Twitter tasmasi, Reddit, Slack, WhatsApp, YouTube, Spotify va Google Docs.
+Amaliy qismda har bir dars uchun tayyor kod bor: simulyator yoki o‘lchov skripti va o‘quvchi to‘ldiradigan qism. Tekshiruvlar esa “ishladi” emas, raqam bilan: masalan, Google Docs darsida o‘zingiz yozgan operatsion transformatsiya 20 000 ta tasodifiy juftlik va yuzlab simulyatsiya bilan sinaladi.
+
+- [Kodla: JavaScript’dan DevOps’gacha, o‘zbek tilida](https://dinmuhammad.uz/blog/kodla/): 226 ta dars va 559 ta interaktiv kod maydonchasi — dasturlashni noldan, chuqur va o‘zbek tilida o‘rganish uchun. Kurs: https://dinmuhammad05.github.io/javascript-info/
+
+Kodla — web dasturlashni o‘zbek tilida noldan o‘rgatuvchi interaktiv sayt. JavaScript qismi javascript.info o‘quv dasturi tuzilishidan ilhomlangan, keyin esa backend, frontend va DevOps mavzulari bilan davom etadi.
+Saytning asosiy xususiyati — misollarni o‘qib qolmasdan, shu yerning o‘zida o‘zgartirib ishga tushirish mumkin: 559 ta kod maydonchasi natijani darhol ko‘rsatadi.
+Texnik tomondan sayt tashqi kutubxonasiz, sof HTML, CSS va JavaScript. Darslar alohida blok formatidagi fayllarda saqlanadi, kichik Node.js generator esa ulardan bir xil dizaynli sahifalar yasaydi — yangi mavzu qo‘shish bitta fayl yozishdan iborat.
+
+- [Tizim dizayni kursi: 15 mavzu, ikki qatlam](https://dinmuhammad.uz/blog/tizim-dizayni-kursi/): Mikroservislar, modulli monolit, keshlash, sharding, replikatsiya va boshqalar — har mavzu “Core” va chuqur “Deep/Senior” qatlami bilan, NestJS misollari bilan. Kurs: https://dinmuhammad05.github.io/system-design/
+
+Bu kurs arxitektura naqshlariga bag‘ishlangan. Har bir mavzu ikki qatlamda yozilgan: Core — mavzuni noldan tushunish (nega kerak, asosiy g‘oya, NestJS’da qanday qilinadi), va Deep — ichki mexanika, nozik holatlar va senior darajadagi tekshiruv ro‘yxati.
+Mavzular: mikroservislar, modulli monolit, hodisalarga asoslangan arxitektura, keshlash, yuklamani taqsimlash, sharding, replikatsiya, API gateway va boshqalar.
+Case-study darsligidan farqi: u yerda bitta tizim ichidagi qarorlar ko‘riladi, bu yerda esa naqshlarning o‘zi — ularni keyin istalgan loyihada qo‘llash uchun.
+
+- [Tizim dizayni: kompyuterning o‘zidan boshlab](https://dinmuhammad.uz/blog/tizim-dizayni-chuqur-kurs/): Katta tizimlarni eng pastki qatlamdan o‘rganish: kompyuter anatomiyasi, operatsion tizim, protsess va thread, virtual xotira. Kurs: https://dinmuhammad05.github.io/sys_design_44/kurs/
+
+Ko‘p tizim dizayni kurslari to‘g‘ridan-to‘g‘ri serverlar va ma’lumotlar bazalaridan boshlaydi. Bu kurs bir qadam pastdan boshlaydi: kompyuterning o‘zi qanday ishlaydi, resurslar qayerda tugaydi, operatsion tizim nimani yashiradi.
+Hozircha ikki bo‘lim tayyor: kompyuter anatomiyasi (tizim yuragi, resurslar chegarasi, real rollar) va operatsion tizim (asosiy tushunchalar, protsess va thread, virtual xotira va izolyatsiya, tizim chaqiruvlari).
+Sayt sof HTML/CSS/JS, build jarayonisiz; o‘rnatib, internetsiz o‘qish mumkin (PWA).
+

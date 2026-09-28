@@ -23,7 +23,9 @@ The site is generated, and **the generated output is committed** (GitHub Pages s
 - `style.css` — the only hand-written stylesheet. `build.py` minifies it into `style.min.css`, which is what pages link.
 
 Generated files — **never edit by hand**; change `data.py`/`build.py`/`style.css` and rebuild, then commit source and output together:
-`index.html`, `404.html`, `loyihalar/<slug>/index.html`, `blog/index.html`, `blog/<slug>/index.html`, `sitemap.xml`, `robots.txt`, `style.min.css`.
+`index.html`, `404.html`, `loyihalar/<slug>/index.html`, `blog/index.html`, `blog/<slug>/index.html`, `sitemap.xml`, `robots.txt`, `llms.txt`, `llms-full.txt`, `style.min.css`.
+
+Discoverability (search engines and AI assistants): every page gets schema.org JSON-LD via `ld()` (a shared `Person` node plus page-specific `WebSite`/`ProfilePage`, `CreativeWork`, `Blog`/`BlogPosting`, `BreadcrumbList`); `llms.txt`/`llms-full.txt` are markdown summaries built from `data.py`; `robots.txt` explicitly allows the AI crawlers in `AI_BOTS`.
 
 Things to know when editing content:
 

@@ -1,0 +1,39 @@
+# Dinmuhammad — Full-stack dasturchi
+
+> Dinmuhammad — full-stack dasturchi (NestJS, Next.js, PostgreSQL). Biznesni avtomatlashtirish (CRM, ERP), SaaS va veb-ilovalar, Telegram botlar va to‘lov tizimlari integratsiyasi. Rasmiy sayt: https://dinmuhammad.uz/
+
+## Aloqa
+
+- Telegram: [@dinMuhammad05](https://t.me/dinMuhammad05)
+- WhatsApp: [+992908199751](https://wa.me/992908199751)
+- GitHub: [dinmuhammad05](https://github.com/dinmuhammad05)
+
+## Xizmatlar
+
+- **Biznesni avtomatlashtirish** — Qo‘lda, daftar va jadvalda qilinadigan ishlarni bitta tizimga o‘tkazish. (CRM va ichki ERP; Kassa, ombor va hisobotlar; Qabul yozuvi va SMS eslatmalar; Rollar va xodimlar nazorati)
+- **Telegram botlar** — Mijoz va jamoa allaqachon o‘tirgan joyda ishlaydigan avtomatika. (Kanalga avtomatik postlar; Ommaviy va shaxsiy xabarnomalar; Bot orqali ariza va buyurtma; Signal va monitoring botlari)
+- **SaaS va veb-ilovalar** — Bir nechta mijoz yoki filialga xizmat qiladigan to‘liq mahsulot. (Ko‘p tashkilotli arxitektura; Obuna va tariflar; Admin va super-admin panellar; SMS, OAuth va AI integratsiyalari)
+- **To‘lov tizimlari** — Qaysi bozorda sotsangiz ham — mahalliy, xalqaro yoki kripto to‘lovni ulash. (O‘zbekiston: Payme, Click, Uzum; Rossiya: Pay4Game; Yevropa va global: Paddle; Kripto: Binance Pay; Obunalar, webhook’lar va qaytarishlar)
+- **Loyihani qo‘llab-quvvatlash** — Ishga tushirish — yo‘lning yarmi. Tizim ishlab turishi, xatolar tez tuzatilishi va biznes o‘sishi bilan birga o‘zgarishi uchun loyihani keyin ham yuritaman. (Monitoring, loglar va xatolarni tez tuzatish; Yangi imkoniyatlar va o‘zgarishlar; Server, deploy, SSL va zaxira nusxalar; Kutubxona va xavfsizlik yangilanishlari; Ko‘chirish: yangi serverga yoki bulutga; Boshqa jamoa yozgan loyihani qabul qilib olish)
+
+## Loyihalar
+
+- [Topkan — AI bilan nomzod tanlash](https://dinmuhammad.uz/loyihalar/topkan/): HR vakansiya yaratadi, tizim “smart-link” beradi, HR uni Telegram kanallarida ulashadi. Nomzodlar havola yoki bot orqali topshiradi, har bir rezyume esa vakansiya talablariga moslik bo‘yicha 0–100 ball bilan avtomatik baholanadi. Sayt: https://topkan.uz
+- [Falaq — audio va elektron kitoblar](https://dinmuhammad.uz/loyihalar/falaq/): Kitobni bir marta sotib olib, uni onlayn tinglash va o‘qish, hamda internetsiz ishlatish mumkin bo‘lgan platforma. Asosiy muhandislik vazifasi — kontentni himoyalash: fayllar shifrlangan, kalit qurilmaga bog‘langan.
+- [TechJobs — ichki ERP va Telegram bot](https://dinmuhammad.uz/loyihalar/techjobs/): IT mutaxassislar va ish beruvchilarni bog‘laydigan platformaning ichki boshqaruv tizimi: ish beruvchilarni tekshirish, vakansiyalar moderatsiyasi, obunalar va to‘lovlar, statistika — va bularning hammasi bilan bog‘langan Telegram bot. Sayt: https://techjobs.uz
+- [Apteka CRM — dorixonalar uchun kassa va ombor](https://dinmuhammad.uz/loyihalar/apteka-crm/): Ko‘p dorixonali SaaS: kassa, ombor, hisobotlar va super-admin konsoli (obuna tugasa dorixona avtomatik bloklanadi).
+- [Almazpro — o‘yin valyutasi do‘koni](https://dinmuhammad.uz/loyihalar/almazpro/): Bigo Live foydalanuvchilari uchun almaz sotuvchi do‘kon. To‘lovdan so‘ng almazlar foydalanuvchi ID’siga avtomatik, provayder API orqali yetkaziladi. Sayt: https://almazpro.uz
+- [Klinika ERP — qabul va SMS eslatmalar](https://dinmuhammad.uz/loyihalar/klinika-erp/): Shifokor uchun ichki tizim: bemorlarning qabul vaqtlari saqlanadi va har bir bemorga kelishidan oldin SMS eslatma yuboriladi. Qancha vaqt oldin eslatilishini shifokorning o‘zi tanlaydi. Sayt: https://www.proktologmirzohid.uz/
+- [AutoTrad — bozor signallari boti](https://dinmuhammad.uz/loyihalar/autotrad/): Binance Futures juftliklarini real vaqtda kuzatib, “M” va “W” grafik naqshlarini topadigan va Telegram’ga signal yuboradigan bot.
+- [Ta’lim loyihalari](https://dinmuhammad.uz/loyihalar/talim/): Yapon tilini o‘rganish platformasi va o‘quv markazlari uchun haydovchilik imtihoni dasturi.
+
+## Blog (o‘zbek tilidagi darsliklar)
+
+- [15 ta mashhur tizim noldan: System Design darsligi](https://dinmuhammad.uz/blog/system-design-15-case-studies/): ChatGPT, YouTube, Spotify, Google Docs va boshqa tizimlar qanday ishlaydi — eng sodda yechimdan bugungi arxitekturagacha, hisob-kitob va amaliy topshiriqlar bilan. Kurs: https://dinmuhammad05.github.io/15-case-studiesfo-software-engineers/
+- [Kodla: JavaScript’dan DevOps’gacha, o‘zbek tilida](https://dinmuhammad.uz/blog/kodla/): 226 ta dars va 559 ta interaktiv kod maydonchasi — dasturlashni noldan, chuqur va o‘zbek tilida o‘rganish uchun. Kurs: https://dinmuhammad05.github.io/javascript-info/
+- [Tizim dizayni kursi: 15 mavzu, ikki qatlam](https://dinmuhammad.uz/blog/tizim-dizayni-kursi/): Mikroservislar, modulli monolit, keshlash, sharding, replikatsiya va boshqalar — har mavzu “Core” va chuqur “Deep/Senior” qatlami bilan, NestJS misollari bilan. Kurs: https://dinmuhammad05.github.io/system-design/
+- [Tizim dizayni: kompyuterning o‘zidan boshlab](https://dinmuhammad.uz/blog/tizim-dizayni-chuqur-kurs/): Katta tizimlarni eng pastki qatlamdan o‘rganish: kompyuter anatomiyasi, operatsion tizim, protsess va thread, virtual xotira. Kurs: https://dinmuhammad05.github.io/sys_design_44/kurs/
+
+## Optional
+
+- [To‘liq matn](https://dinmuhammad.uz/llms-full.txt): barcha loyihalar va darsliklar batafsil

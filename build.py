@@ -6,6 +6,7 @@ Natija repo ildiziga yoziladi: index.html, loyihalar/<slug>/, blog/, blog/<slug>
 404.html, sitemap.xml, robots.txt. GitHub Pages ularni to'g'ridan-to'g'ri beradi.
 """
 import html
+import json
 import os
 import re
 
@@ -29,7 +30,38 @@ def second_contact(label_wa="WhatsApp", label_gh="GitHub", icon=True):
             f'{ICON_GH if icon else ""} {label_gh}</a>')
 
 
-def page(title, description, body, path, og_image="/assets/og.png"):
+def ld(*objs):
+    """schema.org JSON-LD — Google va AI qidiruvlar sahifani tushunishi uchun."""
+    data = {"@context": "https://schema.org", "@graph": list(objs)}
+    text = json.dumps(data, ensure_ascii=False, indent=1).replace("</", "<\\/")
+    return f'  <script type="application/ld+json">\n{text}\n  </script>\n'
+
+
+PERSON_ID = SITE["url"] + "/#person"
+
+
+def person():
+    return {
+        "@type": "Person",
+        "@id": PERSON_ID,
+        "name": SITE["name"],
+        "jobTitle": SITE["role"],
+        "url": SITE["url"] + "/",
+        "image": SITE["url"] + "/assets/dinmuhammad-760.jpg",
+        "sameAs": [SITE["telegram_url"], SITE["github_url"]],
+        "knowsAbout": ["NestJS", "Node.js", "TypeScript", "Next.js", "React", "PostgreSQL", "Redis",
+                       "Telegram botlar", "To‘lov tizimlari integratsiyasi", "Tizim dizayni",
+                       "Biznesni avtomatlashtirish"],
+    }
+
+
+def breadcrumbs(*items):
+    return {"@type": "BreadcrumbList", "itemListElement": [
+        {"@type": "ListItem", "position": n, "name": name, "item": SITE["url"] + path}
+        for n, (name, path) in enumerate(items, 1)]}
+
+
+def page(title, description, body, path, og_image="/assets/og.png", schema=""):
     url = SITE["url"] + path
     return f"""<!doctype html>
 <html lang="uz">
@@ -41,6 +73,8 @@ def page(title, description, body, path, og_image="/assets/og.png"):
   <meta name="author" content="{E(SITE['name'])}" />
   <link rel="canonical" href="{url}" />
   <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="{E(SITE['name'])}" />
+  <meta property="og:locale" content="uz_UZ" />
   <meta property="og:title" content="{E(title)}" />
   <meta property="og:description" content="{E(description)}" />
   <meta property="og:image" content="{SITE['url']}{og_image}" />
@@ -49,7 +83,8 @@ def page(title, description, body, path, og_image="/assets/og.png"):
   <link rel="icon" href="/assets/avatar.jpg" />
   <script>try{{var t=localStorage.getItem("theme");if(t)document.documentElement.dataset.theme=t}}catch(e){{}}</script>
   <link rel="stylesheet" href="/style.min.css" />
-</head>
+  <link rel="alternate" type="text/markdown" href="/llms.txt" title="llms.txt" />
+{schema}</head>
 <body>
   <header class="nav">
     <div class="wrap nav-in">
@@ -305,7 +340,14 @@ def build_index():
 """
     return page(f"{SITE['name']} — {SITE['role']}",
                 "Dinmuhammad — full-stack dasturchi. NestJS, Next.js, PostgreSQL. Topkan (HR SaaS), Falaq, TechJobs, Apteka CRM, almazpro.uz va o‘zbekcha darsliklar.",
-                body, "/")
+                body, "/", schema=ld(
+                    person(),
+                    {"@type": "WebSite", "@id": SITE["url"] + "/#website", "url": SITE["url"] + "/",
+                     "name": SITE["name"], "inLanguage": "uz", "publisher": {"@id": PERSON_ID}},
+                    {"@type": "ProfilePage", "url": SITE["url"] + "/", "inLanguage": "uz",
+                     "mainEntity": {"@id": PERSON_ID},
+                     "hasPart": [{"@type": "CreativeWork", "name": p["title"],
+                                  "url": f"{SITE['url']}/loyihalar/{p['slug']}/"} for p in PROJECTS]}))
 
 
 def contact():
@@ -393,7 +435,15 @@ def build_project(i, p):
   </main>
 """
     desc = html.unescape(p["summary"].replace("<b>", "").replace("</b>", ""))
-    return page(f"{p['title']} — {SITE['name']}", desc, body, f"/loyihalar/{p['slug']}/")
+    url = f"{SITE['url']}/loyihalar/{p['slug']}/"
+    work = {"@type": "CreativeWork", "name": p["title"], "url": url, "description": desc,
+            "inLanguage": "uz", "genre": p["tag"], "keywords": ", ".join(p["stack"]),
+            "creator": {"@id": PERSON_ID}}
+    if p.get("site"):
+        work["sameAs"] = p["site"][0]
+    return page(f"{p['title']} — {SITE['name']}", desc, body, f"/loyihalar/{p['slug']}/",
+                schema=ld(work, person(), breadcrumbs(("Bosh sahifa", "/"), ("Loyihalar", "/#loyihalar"),
+                                                      (p["name"], f"/loyihalar/{p['slug']}/"))))
 
 
 def build_blog_index():
@@ -414,7 +464,12 @@ def build_blog_index():
   </main>
 """
     return page(f"Blog — {SITE['name']}", "Dinmuhammadning o‘zbek tilidagi darslik va kurslari: tizim dizayni, JavaScript, backend.",
-                body, "/blog/")
+                body, "/blog/", schema=ld(
+                    {"@type": "Blog", "name": f"Blog — {SITE['name']}", "url": SITE["url"] + "/blog/",
+                     "inLanguage": "uz", "author": {"@id": PERSON_ID},
+                     "blogPost": [{"@type": "BlogPosting", "headline": p["title"],
+                                   "url": f"{SITE['url']}/blog/{p['slug']}/"} for p in POSTS]},
+                    person(), breadcrumbs(("Bosh sahifa", "/"), ("Blog", "/blog/"))))
 
 
 def build_post(i, post):
@@ -441,7 +496,16 @@ def build_post(i, post):
     </article>
   </main>
 """
-    return page(f"{post['title']} — {SITE['name']}", post["excerpt"], body, f"/blog/{post['slug']}/")
+    url = f"{SITE['url']}/blog/{post['slug']}/"
+    return page(f"{post['title']} — {SITE['name']}", post["excerpt"], body, f"/blog/{post['slug']}/",
+                schema=ld({"@type": "BlogPosting", "headline": post["title"], "url": url,
+                           "mainEntityOfPage": url, "description": post["excerpt"], "inLanguage": "uz",
+                           "author": {"@id": PERSON_ID}, "image": SITE["url"] + "/assets/og.png",
+                           "about": {"@type": "Course", "name": post["title"], "url": post["url"],
+                                     "description": post["excerpt"], "inLanguage": "uz",
+                                     "provider": {"@id": PERSON_ID}}},
+                          person(), breadcrumbs(("Bosh sahifa", "/"), ("Blog", "/blog/"),
+                                                (post["title"], f"/blog/{post['slug']}/"))))
 
 
 def build_404():
@@ -470,6 +534,51 @@ def minify_css():
     write("style.min.css", css.strip())
 
 
+def plain(text):
+    return html.unescape(re.sub(r"<[^>]+>", "", text))
+
+
+def build_llms(full=False):
+    """llms.txt — AI yordamchilar (ChatGPT, Claude, Perplexity...) uchun saytning markdown xulosasi."""
+    u = SITE["url"]
+    out = [f"# {SITE['name']} — {SITE['role']}", "",
+           f"> {SITE['name']} — full-stack dasturchi (NestJS, Next.js, PostgreSQL). Biznesni avtomatlashtirish "
+           "(CRM, ERP), SaaS va veb-ilovalar, Telegram botlar va to‘lov tizimlari integratsiyasi. "
+           f"Rasmiy sayt: {u}/", "",
+           "## Aloqa", "",
+           f"- Telegram: [{SITE['telegram']}]({SITE['telegram_url']})"]
+    if SITE.get("whatsapp"):
+        out.append(f"- WhatsApp: [+{SITE['whatsapp']}](https://wa.me/{SITE['whatsapp']})")
+    out += [f"- GitHub: [{SITE['github_url'].rsplit('/', 1)[-1]}]({SITE['github_url']})", "",
+            "## Xizmatlar", ""]
+    for x in SERVICES + [SUPPORT]:
+        out.append(f"- **{x['title']}** — {x['text']} ({'; '.join(x['items'])})")
+    out += ["", "## Loyihalar", ""]
+    for p in PROJECTS:
+        site = f" Sayt: {p['site'][0]}" if p.get("site") else ""
+        out.append(f"- [{p['title']}]({u}/loyihalar/{p['slug']}/): {plain(p['summary'])}{site}")
+        if full:
+            out += ["", f"### {p['title']}", "", f"Rol: {p['role']}", f"Texnologiyalar: {', '.join(p['stack'])}", "",
+                    f"**Muammo.** {p['problem']}", "", f"**Mening rolim.** {p['my_role']}", ""]
+            for title, items in p["features"]:
+                out += [f"**{title}:**"] + [f"- {i}" for i in items] + [""]
+            out += ["**Arxitektura:**"] + [f"- {n}: {', '.join(b)}" for n, b in p["arch"]] + [""]
+            out += ["**Muhim qarorlar:**"] + [f"- {t}: {d}" for t, d in p["decisions"]] + [""]
+    out += ["", "## Blog (o‘zbek tilidagi darsliklar)", ""]
+    for post in POSTS:
+        out.append(f"- [{post['title']}]({u}/blog/{post['slug']}/): {post['excerpt']} Kurs: {post['url']}")
+        if full:
+            out += [""] + post["body"] + [""]
+    if not full:
+        out += ["", "## Optional", "", f"- [To‘liq matn]({u}/llms-full.txt): barcha loyihalar va darsliklar batafsil"]
+    return "\n".join(out) + "\n"
+
+
+AI_BOTS = ["GPTBot", "OAI-SearchBot", "ChatGPT-User", "ClaudeBot", "Claude-SearchBot", "Claude-User",
+           "PerplexityBot", "Perplexity-User", "Google-Extended", "Applebot-Extended", "Bingbot",
+           "YandexBot", "meta-externalagent", "CCBot"]
+
+
 def main():
     minify_css()
     write("index.html", build_index())
@@ -482,7 +591,11 @@ def main():
     urls = ["/", "/blog/"] + [f"/loyihalar/{p['slug']}/" for p in PROJECTS] + [f"/blog/{p['slug']}/" for p in POSTS]
     write("sitemap.xml", '<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n'
           + "".join(f"  <url><loc>{SITE['url']}{u}</loc></url>\n" for u in urls) + "</urlset>\n")
-    write("robots.txt", f"User-agent: *\nAllow: /\nSitemap: {SITE['url']}/sitemap.xml\n")
+    write("llms.txt", build_llms())
+    write("llms-full.txt", build_llms(full=True))
+    # "*" hammasiga ruxsat beradi; AI botlar aniq sanab o'tilgan — ular uchun ochiq ekani ko'rinib tursin.
+    write("robots.txt", "".join(f"User-agent: {b}\n" for b in AI_BOTS) + "Allow: /\n\n"
+          f"User-agent: *\nAllow: /\n\nSitemap: {SITE['url']}/sitemap.xml\n")
     print(f"tayyor: {len(urls)} sahifa")
 
 
