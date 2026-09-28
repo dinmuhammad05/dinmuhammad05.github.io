@@ -18,7 +18,7 @@ No dependencies (standard library only), no tests, no linter. The script prints 
 
 The site is generated, and **the generated output is committed** (GitHub Pages serves the repo root as-is):
 
-- `data.py` — all content: `SITE` (name, URLs, contact handles), `SERVICES`, `SUPPORT`, `PROJECTS`, `POSTS`.
+- `data.py` — all content: `SITE` (name, URLs, contact handles, SEO `keywords`, search-console verification codes), `SERVICES`, `SUPPORT`, `FAQ`, `PROJECTS`, `POSTS`.
 - `build.py` — renders `data.py` into HTML with f-strings. `page()` is the shared layout (head/meta/OG tags, nav, footer, theme toggle, and the "nudge" contact popup JS); `build_index`, `build_project`, `build_blog_index`, `build_post`, `build_404` produce page bodies.
 - `style.css` — the only hand-written stylesheet. `build.py` minifies it into `style.min.css`, which is what pages link.
 

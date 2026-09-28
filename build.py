@@ -10,7 +10,7 @@ import json
 import os
 import re
 
-from data import POSTS, PROJECTS, SERVICES, SITE, SUPPORT
+from data import FAQ, POSTS, PROJECTS, SERVICES, SITE, SUPPORT
 
 ROOT = os.path.dirname(os.path.abspath(__file__))
 E = html.escape
@@ -44,14 +44,29 @@ def person():
     return {
         "@type": "Person",
         "@id": PERSON_ID,
-        "name": SITE["name"],
+        "name": SITE["full_name"],
+        "givenName": SITE["first_name"],
+        "familyName": SITE["last_name"],
+        "alternateName": [SITE["name"], f"{SITE['last_name']} {SITE['first_name']}", SITE["telegram"]],
         "jobTitle": SITE["role"],
+        "description": f"{SITE['full_name']} — O‘zbekistonlik full-stack dasturchi: NestJS, Next.js, PostgreSQL. "
+                       "Biznesni avtomatlashtirish (CRM, ERP, SaaS), Telegram botlar, to‘lov integratsiyalari. "
+                       "O‘zbek tilida tizim dizayni va JavaScript darsliklari muallifi.",
         "url": SITE["url"] + "/",
+        "mainEntityOfPage": SITE["url"] + "/",
         "image": SITE["url"] + "/assets/dinmuhammad-760.jpg",
         "sameAs": [SITE["telegram_url"], SITE["github_url"]],
-        "knowsAbout": ["NestJS", "Node.js", "TypeScript", "Next.js", "React", "PostgreSQL", "Redis",
-                       "Telegram botlar", "To‘lov tizimlari integratsiyasi", "Tizim dizayni",
-                       "Biznesni avtomatlashtirish"],
+        "address": {"@type": "PostalAddress", "addressLocality": SITE["city"], "addressCountry": "UZ"},
+        "nationality": {"@type": "Country", "name": SITE["country"]},
+        "knowsLanguage": ["uz", "ru", "en"],
+        "hasOccupation": {"@type": "Occupation", "name": SITE["role"],
+                          "occupationLocation": {"@type": "Country", "name": SITE["country"]},
+                          "skills": "NestJS, Node.js, TypeScript, Next.js, React, PostgreSQL, Redis, Docker"},
+        "knowsAbout": ["Full-stack dasturlash", "NestJS", "Node.js", "TypeScript", "Next.js", "React",
+                       "PostgreSQL", "Redis", "BullMQ", "Docker", "JavaScript", "Tizim dizayni (System Design)",
+                       "Mikroservislar", "Biznesni avtomatlashtirish", "CRM", "ERP", "SaaS",
+                       "Telegram botlar", "To‘lov tizimlari integratsiyasi (Payme, Click, Uzum, Paddle)",
+                       "LLM / AI integratsiyalari"],
     }
 
 
@@ -61,8 +76,16 @@ def breadcrumbs(*items):
         for n, (name, path) in enumerate(items, 1)]}
 
 
-def page(title, description, body, path, og_image="/assets/og.png", schema=""):
+def verification_tags():
+    tags = [("google-site-verification", SITE.get("google_verification")),
+            ("msvalidate.01", SITE.get("bing_verification")),
+            ("yandex-verification", SITE.get("yandex_verification"))]
+    return "".join(f'  <meta name="{n}" content="{E(v)}" />\n' for n, v in tags if v)
+
+
+def page(title, description, body, path, og_image="/assets/og.png", schema="", keywords=None):
     url = SITE["url"] + path
+    kw = ", ".join(keywords or SITE["keywords"][:12])
     return f"""<!doctype html>
 <html lang="uz">
 <head>
@@ -70,10 +93,14 @@ def page(title, description, body, path, og_image="/assets/og.png", schema=""):
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>{E(title)}</title>
   <meta name="description" content="{E(description)}" />
-  <meta name="author" content="{E(SITE['name'])}" />
-  <link rel="canonical" href="{url}" />
+  <meta name="author" content="{E(SITE['full_name'])}" />
+  <meta name="keywords" content="{E(kw)}" />
+  <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1" />
+  <meta name="geo.region" content="UZ" />
+  <meta name="geo.placename" content="{E(SITE['city'])}" />
+{verification_tags()}  <link rel="canonical" href="{url}" />
   <meta property="og:type" content="website" />
-  <meta property="og:site_name" content="{E(SITE['name'])}" />
+  <meta property="og:site_name" content="{E(SITE['full_name'])}" />
   <meta property="og:locale" content="uz_UZ" />
   <meta property="og:title" content="{E(title)}" />
   <meta property="og:description" content="{E(description)}" />
@@ -239,6 +266,8 @@ def build_index():
     posts = "\n".join(post_card(p) for p in POSTS[:3])
     services_html = "\n".join(service_card(x) for x in SERVICES)
     support_items = "".join(f"<li>{E(i)}</li>" for i in SUPPORT["items"])
+    faq_html = "\n".join(
+        f"""        <details class="faq-item"><summary>{E(q)}</summary><p>{E(a)}</p></details>""" for q, a in FAQ)
     support_html = f"""      <div class="support">
         <div class="support-head">
           <span class="service-icon" aria-hidden="true"><svg viewBox="0 0 24 24">{SERVICE_ICONS['support']}</svg></span>
@@ -253,14 +282,16 @@ def build_index():
     <section class="hero wrap">
       <div class="hero-text">
         <p class="kicker"><span class="dot"></span> Veb-ilovalar · Biznesni avtomatlashtirish · Qo‘llab-quvvatlash</p>
-        <h1>{E(SITE['name'])}</h1>
-        <p class="role">{E(SITE['role'])}</p>
+        <h1>{E(SITE['full_name'])}</h1>
+        <p class="role">{E(SITE['role'])} · {E(SITE['city'])}, {E(SITE['country'])}</p>
         <p class="lead">
-          Backenddan interfeysgacha to‘liq mahsulot quraman: <strong>NestJS</strong> va
-          <strong>PostgreSQL</strong> ustida modulli arxitektura, <strong>Next.js / React</strong>
-          da interfeys, va ular orasidagi hamma narsa — navbatlar, to‘lov tizimlari,
-          fayl omborlari, Telegram botlar va sun’iy intellekt integratsiyalari.
-          Qo‘lda qilinadigan ishlarni — hisob, qabul, eslatma, xabarnoma — tizimga topshiraman.
+          O‘zbekistonda ishlaydigan full-stack dasturchiman. Backenddan interfeysgacha to‘liq mahsulot quraman:
+          <strong>NestJS</strong> va <strong>PostgreSQL</strong> ustida modulli arxitektura,
+          <strong>Next.js / React</strong> da interfeys, va ular orasidagi hamma narsa — navbatlar,
+          to‘lov tizimlari, fayl omborlari, Telegram botlar va sun’iy intellekt integratsiyalari.
+          Biznesni avtomatlashtiraman: qo‘lda qilinadigan ishlarni — hisob, qabul, eslatma, xabarnoma —
+          tizimga topshiraman. O‘zbek tilida <a href="/blog/">tizim dizayni (system design) va JavaScript
+          darsliklari</a> yozaman.
         </p>
         <div class="cta">
           <a class="btn primary" href="{SITE['telegram_url']}" target="_blank" rel="noopener">{ICON_TG} Telegramda yozish</a>
@@ -277,7 +308,7 @@ def build_index():
         <picture>
           <source type="image/webp" srcset="/assets/dinmuhammad-480.webp 480w, /assets/dinmuhammad-760.webp 760w" sizes="(max-width: 960px) min(420px, 100vw), 400px" />
           <img src="/assets/dinmuhammad-760.jpg" srcset="/assets/dinmuhammad-480.jpg 480w, /assets/dinmuhammad-760.jpg 760w"
-               sizes="(max-width: 960px) min(420px, 100vw), 400px" alt="{E(SITE['name'])}" width="760" height="1140" fetchpriority="high" decoding="async" />
+               sizes="(max-width: 960px) min(420px, 100vw), 400px" alt="{E(SITE['full_name'])} — full-stack dasturchi" width="760" height="1140" fetchpriority="high" decoding="async" />
         </picture>
       </figure>
     </section>
@@ -335,15 +366,31 @@ def build_index():
       </div>
     </section>
 
+    <section id="savol-javob" class="wrap section">
+      <div class="section-head">
+        <p class="eyebrow">Savol-javob</p>
+        <h2>Ko‘p so‘raladigan savollar</h2>
+      </div>
+      <div class="faq">
+{faq_html}
+      </div>
+    </section>
+
 {contact()}
   </main>
 """
-    return page(f"{SITE['name']} — {SITE['role']}",
-                "Dinmuhammad — full-stack dasturchi. NestJS, Next.js, PostgreSQL. Topkan (HR SaaS), Falaq, TechJobs, Apteka CRM, almazpro.uz va o‘zbekcha darsliklar.",
+    return page(f"{SITE['full_name']} — {SITE['role']} | NestJS, Next.js, tizim dizayni",
+                f"{SITE['full_name']} — O‘zbekistonlik full-stack dasturchi. NestJS, Next.js, PostgreSQL. "
+                "Biznesni avtomatlashtirish: CRM, ERP, SaaS, Telegram botlar, to‘lov integratsiyasi. "
+                "O‘zbek tilida tizim dizayni (system design) va JavaScript darsliklari.",
                 body, "/", schema=ld(
                     person(),
+                    {"@type": "FAQPage", "mainEntity": [
+                        {"@type": "Question", "name": q,
+                         "acceptedAnswer": {"@type": "Answer", "text": a}} for q, a in FAQ]},
                     {"@type": "WebSite", "@id": SITE["url"] + "/#website", "url": SITE["url"] + "/",
-                     "name": SITE["name"], "inLanguage": "uz", "publisher": {"@id": PERSON_ID}},
+                     "name": SITE["full_name"], "alternateName": SITE["name"], "inLanguage": "uz",
+                     "publisher": {"@id": PERSON_ID}},
                     {"@type": "ProfilePage", "url": SITE["url"] + "/", "inLanguage": "uz",
                      "mainEntity": {"@id": PERSON_ID},
                      "hasPart": [{"@type": "CreativeWork", "name": p["title"],
@@ -441,7 +488,8 @@ def build_project(i, p):
             "creator": {"@id": PERSON_ID}}
     if p.get("site"):
         work["sameAs"] = p["site"][0]
-    return page(f"{p['title']} — {SITE['name']}", desc, body, f"/loyihalar/{p['slug']}/",
+    return page(f"{p['title']} — {SITE['full_name']}", desc, body, f"/loyihalar/{p['slug']}/",
+                keywords=[p["title"], p["tag"], SITE["full_name"]] + p["stack"] + SITE["keywords"][:6],
                 schema=ld(work, person(), breadcrumbs(("Bosh sahifa", "/"), ("Loyihalar", "/#loyihalar"),
                                                       (p["name"], f"/loyihalar/{p['slug']}/"))))
 
@@ -463,9 +511,10 @@ def build_blog_index():
     </section>
   </main>
 """
-    return page(f"Blog — {SITE['name']}", "Dinmuhammadning o‘zbek tilidagi darslik va kurslari: tizim dizayni, JavaScript, backend.",
+    return page(f"Blog — o‘zbek tilida tizim dizayni va JavaScript darsliklari | {SITE['full_name']}",
+                f"{SITE['full_name']}ning o‘zbek tilidagi bepul darslik va kurslari: tizim dizayni (system design), JavaScript, backend, NestJS.",
                 body, "/blog/", schema=ld(
-                    {"@type": "Blog", "name": f"Blog — {SITE['name']}", "url": SITE["url"] + "/blog/",
+                    {"@type": "Blog", "name": f"Blog — {SITE['full_name']}", "url": SITE["url"] + "/blog/",
                      "inLanguage": "uz", "author": {"@id": PERSON_ID},
                      "blogPost": [{"@type": "BlogPosting", "headline": p["title"],
                                    "url": f"{SITE['url']}/blog/{p['slug']}/"} for p in POSTS]},
@@ -497,8 +546,10 @@ def build_post(i, post):
   </main>
 """
     url = f"{SITE['url']}/blog/{post['slug']}/"
-    return page(f"{post['title']} — {SITE['name']}", post["excerpt"], body, f"/blog/{post['slug']}/",
+    return page(f"{post['title']} — {SITE['full_name']}", post["excerpt"], body, f"/blog/{post['slug']}/",
+                keywords=post.get("keywords"),
                 schema=ld({"@type": "BlogPosting", "headline": post["title"], "url": url,
+                           "keywords": ", ".join(post.get("keywords") or []),
                            "mainEntityOfPage": url, "description": post["excerpt"], "inLanguage": "uz",
                            "author": {"@id": PERSON_ID}, "image": SITE["url"] + "/assets/og.png",
                            "about": {"@type": "Course", "name": post["title"], "url": post["url"],
@@ -515,7 +566,7 @@ def build_404():
     <div class="cta"><a class="btn primary" href="/">Bosh sahifaga</a><a class="btn" href="/blog/">Blog</a></div>
   </main>
 """
-    return page(f"Topilmadi — {SITE['name']}", "Sahifa topilmadi", body, "/404.html")
+    return page(f"Topilmadi — {SITE['full_name']}", "Sahifa topilmadi", body, "/404.html")
 
 
 def write(rel, content):
@@ -541,10 +592,12 @@ def plain(text):
 def build_llms(full=False):
     """llms.txt — AI yordamchilar (ChatGPT, Claude, Perplexity...) uchun saytning markdown xulosasi."""
     u = SITE["url"]
-    out = [f"# {SITE['name']} — {SITE['role']}", "",
-           f"> {SITE['name']} — full-stack dasturchi (NestJS, Next.js, PostgreSQL). Biznesni avtomatlashtirish "
-           "(CRM, ERP), SaaS va veb-ilovalar, Telegram botlar va to‘lov tizimlari integratsiyasi. "
-           f"Rasmiy sayt: {u}/", "",
+    out = [f"# {SITE['full_name']} — {SITE['role']}", "",
+           f"> {SITE['full_name']} ({SITE['name']}, {SITE['telegram']}) — O‘zbekistonlik ({SITE['city']}) full-stack "
+           "dasturchi (NestJS, Next.js, PostgreSQL). Biznesni avtomatlashtirish (CRM, ERP), SaaS va veb-ilovalar, "
+           "Telegram botlar va to‘lov tizimlari integratsiyasi. O‘zbek tilida tizim dizayni (system design) va "
+           f"JavaScript darsliklari muallifi. Rasmiy sayt: {u}/", "",
+           "## Savol-javob", ""] + [f"**{q}** {a}" for q, a in FAQ] + ["",
            "## Aloqa", "",
            f"- Telegram: [{SITE['telegram']}]({SITE['telegram_url']})"]
     if SITE.get("whatsapp"):

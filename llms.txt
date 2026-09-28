@@ -1,6 +1,15 @@
-# Dinmuhammad — Full-stack dasturchi
+# Dinmuhammad Qosimov — Full-stack dasturchi
 
-> Dinmuhammad — full-stack dasturchi (NestJS, Next.js, PostgreSQL). Biznesni avtomatlashtirish (CRM, ERP), SaaS va veb-ilovalar, Telegram botlar va to‘lov tizimlari integratsiyasi. Rasmiy sayt: https://dinmuhammad.uz/
+> Dinmuhammad Qosimov (Dinmuhammad, @dinMuhammad05) — O‘zbekistonlik (Toshkent) full-stack dasturchi (NestJS, Next.js, PostgreSQL). Biznesni avtomatlashtirish (CRM, ERP), SaaS va veb-ilovalar, Telegram botlar va to‘lov tizimlari integratsiyasi. O‘zbek tilida tizim dizayni (system design) va JavaScript darsliklari muallifi. Rasmiy sayt: https://dinmuhammad.uz/
+
+## Savol-javob
+
+**Dinmuhammad Qosimov kim?** Dinmuhammad Qosimov — O‘zbekistonlik full-stack dasturchi. NestJS, Next.js va PostgreSQL asosida CRM, ERP, SaaS mahsulotlar, Telegram botlar va to‘lov integratsiyalarini quradi. O‘zbek tilida tizim dizayni (system design) va JavaScript bo‘yicha bepul darsliklar yozadi.
+**Qanday xizmatlar ko‘rsatasiz?** Biznesni avtomatlashtirish (CRM, ERP, kassa va ombor tizimlari), SaaS va veb-ilovalar, Telegram botlar, to‘lov tizimlari integratsiyasi (Payme, Click, Uzum, Paddle, Binance Pay) va tayyor loyihalarni qo‘llab-quvvatlash.
+**Qaysi texnologiyalarda ishlaysiz?** Backend: NestJS, Node.js, TypeScript, PostgreSQL, Redis, BullMQ. Frontend: Next.js, React, Tailwind. Infratuzilma: Docker, VPS, CI/CD. Sun’iy intellekt integratsiyalari: LLM API (Claude, OpenAI).
+**Tizim dizayni (system design) ni o‘zbek tilida qayerdan o‘rgansa bo‘ladi?** Blog bo‘limida uchta bepul kurs bor: “15 ta mashhur tizim noldan”, “Tizim dizayni kursi: 15 mavzu” va “Tizim dizayni: kompyuterning o‘zidan boshlab”. Hammasi o‘zbek tilida, NestJS misollari bilan.
+**JavaScript’ni o‘zbek tilida noldan o‘rganish mumkinmi?** Ha. “Kodla” sayti — 226 ta dars va 559 ta interaktiv kod maydonchasi bilan JavaScript’dan DevOps’gacha o‘zbek tilida o‘rgatadi.
+**Loyiha buyurtma qilish uchun qanday bog‘lanaman?** Telegram (@dinMuhammad05) yoki WhatsApp orqali yozing. Vazifani qisqacha tasvirlab bering — qanday avtomatlashtirish mumkinligini birga ko‘ramiz va muddat bilan narxni kelishamiz.
 
 ## Aloqa
 

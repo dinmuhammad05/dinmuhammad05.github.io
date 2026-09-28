@@ -2,7 +2,28 @@
 
 SITE = {
     "name": "Dinmuhammad",
+    "first_name": "Dinmuhammad",
+    "last_name": "Qosimov",
+    "full_name": "Dinmuhammad Qosimov",
     "role": "Full-stack dasturchi",
+    # Qidiruv tizimlari va AI uchun: qaysi so'rovlar bo'yicha topilishimiz kerak.
+    "keywords": [
+        "Dinmuhammad Qosimov", "Qosimov Dinmuhammad", "Dinmuhammad dasturchi",
+        "full-stack dasturchi", "fullstack dasturchi", "O‘zbekistonda dasturchi", "dasturchi Toshkent",
+        "backend dasturchi", "NestJS dasturchi", "Next.js dasturchi", "Node.js dasturchi",
+        "tizim dizayni", "system design o‘zbek tilida", "system design darslik", "tizim dizayni kursi",
+        "biznesni avtomatlashtirish", "CRM tizimi", "ERP tizimi", "SaaS ishlab chiqish",
+        "Telegram bot yasash", "Telegram bot buyurtma", "to‘lov tizimi integratsiyasi", "Payme Click integratsiya",
+        "JavaScript o‘zbek tilida", "JavaScript darslik uz", "JavaScript uz", "dasturlashni o‘rganish o‘zbekcha",
+        "sayt yasash", "veb-ilova buyurtma", "dasturchi yollash",
+    ],
+    "city": "Toshkent",
+    "country": "O‘zbekiston",
+    # Google Search Console / Bing / Yandex "meta tag" usulida tasdiqlash kodlari.
+    # Bo'sh bo'lsa teg chiqmaydi. Masalan: "abc123...". Faqat content qiymatini yozing.
+    "google_verification": "",
+    "bing_verification": "",
+    "yandex_verification": "",
     "url": "https://dinmuhammad.uz",
     "telegram": "@dinMuhammad05",
     "telegram_url": "https://t.me/dinMuhammad05",
@@ -57,6 +78,22 @@ SUPPORT = {
         "Boshqa jamoa yozgan loyihani qabul qilib olish",
     ],
 }
+
+# Bosh sahifadagi "Savol-javob" — odamlar qidiruvga yozadigan savollarga to'g'ridan-to'g'ri javoblar.
+FAQ = [
+    ("Dinmuhammad Qosimov kim?",
+     "Dinmuhammad Qosimov — O‘zbekistonlik full-stack dasturchi. NestJS, Next.js va PostgreSQL asosida CRM, ERP, SaaS mahsulotlar, Telegram botlar va to‘lov integratsiyalarini quradi. O‘zbek tilida tizim dizayni (system design) va JavaScript bo‘yicha bepul darsliklar yozadi."),
+    ("Qanday xizmatlar ko‘rsatasiz?",
+     "Biznesni avtomatlashtirish (CRM, ERP, kassa va ombor tizimlari), SaaS va veb-ilovalar, Telegram botlar, to‘lov tizimlari integratsiyasi (Payme, Click, Uzum, Paddle, Binance Pay) va tayyor loyihalarni qo‘llab-quvvatlash."),
+    ("Qaysi texnologiyalarda ishlaysiz?",
+     "Backend: NestJS, Node.js, TypeScript, PostgreSQL, Redis, BullMQ. Frontend: Next.js, React, Tailwind. Infratuzilma: Docker, VPS, CI/CD. Sun’iy intellekt integratsiyalari: LLM API (Claude, OpenAI)."),
+    ("Tizim dizayni (system design) ni o‘zbek tilida qayerdan o‘rgansa bo‘ladi?",
+     "Blog bo‘limida uchta bepul kurs bor: “15 ta mashhur tizim noldan”, “Tizim dizayni kursi: 15 mavzu” va “Tizim dizayni: kompyuterning o‘zidan boshlab”. Hammasi o‘zbek tilida, NestJS misollari bilan."),
+    ("JavaScript’ni o‘zbek tilida noldan o‘rganish mumkinmi?",
+     "Ha. “Kodla” sayti — 226 ta dars va 559 ta interaktiv kod maydonchasi bilan JavaScript’dan DevOps’gacha o‘zbek tilida o‘rgatadi."),
+    ("Loyiha buyurtma qilish uchun qanday bog‘lanaman?",
+     "Telegram (@dinMuhammad05) yoki WhatsApp orqali yozing. Vazifani qisqacha tasvirlab bering — qanday avtomatlashtirish mumkinligini birga ko‘ramiz va muddat bilan narxni kelishamiz."),
+]
 
 PROJECTS = [
     {
@@ -436,6 +473,7 @@ PROJECTS = [
 POSTS = [
     {
         "slug": "system-design-15-case-studies",
+        "keywords": ["system design", "tizim dizayni", "system design o‘zbek tilida", "system design darslik", "ChatGPT arxitekturasi", "YouTube arxitekturasi", "Dinmuhammad Qosimov"],
         "title": "15 ta mashhur tizim noldan: System Design darsligi",
         "excerpt": "ChatGPT, YouTube, Spotify, Google Docs va boshqa tizimlar qanday ishlaydi — eng sodda yechimdan bugungi arxitekturagacha, hisob-kitob va amaliy topshiriqlar bilan.",
         "url": "https://dinmuhammad05.github.io/15-case-studiesfo-software-engineers/",
@@ -450,6 +488,7 @@ POSTS = [
     },
     {
         "slug": "kodla",
+        "keywords": ["JavaScript o‘zbek tilida", "JavaScript darslik", "JavaScript uz", "dasturlashni o‘rganish", "Kodla", "javascript.info o‘zbekcha", "DevOps o‘zbek tilida", "Dinmuhammad Qosimov"],
         "title": "Kodla: JavaScript’dan DevOps’gacha, o‘zbek tilida",
         "excerpt": "226 ta dars va 559 ta interaktiv kod maydonchasi — dasturlashni noldan, chuqur va o‘zbek tilida o‘rganish uchun.",
         "url": "https://dinmuhammad05.github.io/javascript-info/",
@@ -463,6 +502,7 @@ POSTS = [
     },
     {
         "slug": "tizim-dizayni-kursi",
+        "keywords": ["tizim dizayni kursi", "system design kursi", "mikroservislar", "modulli monolit", "keshlash", "sharding", "NestJS", "Dinmuhammad Qosimov"],
         "title": "Tizim dizayni kursi: 15 mavzu, ikki qatlam",
         "excerpt": "Mikroservislar, modulli monolit, keshlash, sharding, replikatsiya va boshqalar — har mavzu “Core” va chuqur “Deep/Senior” qatlami bilan, NestJS misollari bilan.",
         "url": "https://dinmuhammad05.github.io/system-design/",
@@ -476,6 +516,7 @@ POSTS = [
     },
     {
         "slug": "tizim-dizayni-chuqur-kurs",
+        "keywords": ["tizim dizayni", "system design", "operatsion tizim", "virtual xotira", "protsess va thread", "kompyuter arxitekturasi o‘zbek tilida", "Dinmuhammad Qosimov"],
         "title": "Tizim dizayni: kompyuterning o‘zidan boshlab",
         "excerpt": "Katta tizimlarni eng pastki qatlamdan o‘rganish: kompyuter anatomiyasi, operatsion tizim, protsess va thread, virtual xotira.",
         "url": "https://dinmuhammad05.github.io/sys_design_44/kurs/",
