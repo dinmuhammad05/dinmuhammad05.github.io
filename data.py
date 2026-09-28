@@ -3,7 +3,7 @@
 SITE = {
     "name": "Dinmuhammad",
     "role": "Full-stack dasturchi",
-    "url": "https://dinmuhammad05.github.io",
+    "url": "https://dinmuhammad.uz",
     "telegram": "@dinMuhammad05",
     "telegram_url": "https://t.me/dinMuhammad05",
     "github_url": "https://github.com/dinmuhammad05",

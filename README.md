@@ -1,6 +1,6 @@
 # Dinmuhammad — portfolio
 
-Statik sayt, GitHub Pages’da: https://dinmuhammad05.github.io/
+Statik sayt, GitHub Pages’da: https://dinmuhammad.uz/
 
 ## Mazmunni o‘zgartirish
 
