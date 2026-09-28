@@ -547,7 +547,7 @@ POSTS = [
         "keywords": ["system design", "tizim dizayni", "system design o‘zbek tilida", "system design darslik", "ChatGPT arxitekturasi", "YouTube arxitekturasi", "Dinmuhammad Qosimov"],
         "title": "15 ta mashhur tizim noldan: System Design darsligi",
         "excerpt": "ChatGPT, YouTube, Spotify, Google Docs va boshqa tizimlar qanday ishlaydi — eng sodda yechimdan bugungi arxitekturagacha, hisob-kitob va amaliy topshiriqlar bilan.",
-        "url": "https://dinmuhammad05.github.io/15-case-studiesfo-software-engineers/",
+        "url": "https://dinmuhammad.uz/15-case-studiesfo-software-engineers/",
         "cta": "Darslikni ochish",
         "stats": [("10", "tayyor dars"), ("10–20 ming", "so‘z har darsda"), ("15–35", "hisob-kitob har darsda")],
         "body": [

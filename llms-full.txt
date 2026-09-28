@@ -331,7 +331,7 @@ Texnologiyalar: NestJS, Prisma, BullMQ, Socket.IO, Electron, React, PostgreSQL
 
 ## Blog (o‘zbek tilidagi darsliklar)
 
-- [15 ta mashhur tizim noldan: System Design darsligi](https://dinmuhammad.uz/blog/system-design-15-case-studies/): ChatGPT, YouTube, Spotify, Google Docs va boshqa tizimlar qanday ishlaydi — eng sodda yechimdan bugungi arxitekturagacha, hisob-kitob va amaliy topshiriqlar bilan. Kurs: https://dinmuhammad05.github.io/15-case-studiesfo-software-engineers/
+- [15 ta mashhur tizim noldan: System Design darsligi](https://dinmuhammad.uz/blog/system-design-15-case-studies/): ChatGPT, YouTube, Spotify, Google Docs va boshqa tizimlar qanday ishlaydi — eng sodda yechimdan bugungi arxitekturagacha, hisob-kitob va amaliy topshiriqlar bilan. Kurs: https://dinmuhammad.uz/15-case-studiesfo-software-engineers/
 
 Tizim dizaynini o‘rganishdagi eng katta muammo — mavzular havoda qoladi: “kesh qo‘ying”, “navbat qo‘shing”. Nega aynan shu yerda, qancha foyda beradi, va evaziga nima yo‘qotiladi — bu savollar ko‘pincha javobsiz qoladi.
 Bu darslikda har bir dars bitta haqiqiy tizim atrofida qurilgan va bir xil yo‘ldan boradi: muammo va raqamlar, eng sodda ishlaydigan yechim, u qayerda sinadi, va o‘n to‘rt qadamlik evolyutsiya — har bir qadamda nima yutilgani va nima yo‘qotilgani bilan. Keyin ishonchlilik, xavfsizlik, iqtisod, intervyu savollari va amaliy topshiriq.

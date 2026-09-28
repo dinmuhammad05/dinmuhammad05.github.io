@@ -18,3 +18,4 @@ User-agent: *
 Allow: /
 
 Sitemap: https://dinmuhammad.uz/sitemap.xml
+Sitemap: https://dinmuhammad.uz/15-case-studiesfo-software-engineers/sitemap.xml
