@@ -18,12 +18,12 @@ No dependencies (standard library only), no tests, no linter. The script prints 
 
 The site is generated, and **the generated output is committed** (GitHub Pages serves the repo root as-is):
 
-- `data.py` — all content: `SITE` (name, URLs, contact handles, SEO `keywords`, search-console verification codes), `SERVICES`, `SUPPORT`, `FAQ`, `PROJECTS`, `POSTS`.
+- `data.py` — all content: `SITE` (name, URLs, contact handles, SEO `keywords`, search-console verification codes), `SERVICES`, `SUPPORT`, `SKILLS`/`SKILL_LEVELS` (the `/konikmalar/` page; also feeds `Person.knowsAbout`), `FAQ`, `PROJECTS`, `POSTS`.
 - `build.py` — renders `data.py` into HTML with f-strings. `page()` is the shared layout (head/meta/OG tags, nav, footer, theme toggle, and the "nudge" contact popup JS); `build_index`, `build_project`, `build_blog_index`, `build_post`, `build_404` produce page bodies.
 - `style.css` — the only hand-written stylesheet. `build.py` minifies it into `style.min.css`, which is what pages link.
 
 Generated files — **never edit by hand**; change `data.py`/`build.py`/`style.css` and rebuild, then commit source and output together:
-`index.html`, `404.html`, `loyihalar/<slug>/index.html`, `blog/index.html`, `blog/<slug>/index.html`, `sitemap.xml`, `robots.txt`, `llms.txt`, `llms-full.txt`, `style.min.css`.
+`index.html`, `404.html`, `konikmalar/index.html`, `loyihalar/<slug>/index.html`, `blog/index.html`, `blog/<slug>/index.html`, `sitemap.xml`, `robots.txt`, `llms.txt`, `llms-full.txt`, `style.min.css`.
 
 Discoverability (search engines and AI assistants): every page gets schema.org JSON-LD via `ld()` (a shared `Person` node plus page-specific `WebSite`/`ProfilePage`, `CreativeWork`, `Blog`/`BlogPosting`, `BreadcrumbList`); `llms.txt`/`llms-full.txt` are markdown summaries built from `data.py`; `robots.txt` explicitly allows the AI crawlers in `AI_BOTS`.
 

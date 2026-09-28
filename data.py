@@ -82,6 +82,74 @@ SUPPORT = {
     ],
 }
 
+# Ko'nikmalar sahifasi (/konikmalar/). Daraja: "core" — har kuni, "use" — ishlataman, "learn" — o'rganyapman.
+SKILL_LEVELS = {"core": "Har kuni", "use": "Ishlataman", "learn": "O‘rganyapman"}
+SKILLS = [
+    {
+        "title": "Backend",
+        "text": "Asosiy yo‘nalishim. Modulli arxitektura, aniq chegaralar va bir yildan keyin ham o‘qilishi oson kod.",
+        "items": [
+            ("TypeScript", "core"), ("Node.js", "core"), ("NestJS", "core"), ("Express", "core"),
+            ("Fastify", "use"), ("Koa.js", "use"), ("REST API", "core"), ("GraphQL", "use"), ("gRPC", "use"),
+            ("WebSocket · Socket.IO", "use"), ("Swagger / OpenAPI", "core"), ("BullMQ navbatlari", "core"),
+            ("Mikroservislar", "use"), ("Modulli monolit", "core"), ("Clean Architecture", "core"),
+        ],
+    },
+    {
+        "title": "Ma’lumotlar bazasi",
+        "text": "Sxema dizayni, indekslar va so‘rov optimallashtirish — tizim o‘sganda ham tez qolishi uchun.",
+        "items": [
+            ("PostgreSQL", "core"), ("Prisma", "core"), ("TypeORM", "use"), ("Redis", "core"),
+            ("MongoDB", "use"), ("Mongoose", "use"), ("MySQL", "use"), ("Sequelize", "use"),
+        ],
+    },
+    {
+        "title": "Frontend",
+        "text": "Backend bilan bir tilda gaplashadigan, tez va toza interfeyslar.",
+        "items": [
+            ("React", "core"), ("Next.js (App Router)", "core"), ("Vite", "use"), ("Tailwind CSS", "core"),
+            ("shadcn/ui", "core"), ("MUI", "use"), ("Ant Design", "use"), ("TanStack Query", "core"),
+            ("Zustand", "use"), ("Redux", "use"), ("i18n", "use"),
+        ],
+    },
+    {
+        "title": "Sun’iy intellekt va integratsiyalar",
+        "text": "LLM’ni mahsulot ichiga ishonchli qo‘shish: tuzilmali javoblar, navbatda ishlov, xarajat nazorati.",
+        "items": [
+            ("Claude API", "core"), ("OpenAI API", "core"), ("Google Gemini", "use"), ("LangChain", "use"),
+            ("RAG", "use"), ("Prompt engineering", "core"), ("Tool-use / structured output", "core"),
+            ("Telegram Bot API", "core"), ("Eskiz SMS", "use"), ("Google / Apple / LinkedIn OAuth", "use"),
+            ("S3 / R2 / MinIO", "core"),
+        ],
+    },
+    {
+        "title": "To‘lov tizimlari",
+        "text": "Mahalliy, xalqaro va kripto to‘lovlar: obunalar, webhook’lar, qaytarishlar va hisob-kitob.",
+        "items": [
+            ("Payme", "core"), ("Click", "core"), ("Uzum Bank", "use"), ("Octobank", "use"),
+            ("Pay4Game", "use"), ("Paddle", "use"), ("Binance Pay", "use"),
+        ],
+    },
+    {
+        "title": "Infratuzilma va DevOps",
+        "text": "Kod serverga chiqishi, ishlab turishi va o‘lchanishi — deploydan monitoringgacha.",
+        "items": [
+            ("Docker · docker-compose", "core"), ("Nginx", "core"), ("PM2", "core"), ("VPS (Ubuntu)", "core"),
+            ("GitHub Actions · CI/CD", "core"), ("Git", "core"), ("SSL · zaxira nusxalar", "use"),
+            ("Loglash va monitoring", "use"), ("k6 yuklama testlari", "use"), ("Postman", "core"),
+        ],
+    },
+    {
+        "title": "Muhandislik va xavfsizlik",
+        "text": "Kodgacha bo‘lgan ish: texnik topshiriq, tizim dizayni, xavfsizlik va hujjatlar.",
+        "items": [
+            ("Tizim dizayni (System Design)", "core"), ("Texnik topshiriq va hujjatlashtirish", "core"),
+            ("Ko‘p tashkilotli (multi-tenant) SaaS", "core"), ("JWT rotatsiyasi · RBAC", "core"),
+            ("Shifrlash · rate limit", "use"), ("Taqsimlangan tizimlar", "learn"), ("AI-agentli ilovalar", "learn"),
+        ],
+    },
+]
+
 # Bosh sahifadagi "Savol-javob" — odamlar qidiruvga yozadigan savollarga to'g'ridan-to'g'ri javoblar.
 FAQ = [
     ("Dinmuhammad Qosimov kim?",

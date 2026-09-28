@@ -10,7 +10,7 @@ import json
 import os
 import re
 
-from data import FAQ, POSTS, PROJECTS, SERVICES, SITE, SUPPORT
+from data import FAQ, POSTS, PROJECTS, SERVICES, SITE, SKILL_LEVELS, SKILLS, SUPPORT
 
 ROOT = os.path.dirname(os.path.abspath(__file__))
 E = html.escape
@@ -62,11 +62,8 @@ def person():
         "hasOccupation": {"@type": "Occupation", "name": SITE["role"],
                           "occupationLocation": {"@type": "Country", "name": SITE["country"]},
                           "skills": "NestJS, Node.js, TypeScript, Next.js, React, PostgreSQL, Redis, Docker"},
-        "knowsAbout": ["Full-stack dasturlash", "NestJS", "Node.js", "TypeScript", "Next.js", "React",
-                       "PostgreSQL", "Redis", "BullMQ", "Docker", "JavaScript", "Tizim dizayni (System Design)",
-                       "Mikroservislar", "Biznesni avtomatlashtirish", "CRM", "ERP", "SaaS",
-                       "Telegram botlar", "To‘lov tizimlari integratsiyasi (Payme, Click, Uzum, Paddle)",
-                       "LLM / AI integratsiyalari"],
+        "knowsAbout": ["Full-stack dasturlash", "Biznesni avtomatlashtirish", "CRM", "ERP", "SaaS", "JavaScript"]
+                      + [n for g in SKILLS for n, lvl in g["items"] if lvl != "learn"],
     }
 
 
@@ -122,6 +119,7 @@ def page(title, description, body, path, og_image="/assets/og.png", schema="", k
       <nav class="nav-links" aria-label="Bo'limlar">
         <a href="/#xizmatlar">Xizmatlar</a>
         <a href="/#loyihalar">Loyihalar</a>
+        <a href="/konikmalar/">Ko‘nikmalar</a>
         <a href="/blog/">Blog</a>
         <a href="/#aloqa">Aloqa</a>
       </nav>
@@ -263,11 +261,74 @@ def post_card(post):
         </article>"""
 
 
+def slugify(text):
+    text = text.lower().replace("’", "").replace("‘", "")
+    for a, b in (("o‘", "o"), ("g‘", "g"), ("’", ""), ("sun", "sun")):
+        text = text.replace(a, b)
+    return re.sub(r"[^a-z0-9]+", "-", text).strip("-")
+
+
+def build_skills():
+    groups = []
+    for g in SKILLS:
+        chips = "".join(
+            f'<li class="lvl-{lvl}" title="{E(SKILL_LEVELS[lvl])}">{E(n)}</li>' for n, lvl in g["items"])
+        groups.append(f"""      <section class="skill-group" id="{slugify(g['title'])}">
+        <div class="skill-group-head">
+          <h2>{E(g['title'])}</h2>
+          <p class="muted">{E(g['text'])}</p>
+        </div>
+        <ul class="chips">{chips}</ul>
+      </section>""")
+    legend = "".join(f'<li class="lvl-{k}">{E(v)}</li>' for k, v in SKILL_LEVELS.items())
+    total = sum(len(g["items"]) for g in SKILLS)
+    core = sum(1 for g in SKILLS for _, lvl in g["items"] if lvl == "core")
+    body = f"""  <main>
+    <article class="wrap detail skills-page">
+      <a class="back" href="/">← Bosh sahifa</a>
+      <header class="detail-head">
+        <p class="eyebrow">Ko‘nikmalar</p>
+        <h1>Nimalarni bilaman</h1>
+        <p class="lead">Backendga urg‘u bergan full-stack dasturchiman. Quyida {total} ta texnologiya 7 guruhda —
+          qaysi birini har kuni ishlatishim, qaysi birini kerak bo‘lganda olishim va hozir nimani o‘rganayotganim bilan.</p>
+        <div class="numbers">
+          <div><b>{core}</b><span>har kuni ishlatadigan</span></div>
+          <div><b>{total}</b><span>jami texnologiya</span></div>
+          <div><b>{len(PROJECTS)}</b><span>ishlab turgan loyihada sinalgan</span></div>
+        </div>
+        <ul class="chips legend" aria-label="Belgilar">{legend}</ul>
+      </header>
+{chr(10).join(groups)}
+      <section class="block">
+        <h2>Bularni qayerda ishlatganman?</h2>
+        <p>Har bir texnologiya haqiqiy loyihada sinalgan — <a href="/#loyihalar">loyihalar</a> sahifasida har birining
+          arxitekturasi va muhim qarorlari yozilgan. Tizim dizayni bo‘yicha esa <a href="/blog/">o‘zbek tilida kurslar</a> yozganman.</p>
+      </section>
+    </article>
+{contact()}
+  </main>
+"""
+    names = [n for g in SKILLS for n, _ in g["items"]]
+    desc = (f"{SITE['full_name']} — full-stack dasturchi ko‘nikmalari: NestJS, Node.js, TypeScript, PostgreSQL, "
+            "Next.js, React, Redis, Docker, LLM integratsiyalari, Payme va Click to‘lovlari va boshqalar.")
+    return page(f"Ko‘nikmalar va texnologiyalar — {SITE['full_name']}", desc, body, "/konikmalar/",
+                keywords=[SITE["full_name"], "full-stack dasturchi ko‘nikmalari", "NestJS dasturchi", "Node.js dasturchi"] + names[:20],
+                schema=ld({"@type": "ItemList", "name": "Texnologiyalar", "url": SITE["url"] + "/konikmalar/",
+                           "numberOfItems": total,
+                           "itemListElement": [{"@type": "ListItem", "position": i, "name": n}
+                                               for i, n in enumerate(names, 1)]},
+                          person(), breadcrumbs(("Bosh sahifa", "/"), ("Ko‘nikmalar", "/konikmalar/"))))
+
+
 def build_index():
     cards = "\n".join(project_card(p) for p in PROJECTS)
     posts = "\n".join(post_card(p) for p in POSTS[:3])
     services_html = "\n".join(service_card(x) for x in SERVICES)
     support_items = "".join(f"<li>{E(i)}</li>" for i in SUPPORT["items"])
+    total = sum(len(g["items"]) for g in SKILLS)
+    skill_cards = "\n".join(
+        f"""        <a class="skill" href="/konikmalar/#{slugify(g['title'])}"><h3>{E(g['title'])}</h3>"""
+        f"""<p>{E(', '.join(n for n, lvl in g['items'] if lvl == 'core'))}</p></a>""" for g in SKILLS[:6])
     faq_html = "\n".join(
         f"""        <details class="faq-item"><summary>{E(q)}</summary><p>{E(a)}</p></details>""" for q, a in FAQ)
     support_html = f"""      <div class="support">
@@ -354,17 +415,16 @@ def build_index():
     </section>
 
     <section id="konikmalar" class="wrap section">
-      <div class="section-head">
-        <p class="eyebrow">Ko‘nikmalar</p>
-        <h2>Ish qurollarim</h2>
+      <div class="section-head row">
+        <div>
+          <p class="eyebrow">Ko‘nikmalar</p>
+          <h2>Ish qurollarim</h2>
+          <p class="muted">Har kuni ishlatadigan asosiy texnologiyalar. To‘liq ro‘yxat — {total} ta texnologiya, 7 guruhda.</p>
+        </div>
+        <a class="btn" href="/konikmalar/">Barcha ko‘nikmalar →</a>
       </div>
       <div class="skills">
-        <div class="skill"><h3>Backend</h3><p>NestJS, Node.js, TypeScript, REST va Swagger, WebSocket, gRPC, mikroservislar va modulli monolit</p></div>
-        <div class="skill"><h3>Frontend</h3><p>Next.js (App Router), React, Vite, Tailwind, shadcn/ui, TanStack Query, Zustand, i18n</p></div>
-        <div class="skill"><h3>Ma’lumotlar</h3><p>PostgreSQL, Prisma, TypeORM, Redis, BullMQ navbatlari, indekslar va so‘rov optimallashtirish</p></div>
-        <div class="skill"><h3>Integratsiyalar</h3><p>To‘lovlar: Payme, Click, Uzum, Pay4Game, Paddle, Binance Pay; Eskiz SMS; Google, Apple, LinkedIn OAuth; Telegram botlar; S3 / R2; LLM API</p></div>
-        <div class="skill"><h3>Infratuzilma</h3><p>Docker, docker-compose, PM2, VPS’ga deploy, CI/CD, loglash va yuklama testlari (k6)</p></div>
-        <div class="skill"><h3>Muhandislik</h3><p>Texnik topshiriq va hujjat bilan boshlash, tizim dizayni, xavfsizlik (shifrlash, JWT rotatsiyasi, rate limit)</p></div>
+{skill_cards}
       </div>
     </section>
 
@@ -610,6 +670,10 @@ def build_llms(full=False):
             "## Xizmatlar", ""]
     for x in SERVICES + [SUPPORT]:
         out.append(f"- **{x['title']}** — {x['text']} ({'; '.join(x['items'])})")
+    out += ["", f"## Ko‘nikmalar ({u}/konikmalar/)", ""]
+    for g in SKILLS:
+        out.append(f"- **{g['title']}**: " + ", ".join(
+            n + (" (o‘rganyapman)" if lvl == "learn" else "") for n, lvl in g["items"]))
     out += ["", "## Loyihalar", ""]
     for p in PROJECTS:
         site = f" Sayt: {p['site'][0]}" if p.get("site") else ""
@@ -641,11 +705,12 @@ def main():
     write("index.html", build_index())
     for i, p in enumerate(PROJECTS):
         write(f"loyihalar/{p['slug']}/index.html", build_project(i, p))
+    write("konikmalar/index.html", build_skills())
     write("blog/index.html", build_blog_index())
     for i, post in enumerate(POSTS):
         write(f"blog/{post['slug']}/index.html", build_post(i, post))
     write("404.html", build_404())
-    urls = ["/", "/blog/"] + [f"/loyihalar/{p['slug']}/" for p in PROJECTS] + [f"/blog/{p['slug']}/" for p in POSTS]
+    urls = ["/", "/konikmalar/", "/blog/"] + [f"/loyihalar/{p['slug']}/" for p in PROJECTS] + [f"/blog/{p['slug']}/" for p in POSTS]
     write("sitemap.xml", '<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n'
           + "".join(f"  <url><loc>{SITE['url']}{u}</loc></url>\n" for u in urls) + "</urlset>\n")
     write("llms.txt", build_llms())

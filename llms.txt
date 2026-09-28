@@ -27,6 +27,16 @@
 - **To‘lov tizimlari** — Qaysi bozorda sotsangiz ham — mahalliy, xalqaro yoki kripto to‘lovni ulash. (O‘zbekiston: Payme, Click, Uzum; Rossiya: Pay4Game; Yevropa va global: Paddle; Kripto: Binance Pay; Obunalar, webhook’lar va qaytarishlar)
 - **Loyihani qo‘llab-quvvatlash** — Ishga tushirish — yo‘lning yarmi. Tizim ishlab turishi, xatolar tez tuzatilishi va biznes o‘sishi bilan birga o‘zgarishi uchun loyihani keyin ham yuritaman. (Monitoring, loglar va xatolarni tez tuzatish; Yangi imkoniyatlar va o‘zgarishlar; Server, deploy, SSL va zaxira nusxalar; Kutubxona va xavfsizlik yangilanishlari; Ko‘chirish: yangi serverga yoki bulutga; Boshqa jamoa yozgan loyihani qabul qilib olish)
 
+## Ko‘nikmalar (https://dinmuhammad.uz/konikmalar/)
+
+- **Backend**: TypeScript, Node.js, NestJS, Express, Fastify, Koa.js, REST API, GraphQL, gRPC, WebSocket · Socket.IO, Swagger / OpenAPI, BullMQ navbatlari, Mikroservislar, Modulli monolit, Clean Architecture
+- **Ma’lumotlar bazasi**: PostgreSQL, Prisma, TypeORM, Redis, MongoDB, Mongoose, MySQL, Sequelize
+- **Frontend**: React, Next.js (App Router), Vite, Tailwind CSS, shadcn/ui, MUI, Ant Design, TanStack Query, Zustand, Redux, i18n
+- **Sun’iy intellekt va integratsiyalar**: Claude API, OpenAI API, Google Gemini, LangChain, RAG, Prompt engineering, Tool-use / structured output, Telegram Bot API, Eskiz SMS, Google / Apple / LinkedIn OAuth, S3 / R2 / MinIO
+- **To‘lov tizimlari**: Payme, Click, Uzum Bank, Octobank, Pay4Game, Paddle, Binance Pay
+- **Infratuzilma va DevOps**: Docker · docker-compose, Nginx, PM2, VPS (Ubuntu), GitHub Actions · CI/CD, Git, SSL · zaxira nusxalar, Loglash va monitoring, k6 yuklama testlari, Postman
+- **Muhandislik va xavfsizlik**: Tizim dizayni (System Design), Texnik topshiriq va hujjatlashtirish, Ko‘p tashkilotli (multi-tenant) SaaS, JWT rotatsiyasi · RBAC, Shifrlash · rate limit, Taqsimlangan tizimlar (o‘rganyapman), AI-agentli ilovalar (o‘rganyapman)
+
 ## Loyihalar
 
 - [Topkan — AI bilan nomzod tanlash](https://dinmuhammad.uz/loyihalar/topkan/): HR vakansiya yaratadi, tizim “smart-link” beradi, HR uni Telegram kanallarida ulashadi. Nomzodlar havola yoki bot orqali topshiradi, har bir rezyume esa vakansiya talablariga moslik bo‘yicha 0–100 ball bilan avtomatik baholanadi. Sayt: https://topkan.uz
