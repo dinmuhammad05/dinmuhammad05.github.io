@@ -7,7 +7,7 @@
 **Dinmuhammad Qosimov kim?** Dinmuhammad Qosimov — O‘zbekistonlik full-stack dasturchi. NestJS, Next.js va PostgreSQL asosida CRM, ERP, SaaS mahsulotlar, Telegram botlar va to‘lov integratsiyalarini quradi. O‘zbek tilida tizim dizayni (system design) va JavaScript bo‘yicha bepul darsliklar yozadi.
 **Qanday xizmatlar ko‘rsatasiz?** Biznesni avtomatlashtirish (CRM, ERP, kassa va ombor tizimlari), SaaS va veb-ilovalar, Telegram botlar, to‘lov tizimlari integratsiyasi (Payme, Click, Uzum, Paddle, Binance Pay) va tayyor loyihalarni qo‘llab-quvvatlash.
 **Qaysi texnologiyalarda ishlaysiz?** Backend: NestJS, Node.js, TypeScript, PostgreSQL, Redis, BullMQ. Frontend: Next.js, React, Tailwind. Infratuzilma: Docker, VPS, CI/CD. Sun’iy intellekt integratsiyalari: LLM API (Claude, OpenAI).
-**Tizim dizayni (system design) ni o‘zbek tilida qayerdan o‘rgansa bo‘ladi?** Blog bo‘limida uchta bepul kurs bor: “15 ta mashhur tizim noldan”, “Tizim dizayni kursi: 15 mavzu” va “Tizim dizayni: kompyuterning o‘zidan boshlab”. Hammasi o‘zbek tilida, NestJS misollari bilan.
+**Tizim dizayni (system design) ni o‘zbek tilida qayerdan o‘rgansa bo‘ladi?** Blog bo‘limida uchta bepul kurs bor: “15 ta mashhur tizim noldan”, “Tizim dizayni kursi: 15 mavzu” va “Tizim dizayni: kompyuterning o‘zidan boshlab”. Hammasi o‘zbek tilida, NestJS misollari bilan. Boshlovchilar uchun esa “Kompyuter qanday ishlaydi” darsligi — tranzistordan Telegram botgacha, animatsiyalar va CPU simulyatori bilan.
 **JavaScript’ni o‘zbek tilida noldan o‘rganish mumkinmi?** Ha. “Kodla” sayti — 226 ta dars va 559 ta interaktiv kod maydonchasi bilan JavaScript’dan DevOps’gacha o‘zbek tilida o‘rgatadi.
 **Loyiha buyurtma qilish uchun qanday bog‘lanaman?** Telegram (@dinMuhammad05) yoki WhatsApp orqali yozing. Vazifani qisqacha tasvirlab bering — qanday avtomatlashtirish mumkinligini birga ko‘ramiz va muddat bilan narxni kelishamiz.
 
@@ -330,6 +330,13 @@ Texnologiyalar: NestJS, Prisma, BullMQ, Socket.IO, Electron, React, PostgreSQL
 
 
 ## Blog (o‘zbek tilidagi darsliklar)
+
+- [Kompyuter qanday ishlaydi: tranzistordan Telegram botgacha](https://dinmuhammad.uz/blog/kompyuter-qanday-ishlaydi/): Boshlovchi dasturchilar uchun animatsiyali darslik: 15 bob, interaktiv CPU simulyatori, 75 savolli testlar va 4 haftalik o‘quv rejasi — hammasi o‘zbek tilida. Kurs: https://dinmuhammad05.github.io/computer-qanday-ishlaydi/
+
+Ko‘p boshlovchi dasturchilar kod yozishni o‘rganadi, lekin bu kod kompyuterning ichida aslida nima qilishini bilmaydi. Nega dastur sekin? RAM va disk nima farqi bor? Protsessor “buyruqni bajaradi” deganda nima bo‘ladi? Bu darslik shu bo‘shliqni to‘ldiradi: eng pastki qatlamdan — tranzistordan — boshlab, siz yozgan Telegram bot serverda qanday ishlashigacha olib boradi.
+14 ta asosiy bob ketma-ket quriladi: ma’lumot qanday ifodalanadi, elektronika va tranzistor, mantiqiy ventillar, kompyuter arxitekturasi, protsessor va u buyruqni qanday bajarishi (Fetch–Decode–Execute), xotira, ona plata va shinalar, kirish-chiqish qurilmalari va GPU, operatsion tizim, dasturlash tilidan mashina kodigacha, tarmoq va internet. 15-qo‘shimcha bob esa amaliy: botni VPS’ga joylash — SSH, systemd va PM2, Docker, Nginx, HTTPS va kuzatuv.
+Darslik oddiy matn emas: har bir rasm animatsiya yoki interaktiv demo. Alohida mini CPU simulyatori bor — unda assembler kodini yozib, protsessor har bir buyruqni qanday olishi, o‘qishi va bajarishini qadamma-qadam kuzatish mumkin. Har bob oxirida 5 savolli test, umumiy 75 ta savol banki va flesh-karta rejimidagi 22 ta tekshiruv savoli bor.
+O‘rganishni tartibga solish uchun 4 haftalik o‘quv rejasi, har bobga topshiriq va qidiruvli atamalar lug‘ati qo‘shilgan. Texnik tomondan sayt tashqi kutubxonasiz, sof HTML, CSS va JavaScript; telefonda ham ishlaydi, o‘qilgan boblar va test natijalari brauzerda saqlanadi.
 
 - [15 ta mashhur tizim noldan: System Design darsligi](https://dinmuhammad.uz/blog/system-design-15-case-studies/): ChatGPT, YouTube, Spotify, Google Docs va boshqa tizimlar qanday ishlaydi — eng sodda yechimdan bugungi arxitekturagacha, hisob-kitob va amaliy topshiriqlar bilan. Kurs: https://dinmuhammad05.github.io/15-case-studiesfo-software-engineers/
 

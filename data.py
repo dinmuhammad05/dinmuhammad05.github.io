@@ -15,6 +15,7 @@ SITE = {
         "biznesni avtomatlashtirish", "CRM tizimi", "ERP tizimi", "SaaS ishlab chiqish",
         "Telegram bot yasash", "Telegram bot buyurtma", "to‘lov tizimi integratsiyasi", "Payme Click integratsiya",
         "JavaScript o‘zbek tilida", "JavaScript darslik uz", "JavaScript uz", "dasturlashni o‘rganish o‘zbekcha",
+        "kompyuter qanday ishlaydi", "kompyuter arxitekturasi o‘zbek tilida",
         "sayt yasash", "veb-ilova buyurtma", "dasturchi yollash",
     ],
     "city": "Toshkent",
@@ -159,7 +160,7 @@ FAQ = [
     ("Qaysi texnologiyalarda ishlaysiz?",
      "Backend: NestJS, Node.js, TypeScript, PostgreSQL, Redis, BullMQ. Frontend: Next.js, React, Tailwind. Infratuzilma: Docker, VPS, CI/CD. Sun’iy intellekt integratsiyalari: LLM API (Claude, OpenAI)."),
     ("Tizim dizayni (system design) ni o‘zbek tilida qayerdan o‘rgansa bo‘ladi?",
-     "Blog bo‘limida uchta bepul kurs bor: “15 ta mashhur tizim noldan”, “Tizim dizayni kursi: 15 mavzu” va “Tizim dizayni: kompyuterning o‘zidan boshlab”. Hammasi o‘zbek tilida, NestJS misollari bilan."),
+     "Blog bo‘limida uchta bepul kurs bor: “15 ta mashhur tizim noldan”, “Tizim dizayni kursi: 15 mavzu” va “Tizim dizayni: kompyuterning o‘zidan boshlab”. Hammasi o‘zbek tilida, NestJS misollari bilan. Boshlovchilar uchun esa “Kompyuter qanday ishlaydi” darsligi — tranzistordan Telegram botgacha, animatsiyalar va CPU simulyatori bilan."),
     ("JavaScript’ni o‘zbek tilida noldan o‘rganish mumkinmi?",
      "Ha. “Kodla” sayti — 226 ta dars va 559 ta interaktiv kod maydonchasi bilan JavaScript’dan DevOps’gacha o‘zbek tilida o‘rgatadi."),
     ("Loyiha buyurtma qilish uchun qanday bog‘lanaman?",
@@ -542,6 +543,21 @@ PROJECTS = [
 ]
 
 POSTS = [
+    {
+        "slug": "kompyuter-qanday-ishlaydi",
+        "keywords": ["kompyuter qanday ishlaydi", "kompyuter arxitekturasi o‘zbek tilida", "protsessor qanday ishlaydi", "tranzistor", "mantiqiy ventillar", "operatsion tizim", "boshlovchi dasturchi uchun", "CPU simulyator", "Dinmuhammad Qosimov"],
+        "title": "Kompyuter qanday ishlaydi: tranzistordan Telegram botgacha",
+        "excerpt": "Boshlovchi dasturchilar uchun animatsiyali darslik: 15 bob, interaktiv CPU simulyatori, 75 savolli testlar va 4 haftalik o‘quv rejasi — hammasi o‘zbek tilida.",
+        "url": "https://dinmuhammad05.github.io/computer-qanday-ishlaydi/",
+        "cta": "Darslikni ochish",
+        "stats": [("15", "bob"), ("75", "test savoli"), ("4 hafta", "o‘quv rejasi")],
+        "body": [
+            "Ko‘p boshlovchi dasturchilar kod yozishni o‘rganadi, lekin bu kod kompyuterning ichida aslida nima qilishini bilmaydi. Nega dastur sekin? RAM va disk nima farqi bor? Protsessor “buyruqni bajaradi” deganda nima bo‘ladi? Bu darslik shu bo‘shliqni to‘ldiradi: eng pastki qatlamdan — tranzistordan — boshlab, siz yozgan Telegram bot serverda qanday ishlashigacha olib boradi.",
+            "14 ta asosiy bob ketma-ket quriladi: ma’lumot qanday ifodalanadi, elektronika va tranzistor, mantiqiy ventillar, kompyuter arxitekturasi, protsessor va u buyruqni qanday bajarishi (Fetch–Decode–Execute), xotira, ona plata va shinalar, kirish-chiqish qurilmalari va GPU, operatsion tizim, dasturlash tilidan mashina kodigacha, tarmoq va internet. 15-qo‘shimcha bob esa amaliy: botni VPS’ga joylash — SSH, systemd va PM2, Docker, Nginx, HTTPS va kuzatuv.",
+            "Darslik oddiy matn emas: har bir rasm animatsiya yoki interaktiv demo. Alohida mini CPU simulyatori bor — unda assembler kodini yozib, protsessor har bir buyruqni qanday olishi, o‘qishi va bajarishini qadamma-qadam kuzatish mumkin. Har bob oxirida 5 savolli test, umumiy 75 ta savol banki va flesh-karta rejimidagi 22 ta tekshiruv savoli bor.",
+            "O‘rganishni tartibga solish uchun 4 haftalik o‘quv rejasi, har bobga topshiriq va qidiruvli atamalar lug‘ati qo‘shilgan. Texnik tomondan sayt tashqi kutubxonasiz, sof HTML, CSS va JavaScript; telefonda ham ishlaydi, o‘qilgan boblar va test natijalari brauzerda saqlanadi.",
+        ],
+    },
     {
         "slug": "system-design-15-case-studies",
         "keywords": ["system design", "tizim dizayni", "system design o‘zbek tilida", "system design darslik", "ChatGPT arxitekturasi", "YouTube arxitekturasi", "Dinmuhammad Qosimov"],
