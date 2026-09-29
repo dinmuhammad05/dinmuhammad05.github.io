@@ -331,7 +331,7 @@ Texnologiyalar: NestJS, Prisma, BullMQ, Socket.IO, Electron, React, PostgreSQL
 
 ## Blog (o‘zbek tilidagi darsliklar)
 
-- [Kompyuter qanday ishlaydi: tranzistordan Telegram botgacha](https://dinmuhammad.uz/blog/kompyuter-qanday-ishlaydi/): Boshlovchi dasturchilar uchun animatsiyali darslik: 15 bob, interaktiv CPU simulyatori, 75 savolli testlar va 4 haftalik o‘quv rejasi — hammasi o‘zbek tilida. Kurs: https://dinmuhammad05.github.io/computer-qanday-ishlaydi/
+- [Kompyuter qanday ishlaydi: tranzistordan Telegram botgacha](https://dinmuhammad.uz/blog/kompyuter-qanday-ishlaydi/): Boshlovchi dasturchilar uchun animatsiyali darslik: 15 bob, interaktiv CPU simulyatori, 75 savolli testlar va 4 haftalik o‘quv rejasi — hammasi o‘zbek tilida. Kurs: https://dinmuhammad.uz/computer-qanday-ishlaydi/
 
 Ko‘p boshlovchi dasturchilar kod yozishni o‘rganadi, lekin bu kod kompyuterning ichida aslida nima qilishini bilmaydi. Nega dastur sekin? RAM va disk nima farqi bor? Protsessor “buyruqni bajaradi” deganda nima bo‘ladi? Bu darslik shu bo‘shliqni to‘ldiradi: eng pastki qatlamdan — tranzistordan — boshlab, siz yozgan Telegram bot serverda qanday ishlashigacha olib boradi.
 14 ta asosiy bob ketma-ket quriladi: ma’lumot qanday ifodalanadi, elektronika va tranzistor, mantiqiy ventillar, kompyuter arxitekturasi, protsessor va u buyruqni qanday bajarishi (Fetch–Decode–Execute), xotira, ona plata va shinalar, kirish-chiqish qurilmalari va GPU, operatsion tizim, dasturlash tilidan mashina kodigacha, tarmoq va internet. 15-qo‘shimcha bob esa amaliy: botni VPS’ga joylash — SSH, systemd va PM2, Docker, Nginx, HTTPS va kuzatuv.

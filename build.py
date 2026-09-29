@@ -720,7 +720,8 @@ def main():
           f"User-agent: *\nAllow: /\n\nSitemap: {SITE['url']}/sitemap.xml\n"
           # Darslik shu domenning ichki yo'lida; qidiruv tizimlari faqat ildizdagi
           # robots.txt ni o'qiydi, shuning uchun uning sitemap'i ham shu yerda.
-          f"Sitemap: {SITE['url']}/15-case-studiesfo-software-engineers/sitemap.xml\n")
+          f"Sitemap: {SITE['url']}/15-case-studiesfo-software-engineers/sitemap.xml\n"
+          f"Sitemap: {SITE['url']}/computer-qanday-ishlaydi/sitemap.xml\n")
     print(f"tayyor: {len(urls)} sahifa")
 
 

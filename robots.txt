@@ -19,3 +19,4 @@ Allow: /
 
 Sitemap: https://dinmuhammad.uz/sitemap.xml
 Sitemap: https://dinmuhammad.uz/15-case-studiesfo-software-engineers/sitemap.xml
+Sitemap: https://dinmuhammad.uz/computer-qanday-ishlaydi/sitemap.xml

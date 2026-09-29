@@ -548,7 +548,7 @@ POSTS = [
         "keywords": ["kompyuter qanday ishlaydi", "kompyuter arxitekturasi o‘zbek tilida", "protsessor qanday ishlaydi", "tranzistor", "mantiqiy ventillar", "operatsion tizim", "boshlovchi dasturchi uchun", "CPU simulyator", "Dinmuhammad Qosimov"],
         "title": "Kompyuter qanday ishlaydi: tranzistordan Telegram botgacha",
         "excerpt": "Boshlovchi dasturchilar uchun animatsiyali darslik: 15 bob, interaktiv CPU simulyatori, 75 savolli testlar va 4 haftalik o‘quv rejasi — hammasi o‘zbek tilida.",
-        "url": "https://dinmuhammad05.github.io/computer-qanday-ishlaydi/",
+        "url": "https://dinmuhammad.uz/computer-qanday-ishlaydi/",
         "cta": "Darslikni ochish",
         "stats": [("15", "bob"), ("75", "test savoli"), ("4 hafta", "o‘quv rejasi")],
         "body": [
