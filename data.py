@@ -578,7 +578,7 @@ POSTS = [
         "keywords": ["JavaScript o‘zbek tilida", "JavaScript darslik", "JavaScript uz", "dasturlashni o‘rganish", "Kodla", "javascript.info o‘zbekcha", "DevOps o‘zbek tilida", "Dinmuhammad Qosimov"],
         "title": "Kodla: JavaScript’dan DevOps’gacha, o‘zbek tilida",
         "excerpt": "226 ta dars va 559 ta interaktiv kod maydonchasi — dasturlashni noldan, chuqur va o‘zbek tilida o‘rganish uchun.",
-        "url": "https://dinmuhammad05.github.io/javascript-info/",
+        "url": "https://dinmuhammad.uz/javascript-info/",
         "cta": "Kodla saytini ochish",
         "stats": [("226", "dars"), ("559", "interaktiv misol"), ("7", "qism")],
         "body": [
@@ -592,7 +592,7 @@ POSTS = [
         "keywords": ["tizim dizayni kursi", "system design kursi", "mikroservislar", "modulli monolit", "keshlash", "sharding", "NestJS", "Dinmuhammad Qosimov"],
         "title": "Tizim dizayni kursi: 15 mavzu, ikki qatlam",
         "excerpt": "Mikroservislar, modulli monolit, keshlash, sharding, replikatsiya va boshqalar — har mavzu “Core” va chuqur “Deep/Senior” qatlami bilan, NestJS misollari bilan.",
-        "url": "https://dinmuhammad05.github.io/system-design/",
+        "url": "https://dinmuhammad.uz/system-design/",
         "cta": "Kursni ochish",
         "stats": [("15", "mavzu"), ("30", "dars"), ("NestJS", "misollar")],
         "body": [
@@ -606,7 +606,7 @@ POSTS = [
         "keywords": ["tizim dizayni", "system design", "operatsion tizim", "virtual xotira", "protsess va thread", "kompyuter arxitekturasi o‘zbek tilida", "Dinmuhammad Qosimov"],
         "title": "Tizim dizayni: kompyuterning o‘zidan boshlab",
         "excerpt": "Katta tizimlarni eng pastki qatlamdan o‘rganish: kompyuter anatomiyasi, operatsion tizim, protsess va thread, virtual xotira.",
-        "url": "https://dinmuhammad05.github.io/sys_design_44/kurs/",
+        "url": "https://dinmuhammad.uz/sys_design_44/kurs/",
         "cta": "Kursni ochish",
         "stats": [("7", "dars hozircha"), ("PWA", "oflayn o‘qish")],
         "body": [

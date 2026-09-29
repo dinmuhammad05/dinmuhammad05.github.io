@@ -20,3 +20,6 @@ Allow: /
 Sitemap: https://dinmuhammad.uz/sitemap.xml
 Sitemap: https://dinmuhammad.uz/15-case-studiesfo-software-engineers/sitemap.xml
 Sitemap: https://dinmuhammad.uz/computer-qanday-ishlaydi/sitemap.xml
+Sitemap: https://dinmuhammad.uz/javascript-info/sitemap.xml
+Sitemap: https://dinmuhammad.uz/system-design/sitemap.xml
+Sitemap: https://dinmuhammad.uz/sys_design_44/sitemap.xml
