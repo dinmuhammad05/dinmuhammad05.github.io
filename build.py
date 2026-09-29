@@ -717,7 +717,10 @@ def main():
     write("llms-full.txt", build_llms(full=True))
     # "*" hammasiga ruxsat beradi; AI botlar aniq sanab o'tilgan — ular uchun ochiq ekani ko'rinib tursin.
     write("robots.txt", "".join(f"User-agent: {b}\n" for b in AI_BOTS) + "Allow: /\n\n"
-          f"User-agent: *\nAllow: /\n\nSitemap: {SITE['url']}/sitemap.xml\n")
+          f"User-agent: *\nAllow: /\n\nSitemap: {SITE['url']}/sitemap.xml\n"
+          # Darslik shu domenning ichki yo'lida; qidiruv tizimlari faqat ildizdagi
+          # robots.txt ni o'qiydi, shuning uchun uning sitemap'i ham shu yerda.
+          f"Sitemap: {SITE['url']}/15-case-studiesfo-software-engineers/sitemap.xml\n")
     print(f"tayyor: {len(urls)} sahifa")
 
 
