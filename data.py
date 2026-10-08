@@ -550,7 +550,7 @@ POSTS = [
         "excerpt": "Claude Code’ni chat kabi emas, agent sifatida ishlatish: agent sikli, kontekst, ruxsatlar, tekshirish, subagentlar, hooks, MCP va CI — rasmiy hujjatlarga tayangan bepul o‘zbekcha kurs.",
         "url": "https://dinmuhammad.uz/claude-code/",
         "cta": "Kursni ochish",
-        "stats": [("16", "dars rejada"), ("2", "dars tayyor"), ("Bepul", "o‘zbek tilida")],
+        "stats": [("16", "dars rejada"), ("3", "dars tayyor"), ("Bepul", "o‘zbek tilida")],
         "body": [
             "Ko‘p dasturchilar Claude Code’ni oddiy chat kabi ishlatadi: noaniq so‘rov yozadi, natijaga ishonadi, keyin xatolarni o‘zi tuzatadi. Muammo modelda emas — ish qanday tashkil qilinganida. Agent kodni o‘qiydi, buyruqlarni ishga tushiradi va natijaga qarab keyingi qadamni tanlaydi; bu boshqa ko‘nikma talab qiladi.",
             "Kurs agent qanday “o‘ylashidan” boshlanadi: kontekst yig‘ish, harakat va tekshirish sikli, token va kontekst oynasi, nega uzun sessiya sifatini yo‘qotadi. Keyin o‘rnatish va birinchi sessiya, so‘ng professional ish usuli: ruxsatlar va sandbox, CLAUDE.md va xotira, vazifani to‘g‘ri qo‘yish, tekshiriladigan maqsad, git va parallel sessiyalar, skills, subagentlar, hooks, MCP, plaginlar, CI va xavfsizlik.",
