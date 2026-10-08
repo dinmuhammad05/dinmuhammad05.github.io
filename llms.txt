@@ -50,6 +50,7 @@
 
 ## Blog (o‘zbek tilidagi darsliklar)
 
+- [Claude Code kursi: AI agentni professional darajada ishlatish](https://dinmuhammad.uz/blog/claude-code-kursi/): Claude Code’ni chat kabi emas, agent sifatida ishlatish: agent sikli, kontekst, ruxsatlar, tekshirish, subagentlar, hooks, MCP va CI — rasmiy hujjatlarga tayangan bepul o‘zbekcha kurs. Kurs: https://dinmuhammad.uz/claude-code/
 - [Kompyuter qanday ishlaydi: tranzistordan Telegram botgacha](https://dinmuhammad.uz/blog/kompyuter-qanday-ishlaydi/): Boshlovchi dasturchilar uchun animatsiyali darslik: 15 bob, interaktiv CPU simulyatori, 75 savolli testlar va 4 haftalik o‘quv rejasi — hammasi o‘zbek tilida. Kurs: https://dinmuhammad.uz/computer-qanday-ishlaydi/
 - [15 ta mashhur tizim noldan: System Design darsligi](https://dinmuhammad.uz/blog/system-design-15-case-studies/): ChatGPT, YouTube, Spotify, Google Docs va boshqa tizimlar qanday ishlaydi — eng sodda yechimdan bugungi arxitekturagacha, hisob-kitob va amaliy topshiriqlar bilan. Kurs: https://dinmuhammad.uz/15-case-studiesfo-software-engineers/
 - [Kodla: JavaScript’dan DevOps’gacha, o‘zbek tilida](https://dinmuhammad.uz/blog/kodla/): 226 ta dars va 559 ta interaktiv kod maydonchasi — dasturlashni noldan, chuqur va o‘zbek tilida o‘rganish uchun. Kurs: https://dinmuhammad.uz/javascript-info/

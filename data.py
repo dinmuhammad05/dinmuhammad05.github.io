@@ -544,6 +544,21 @@ PROJECTS = [
 
 POSTS = [
     {
+        "slug": "claude-code-kursi",
+        "keywords": ["Claude Code", "Claude Code o‘zbek tilida", "Claude Code kursi", "Claude Code qanday ishlatiladi", "AI agent bilan dasturlash", "sun’iy intellekt dasturchi uchun", "CLAUDE.md", "MCP", "Dinmuhammad Qosimov"],
+        "title": "Claude Code kursi: AI agentni professional darajada ishlatish",
+        "excerpt": "Claude Code’ni chat kabi emas, agent sifatida ishlatish: agent sikli, kontekst, ruxsatlar, tekshirish, subagentlar, hooks, MCP va CI — rasmiy hujjatlarga tayangan bepul o‘zbekcha kurs.",
+        "url": "https://dinmuhammad.uz/claude-code/",
+        "cta": "Kursni ochish",
+        "stats": [("15", "dars rejada"), ("22", "bo‘lim har darsda"), ("Bepul", "o‘zbek tilida")],
+        "body": [
+            "Ko‘p dasturchilar Claude Code’ni oddiy chat kabi ishlatadi: noaniq so‘rov yozadi, natijaga ishonadi, keyin xatolarni o‘zi tuzatadi. Muammo modelda emas — ish qanday tashkil qilinganida. Agent kodni o‘qiydi, buyruqlarni ishga tushiradi va natijaga qarab keyingi qadamni tanlaydi; bu boshqa ko‘nikma talab qiladi.",
+            "Kurs agent qanday “o‘ylashidan” boshlanadi: kontekst yig‘ish, harakat va tekshirish sikli, token va kontekst oynasi, nega uzun sessiya sifatini yo‘qotadi. Keyin professional ish usuli: ruxsatlar va sandbox, CLAUDE.md va xotira, vazifani to‘g‘ri qo‘yish, tekshiriladigan maqsad, git va parallel sessiyalar, skills, subagentlar, hooks, MCP, CI va xavfsizlik.",
+            "Har bir fakt Claude Code’ning rasmiy hujjatlaridan tekshirilgan, eskirgan maslahatlar alohida belgilangan. Darslarda qadamma-qadam sessiya misollari bor: qaysi asbob chaqirildi, qanday natija chiqdi, qayerda to‘xtatish kerak edi.",
+            "Amaliy qismda yuklab olinadigan kichik loyiha va tekshiruv skripti bor: o‘quvchi bir xil vazifani noaniq va aniq so‘rov bilan bajarib, farqni o‘z ko‘zi bilan ko‘radi. “Tayyor” — da’vo emas, tekshiruv natijasi.",
+        ],
+    },
+    {
         "slug": "kompyuter-qanday-ishlaydi",
         "keywords": ["kompyuter qanday ishlaydi", "kompyuter arxitekturasi o‘zbek tilida", "protsessor qanday ishlaydi", "tranzistor", "mantiqiy ventillar", "operatsion tizim", "boshlovchi dasturchi uchun", "CPU simulyator", "Dinmuhammad Qosimov"],
         "title": "Kompyuter qanday ishlaydi: tranzistordan Telegram botgacha",

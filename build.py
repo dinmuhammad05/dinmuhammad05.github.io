@@ -724,7 +724,8 @@ def main():
           f"Sitemap: {SITE['url']}/computer-qanday-ishlaydi/sitemap.xml\n"
           f"Sitemap: {SITE['url']}/javascript-info/sitemap.xml\n"
           f"Sitemap: {SITE['url']}/system-design/sitemap.xml\n"
-          f"Sitemap: {SITE['url']}/sys_design_44/sitemap.xml\n")
+          f"Sitemap: {SITE['url']}/sys_design_44/sitemap.xml\n"
+          f"Sitemap: {SITE['url']}/claude-code/sitemap.xml\n")
     print(f"tayyor: {len(urls)} sahifa")
 
 

@@ -23,3 +23,4 @@ Sitemap: https://dinmuhammad.uz/computer-qanday-ishlaydi/sitemap.xml
 Sitemap: https://dinmuhammad.uz/javascript-info/sitemap.xml
 Sitemap: https://dinmuhammad.uz/system-design/sitemap.xml
 Sitemap: https://dinmuhammad.uz/sys_design_44/sitemap.xml
+Sitemap: https://dinmuhammad.uz/claude-code/sitemap.xml
