@@ -49,9 +49,9 @@ def person():
         "familyName": SITE["last_name"],
         "alternateName": [SITE["name"], f"{SITE['last_name']} {SITE['first_name']}", SITE["telegram"]],
         "jobTitle": SITE["role"],
-        "description": f"{SITE['full_name']} — O‘zbekistonlik full-stack dasturchi: NestJS, Next.js, PostgreSQL. "
-                       "Biznesni avtomatlashtirish (CRM, ERP, SaaS), Telegram botlar, to‘lov integratsiyalari. "
-                       "O‘zbek tilida tizim dizayni va JavaScript darsliklari muallifi.",
+        "description": f"{SITE['full_name']} — O‘zbekistonlik full-stack dasturchi. Biznes uchun tizimlar quradi: "
+                       "CRM, hisob-kitob va ombor, to‘lov qabul qilish, Telegram botlar, veb-ilovalar; "
+                       "ishga tushirishdan keyin qo‘llab-quvvatlaydi. O‘zbek tilida bepul dasturlash darsliklari muallifi.",
         "url": SITE["url"] + "/",
         "mainEntityOfPage": SITE["url"] + "/",
         "image": SITE["url"] + "/assets/dinmuhammad-760.jpg",
@@ -344,17 +344,16 @@ def build_index():
     body = f"""  <main id="top">
     <section class="hero wrap">
       <div class="hero-text">
-        <p class="kicker"><span class="dot"></span> Veb-ilovalar · Biznesni avtomatlashtirish · Qo‘llab-quvvatlash</p>
+        <p class="kicker"><span class="dot"></span> Biznesni avtomatlashtirish · Veb-ilovalar · Telegram botlar · Qo‘llab-quvvatlash</p>
         <h1>{E(SITE['full_name'])}</h1>
         <p class="role">{E(SITE['role'])} · {E(SITE['city'])}, {E(SITE['country'])}</p>
         <p class="lead">
-          O‘zbekistonda ishlaydigan full-stack dasturchiman. Backenddan interfeysgacha to‘liq mahsulot quraman:
-          <strong>NestJS</strong> va <strong>PostgreSQL</strong> ustida modulli arxitektura,
-          <strong>Next.js / React</strong> da interfeys, va ular orasidagi hamma narsa — navbatlar,
-          to‘lov tizimlari, fayl omborlari, Telegram botlar va sun’iy intellekt integratsiyalari.
-          Biznesni avtomatlashtiraman: qo‘lda qilinadigan ishlarni — hisob, qabul, eslatma, xabarnoma —
-          tizimga topshiraman. O‘zbek tilida <a href="/blog/">tizim dizayni (system design) va JavaScript
-          darsliklari</a> yozaman.
+          Biznesingiz uchun ishlaydigan tizimlar quraman: <strong>buyurtma va mijozlarni yuritish</strong>,
+          <strong>hisob-kitob va ombor</strong>, <strong>to‘lov qabul qilish</strong>, Telegram orqali
+          xizmat ko‘rsatish. Qo‘lda, qog‘ozda yoki Excel’da qilinadigan ishlarni dasturga topshiraman —
+          xodimlar vaqti tejaladi, xatolar kamayadi, raqamlar har doim ko‘z oldingizda bo‘ladi.
+          Loyihani boshidan oxirigacha o‘zim olib boraman: g‘oyadan ishga tushirishgacha, keyin esa
+          qo‘llab-quvvatlayman. Texnik tafsilotlar — <a href="/konikmalar/">ko‘nikmalar sahifasida</a>.
         </p>
         <div class="cta">
           <a class="btn primary" href="{SITE['telegram_url']}" target="_blank" rel="noopener">{ICON_TG} Telegramda yozish</a>
@@ -441,10 +440,10 @@ def build_index():
 {contact()}
   </main>
 """
-    return page(f"{SITE['full_name']} — {SITE['role']} | NestJS, Next.js, tizim dizayni",
-                f"{SITE['full_name']} — O‘zbekistonlik full-stack dasturchi. NestJS, Next.js, PostgreSQL. "
-                "Biznesni avtomatlashtirish: CRM, ERP, SaaS, Telegram botlar, to‘lov integratsiyasi. "
-                "O‘zbek tilida tizim dizayni (system design) va JavaScript darsliklari.",
+    return page(f"{SITE['full_name']} — {SITE['role']} | Biznesni avtomatlashtirish, veb-ilovalar, Telegram botlar",
+                f"{SITE['full_name']} — O‘zbekistonlik full-stack dasturchi. Biznes uchun tizimlar: "
+                "buyurtma va mijozlarni yuritish (CRM), hisob-kitob va ombor, to‘lov qabul qilish, Telegram botlar, "
+                "veb-ilovalar. Ishga tushirishdan keyin qo‘llab-quvvatlash. O‘zbek tilida bepul dasturlash darsliklari.",
                 body, "/", schema=ld(
                     person(),
                     {"@type": "FAQPage", "mainEntity": [

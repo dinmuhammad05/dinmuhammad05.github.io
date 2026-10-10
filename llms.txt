@@ -4,7 +4,7 @@
 
 ## Savol-javob
 
-**Dinmuhammad Qosimov kim?** Dinmuhammad Qosimov — O‘zbekistonlik full-stack dasturchi. NestJS, Next.js va PostgreSQL asosida CRM, ERP, SaaS mahsulotlar, Telegram botlar va to‘lov integratsiyalarini quradi. O‘zbek tilida tizim dizayni (system design) va JavaScript bo‘yicha bepul darsliklar yozadi.
+**Dinmuhammad Qosimov kim?** Dinmuhammad Qosimov — O‘zbekistonlik full-stack dasturchi. Biznes uchun tizimlar quradi: mijozlar va buyurtmalarni yuritish (CRM), hisob-kitob va ombor, to‘lov qabul qilish, Telegram botlar va veb-ilovalar — ishga tushirishdan keyin qo‘llab-quvvatlaydi. O‘zbek tilida dasturlash bo‘yicha bepul darsliklar yozadi.
 **Qanday xizmatlar ko‘rsatasiz?** Biznesni avtomatlashtirish (CRM, ERP, kassa va ombor tizimlari), SaaS va veb-ilovalar, Telegram botlar, to‘lov tizimlari integratsiyasi (Payme, Click, Uzum, Paddle, Binance Pay) va tayyor loyihalarni qo‘llab-quvvatlash.
 **Qaysi texnologiyalarda ishlaysiz?** Backend: NestJS, Node.js, TypeScript, PostgreSQL, Redis, BullMQ. Frontend: Next.js, React, Tailwind. Infratuzilma: Docker, VPS, CI/CD. Sun’iy intellekt integratsiyalari: LLM API (Claude, OpenAI).
 **Tizim dizayni (system design) ni o‘zbek tilida qayerdan o‘rgansa bo‘ladi?** Blog bo‘limida uchta bepul kurs bor: “15 ta mashhur tizim noldan”, “Tizim dizayni kursi: 15 mavzu” va “Tizim dizayni: kompyuterning o‘zidan boshlab”. Hammasi o‘zbek tilida, NestJS misollari bilan. Boshlovchilar uchun esa “Kompyuter qanday ishlaydi” darsligi — tranzistordan Telegram botgacha, animatsiyalar va CPU simulyatori bilan.

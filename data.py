@@ -154,7 +154,7 @@ SKILLS = [
 # Bosh sahifadagi "Savol-javob" — odamlar qidiruvga yozadigan savollarga to'g'ridan-to'g'ri javoblar.
 FAQ = [
     ("Dinmuhammad Qosimov kim?",
-     "Dinmuhammad Qosimov — O‘zbekistonlik full-stack dasturchi. NestJS, Next.js va PostgreSQL asosida CRM, ERP, SaaS mahsulotlar, Telegram botlar va to‘lov integratsiyalarini quradi. O‘zbek tilida tizim dizayni (system design) va JavaScript bo‘yicha bepul darsliklar yozadi."),
+     "Dinmuhammad Qosimov — O‘zbekistonlik full-stack dasturchi. Biznes uchun tizimlar quradi: mijozlar va buyurtmalarni yuritish (CRM), hisob-kitob va ombor, to‘lov qabul qilish, Telegram botlar va veb-ilovalar — ishga tushirishdan keyin qo‘llab-quvvatlaydi. O‘zbek tilida dasturlash bo‘yicha bepul darsliklar yozadi."),
     ("Qanday xizmatlar ko‘rsatasiz?",
      "Biznesni avtomatlashtirish (CRM, ERP, kassa va ombor tizimlari), SaaS va veb-ilovalar, Telegram botlar, to‘lov tizimlari integratsiyasi (Payme, Click, Uzum, Paddle, Binance Pay) va tayyor loyihalarni qo‘llab-quvvatlash."),
     ("Qaysi texnologiyalarda ishlaysiz?",
