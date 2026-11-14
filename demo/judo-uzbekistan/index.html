@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html lang="uz">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Judo Federation of Uzbekistan — konsept</title>
+<meta name="description" content="O‘zbekiston Dzyudo Federatsiyasi uchun link-in-bio konsept dizayni.">
+<meta name="theme-color" content="#0a1440">
+<meta name="robots" content="noindex, nofollow">
+<meta property="og:title" content="Judo Federation of Uzbekistan — konsept dizayn">
+<meta property="og:description" content="O‘zbekiston Dzyudo Federatsiyasi · Федерация дзюдо Узбекистана">
+<meta property="og:image" content="https://dinmuhammad.uz/demo/judo-uzbekistan/og.jpg">
+<meta property="og:type" content="website">
+<link rel="icon" href="icon.png">
+<link rel="apple-touch-icon" href="icon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Montserrat:wght@500;600;700;800&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --navy:#0a1440; --navy2:#050a22; --indigo:#2f2a9a;
+    --uz-blue:#0099b5; --uz-green:#1eb53a; --uz-red:#ce1126;
+    --ease:cubic-bezier(.2,.9,.2,1);
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html,body{min-height:100%;max-width:100%;overflow-x:hidden}
+  body{font-family:'Montserrat',system-ui,sans-serif;color:#fff;background:var(--navy2);-webkit-tap-highlight-color:transparent}
+
+  /* ============ BACKGROUND ============ */
+  .bg{position:fixed;inset:0;z-index:0;overflow:hidden;
+    background:
+      radial-gradient(90% 55% at 50% 18%, rgba(47,42,154,.75) 0%, transparent 70%),
+      radial-gradient(70% 45% at 85% 100%, rgba(0,153,181,.35) 0%, transparent 70%),
+      radial-gradient(60% 40% at 0% 80%, rgba(30,181,58,.22) 0%, transparent 70%),
+      linear-gradient(180deg,var(--navy) 0%,var(--navy2) 100%)}
+  /* flag ribbons sweeping diagonally */
+  .ribbon{position:absolute;left:-30%;width:160%;height:120px;transform:rotate(-24deg);opacity:.16;
+    background:linear-gradient(180deg,
+      var(--uz-blue) 0 31%, var(--uz-red) 31% 34%, #fff 34% 66%, var(--uz-red) 66% 69%, var(--uz-green) 69% 100%);
+    -webkit-mask:linear-gradient(90deg,transparent,#000 25%,#000 75%,transparent);mask:linear-gradient(90deg,transparent,#000 25%,#000 75%,transparent);
+    animation:slide 9s ease-in-out infinite alternate}
+  .ribbon.r1{top:58%}
+  .ribbon.r2{top:8%;height:46px;opacity:.09;animation-duration:12s;animation-direction:alternate-reverse}
+  @keyframes slide{from{translate:-8% 0}to{translate:8% 0}}
+  /* tatami grid fading up */
+  .grid{position:absolute;inset:auto 0 0 0;height:45vh;opacity:.12;
+    background:repeating-linear-gradient(90deg,#fff 0 1px,transparent 1px 64px),repeating-linear-gradient(0deg,#fff 0 1px,transparent 1px 64px);
+    -webkit-mask:linear-gradient(to top,#000,transparent);mask:linear-gradient(to top,#000,transparent)}
+  /* crescent + 12 stars, as on the flag */
+  .sky{position:absolute;left:18px;top:max(18px,env(safe-area-inset-top));width:150px;height:72px;opacity:.55}
+  .moon{position:absolute;left:0;top:6px;width:52px;height:52px;border-radius:50%;
+    box-shadow:inset 13px -2px 0 0 #fff;transform:rotate(-12deg)}
+  .star{position:absolute;width:7px;height:7px;background:#fff;
+    clip-path:polygon(50% 0,61% 35%,98% 35%,68% 57%,79% 91%,50% 70%,21% 91%,32% 57%,2% 35%,39% 35%);
+    animation:tw 2.6s ease-in-out infinite}
+  @keyframes tw{50%{opacity:.25;transform:scale(.7)}}
+  canvas#fx{position:absolute;inset:0;width:100%;height:100%}
+
+  /* ============ LANG ============ */
+  .lang{position:fixed;top:max(14px,env(safe-area-inset-top));right:14px;z-index:20;display:flex;gap:3px;padding:4px;
+    border-radius:999px;background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.18);backdrop-filter:blur(10px);
+    animation:fadeD .7s 1.2s var(--ease) both}
+  .lang button{border:0;background:transparent;color:#c9d2ff;font:700 12px/1 'Montserrat',system-ui,sans-serif;letter-spacing:1px;
+    padding:8px 11px;border-radius:999px;cursor:pointer;transition:.3s var(--ease)}
+  .lang button.on{background:#fff;color:var(--navy)}
+  @keyframes fadeD{from{transform:translateY(-24px);opacity:0}}
+
+  /* ============ CONTENT ============ */
+  main{position:relative;z-index:5;min-height:100vh;min-height:100svh;width:100%;overflow:hidden;overflow:clip;
+    display:flex;flex-direction:column;align-items:center;justify-content:center;
+    padding:max(70px,9svh) 18px max(30px,4.5svh);text-align:center}
+
+  .emblem{position:relative;width:min(34vw,140px,17svh);aspect-ratio:1;animation:pop 1s .2s cubic-bezier(.2,1.5,.4,1) both}
+  .emblem::before{content:"";position:absolute;inset:-5px;border-radius:33px;
+    background:linear-gradient(120deg,var(--uz-blue),#fff,var(--uz-green),var(--uz-red),var(--uz-blue),#fff,var(--uz-green));
+    background-size:300% 300%;animation:flow 6s linear infinite}
+  @keyframes flow{to{background-position:100% 100%}}
+  .emblem::after{content:"";position:absolute;inset:-30%;border-radius:50%;z-index:-1;
+    background:radial-gradient(circle,rgba(120,140,255,.45),transparent 65%)}
+  .emblem img{position:relative;width:100%;height:100%;border-radius:28px;background:#fff;display:block;object-fit:contain}
+  @keyframes spin{to{rotate:360deg}}
+  @keyframes pop{from{transform:scale(.3) rotate(-20deg);opacity:0}}
+
+  .handle{margin-top:min(14px,1.6svh);display:inline-flex;align-items:center;gap:6px;font-size:13px;font-weight:600;color:#aeb8f0;
+    animation:up .7s .5s var(--ease) both}
+  .handle svg{width:15px;height:15px;fill:#e1306c}
+  h1{margin-top:min(8px,1svh);font-family:'Bebas Neue',sans-serif;font-weight:400;letter-spacing:2px;line-height:.92;
+    font-size:min(12.5vw,58px,6.6svh);animation:up .8s .6s var(--ease) both}
+  h1 small{display:block;font-size:.55em;letter-spacing:.32em;margin-right:-.32em;color:#9fdcff}
+  .flagbar{width:min(62vw,240px);height:9px;margin:min(14px,1.6svh) auto 0;border-radius:5px;overflow:hidden;
+    background:linear-gradient(180deg,var(--uz-blue) 0 31%,var(--uz-red) 31% 36%,#fff 36% 64%,var(--uz-red) 64% 69%,var(--uz-green) 69%);
+    transform-origin:center;animation:grow .9s .9s var(--ease) both}
+  @keyframes grow{from{transform:scaleX(0)}}
+  .bio{margin-top:min(12px,1.4svh);font-size:min(14.5px,2svh);font-weight:500;color:#d5dbff;max-width:330px;line-height:1.4;
+    animation:up .8s 1s var(--ease) both}
+  @keyframes up{from{transform:translateY(18px);opacity:0}}
+
+  /* ============ LINKS ============ */
+  .links{width:min(100%,400px);margin-top:min(22px,2.6svh);display:flex;flex-direction:column;gap:min(11px,1.35svh)}
+  .lk{position:relative;display:flex;align-items:center;gap:13px;padding:min(10px,1.25svh) 14px min(10px,1.25svh) 10px;border-radius:18px;
+    text-decoration:none;color:#fff;overflow:hidden;isolation:isolate;
+    background:linear-gradient(135deg,rgba(255,255,255,.13),rgba(255,255,255,.05));
+    border:1px solid rgba(255,255,255,.16);backdrop-filter:blur(8px);
+    box-shadow:0 10px 24px rgba(0,0,0,.25);
+    transition:transform .2s var(--ease),background .3s;animation:card .7s var(--ease) both}
+  .lk:nth-child(1){animation-delay:1.15s}.lk:nth-child(2){animation-delay:1.27s}.lk:nth-child(3){animation-delay:1.39s}.lk:nth-child(4){animation-delay:1.51s}
+  @keyframes card{from{transform:translateX(-40px);opacity:0}}
+  .lk:active{transform:scale(.97)}
+  .lk::before{content:"";position:absolute;left:0;top:0;bottom:0;width:4px;background:var(--c)}
+  .lk .ic{flex:none;width:min(46px,5.6svh);height:min(46px,5.6svh);border-radius:13px;display:grid;place-items:center;background:var(--c);
+    box-shadow:0 6px 14px color-mix(in srgb,var(--c) 45%,transparent)}
+  .lk .ic svg{width:56%;height:56%;fill:#fff}
+  .lk .tx{flex:1;text-align:left;min-width:0}
+  .lk b{display:block;font-size:min(16px,2.1svh);font-weight:800;letter-spacing:.2px}
+  .lk small{display:block;font-size:min(12px,1.6svh);color:#c3cbf5;margin-top:2px;font-weight:500;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+  .lk .go{flex:none;font-size:18px;color:#aeb8f0;transition:transform .3s}
+  .lk:hover .go{transform:translateX(4px)}
+  /* YouTube = hero button */
+  .lk.yt{background:linear-gradient(135deg,#ff2d2d,#c4161c);border-color:rgba(255,255,255,.25);box-shadow:0 12px 28px rgba(220,30,30,.45)}
+  .lk.yt::before{display:none}
+  .lk.yt .ic{background:#fff;box-shadow:0 6px 14px rgba(0,0,0,.25)}
+  .lk.yt .ic svg{fill:#e62117}
+  .lk.yt small{color:#ffe0e0}
+  .lk.yt .go{color:#fff}
+  .lk.yt::after{content:"";position:absolute;top:-40%;bottom:-40%;width:44px;left:-60px;z-index:-1;
+    background:linear-gradient(90deg,transparent,rgba(255,255,255,.4),transparent);transform:rotate(18deg);animation:sweep 3.2s 2.4s ease-in-out infinite}
+  @keyframes sweep{0%{left:-60px}45%,100%{left:115%}}
+  .live{display:inline-block;margin-left:6px;padding:2px 6px;border-radius:5px;background:#fff;color:#d61b1b;font-size:9.5px;font-weight:800;
+    letter-spacing:.8px;vertical-align:2px;animation:blink 1.6s infinite}
+  @keyframes blink{50%{opacity:.45}}
+
+  footer{position:absolute;left:0;right:0;bottom:max(10px,env(safe-area-inset-bottom));font-size:11px;letter-spacing:1px;color:#8590cc}
+  footer a{color:#fff;font-weight:700;text-decoration:none;background:linear-gradient(90deg,var(--uz-blue),var(--uz-green));-webkit-background-clip:text;background-clip:text;color:transparent}
+  .concept{position:fixed;left:14px;top:max(16px,env(safe-area-inset-top));z-index:20;padding:7px 11px;border-radius:999px;font-size:10.5px;font-weight:700;
+    letter-spacing:.8px;text-transform:uppercase;color:#ffd166;background:rgba(255,209,102,.12);border:1px solid rgba(255,209,102,.45);backdrop-filter:blur(8px);
+    animation:fadeD .7s 1.2s var(--ease) both}
+
+  .i18n{transition:opacity .25s,transform .25s}
+  .swap .i18n{opacity:0;transform:translateY(5px)}
+  @media (max-height:720px){.handle{display:none} main{padding-top:58px;padding-bottom:28px}}
+  @media (max-height:620px){.bio{display:none}}
+  @media (prefers-reduced-motion:reduce){*{animation-duration:.01s!important;animation-delay:0s!important;animation-iteration-count:1!important}}
+</style>
+</head>
+<body>
+  <div class="bg" aria-hidden="true">
+    <div class="ribbon r2"></div>
+    <div class="ribbon r1"></div>
+    <div class="grid"></div>
+    <div class="sky" id="sky"><div class="moon"></div></div>
+    <canvas id="fx"></canvas>
+  </div>
+
+  <span class="concept i18n" data-k="concept"></span>
+  <nav class="lang" aria-label="Til / Язык / Language">
+    <button data-l="uz">UZ</button><button data-l="ru">RU</button><button data-l="en">EN</button>
+  </nav>
+
+  <main>
+    <div class="emblem"><img src="logo.png" alt="Uzbekistan Judo Federation" width="400" height="400"></div>
+    <span class="handle"><svg viewBox="0 0 24 24"><path d="M12 7a5 5 0 1 0 0 10 5 5 0 0 0 0-10zm0 8.2a3.2 3.2 0 1 1 0-6.4 3.2 3.2 0 0 1 0 6.4zM17.3 5.5a1.2 1.2 0 1 0 0 2.4 1.2 1.2 0 0 0 0-2.4zM16.5 2h-9A5.5 5.5 0 0 0 2 7.5v9A5.5 5.5 0 0 0 7.5 22h9a5.5 5.5 0 0 0 5.5-5.5v-9A5.5 5.5 0 0 0 16.5 2zm3.7 14.5a3.7 3.7 0 0 1-3.7 3.7h-9a3.7 3.7 0 0 1-3.7-3.7v-9a3.7 3.7 0 0 1 3.7-3.7h9a3.7 3.7 0 0 1 3.7 3.7z"/></svg>@judo_uzbekistan</span>
+    <h1>JUDO FEDERATION<small>OF UZBEKISTAN</small></h1>
+    <div class="flagbar" aria-hidden="true"></div>
+    <p class="bio i18n" data-k="bio"></p>
+
+    <div class="links">
+      <a class="lk yt" data-app="youtube" href="https://www.youtube.com/channel/UCIjxAfN-Of0Ntw6gYrnKWwQ" target="_blank" rel="noopener">
+        <span class="ic"><svg viewBox="0 0 24 24"><path d="M23 7.2a3 3 0 0 0-2.1-2.1C19 4.6 12 4.6 12 4.6s-7 0-8.9.5A3 3 0 0 0 1 7.2 31 31 0 0 0 .5 12a31 31 0 0 0 .5 4.8 3 3 0 0 0 2.1 2.1c1.9.5 8.9.5 8.9.5s7 0 8.9-.5a3 3 0 0 0 2.1-2.1 31 31 0 0 0 .5-4.8 31 31 0 0 0-.5-4.8zM9.7 15V9l5.8 3z"/></svg></span>
+        <span class="tx"><b>YouTube</b><small class="i18n" data-k="yt"></small></span><span class="go">›</span>
+      </a>
+      <a class="lk" style="--c:#229ed9" data-app="telegram" href="https://t.me/judouz" target="_blank" rel="noopener">
+        <span class="ic"><svg viewBox="0 0 24 24"><path d="M21.9 4.3 18.7 19.4c-.2 1-.9 1.3-1.8.8l-4.8-3.6-2.3 2.2c-.3.3-.5.5-1 .5l.3-4.9 8.9-8c.4-.3-.1-.5-.6-.2L6.4 13.1 1.7 11.6c-1-.3-1-1 .2-1.5L20.4 3c.9-.3 1.6.2 1.5 1.3z"/></svg></span>
+        <span class="tx"><b>Telegram</b><small class="i18n" data-k="tg"></small></span><span class="go">›</span>
+      </a>
+      <a class="lk" style="--c:#111" data-app="tiktok" href="https://www.tiktok.com/@judo_uzbekistan_official" target="_blank" rel="noopener">
+        <span class="ic" style="background:linear-gradient(135deg,#25f4ee -20%,#111 45%,#111 60%,#fe2c55 130%)"><svg viewBox="0 0 24 24"><path d="M16.6 2h-3.4v13.4a2.9 2.9 0 1 1-2.9-2.9c.3 0 .6 0 .9.1V9.2a6.4 6.4 0 1 0 5.4 6.3V8.7a8 8 0 0 0 4.6 1.5V6.8a4.6 4.6 0 0 1-4.6-4.8z"/></svg></span>
+        <span class="tx"><b>TikTok</b><small class="i18n" data-k="tt"></small></span><span class="go">›</span>
+      </a>
+      <a class="lk" style="--c:#1877f2" data-app="facebook" href="https://www.facebook.com/JudoUZB" target="_blank" rel="noopener">
+        <span class="ic"><svg viewBox="0 0 24 24"><path d="M13.5 22v-8.2h2.8l.4-3.2h-3.2V8.5c0-.9.3-1.6 1.6-1.6h1.7V4.1c-.3 0-1.3-.1-2.5-.1-2.5 0-4.2 1.5-4.2 4.3v2.4H7.3v3.2h2.8V22z"/></svg></span>
+        <span class="tx"><b>Facebook</b><small class="i18n" data-k="fb"></small></span><span class="go">›</span>
+      </a>
+    </div>
+
+    <footer>Powered by <a href="https://dinmuhammad.uz" target="_blank" rel="noopener">Dinmuhammad</a></footer>
+  </main>
+
+<script>
+(function(){
+  /* ---------- i18n ---------- */
+  var T = {
+    uz:{bio:"O‘zbekiston Dzyudo Federatsiyasining ijtimoiy tarmoqlari", concept:"Konsept dizayn", yt:"Musobaqalar va videolar", tg:"Yangiliklar va natijalar birinchi bo‘lib", tt:"Eng yorqin lahzalar", fb:"Rasmiy sahifa", title:"O‘zbekiston Dzyudo Federatsiyasi"},
+    ru:{bio:"Социальные сети Федерации дзюдо Узбекистана", concept:"Концепт-дизайн", yt:"Соревнования и видео", tg:"Новости и результаты первыми", tt:"Самые яркие моменты", fb:"Официальная страница", title:"Федерация дзюдо Узбекистана"},
+    en:{bio:"Social channels of the Judo Federation of Uzbekistan", concept:"Design concept", yt:"Competitions and videos", tg:"News and results first", tt:"Best moments", fb:"Official page", title:"Judo Federation of Uzbekistan"}
+  };
+  function pick(){
+    var q=(location.search.match(/[?&]lang=(uz|ru|en)/)||[])[1]; if(q) return q;
+    try{var s=localStorage.getItem('uzjf-lang'); if(T[s]) return s}catch(e){}
+    var n=(navigator.language||'uz').slice(0,2).toLowerCase(); return n==='ru'?'ru':n==='en'?'en':'uz';
+  }
+  function apply(l,anim){
+    var d=T[l];
+    function fill(){
+      document.querySelectorAll('[data-k]').forEach(function(el){el.textContent=d[el.dataset.k]});
+      document.documentElement.lang=l; document.title=d.title+' — Judo Federation of Uzbekistan';
+      document.querySelectorAll('.lang button').forEach(function(b){b.classList.toggle('on',b.dataset.l===l)});
+      document.body.classList.remove('swap');
+    }
+    if(anim){document.body.classList.add('swap');setTimeout(fill,220)}else fill();
+    try{localStorage.setItem('uzjf-lang',l)}catch(e){}
+  }
+  document.querySelectorAll('.lang button').forEach(function(b){b.addEventListener('click',function(){apply(b.dataset.l,true)})});
+  apply(pick(),false);
+
+  /* ---------- deep links: open the native app ---------- */
+  var ua=navigator.userAgent||'';
+  var isAndroid=/android/i.test(ua);
+  var isIOS=/iphone|ipad|ipod/i.test(ua)||(navigator.platform==='MacIntel'&&navigator.maxTouchPoints>1);
+  var ANDROID_PKG={youtube:'com.google.android.youtube',telegram:'org.telegram.messenger',tiktok:'com.zhiliaoapp.musically',facebook:'com.facebook.katana'};
+  function tryApp(appUrl,web){
+    var t=Date.now(); location.href=appUrl;
+    setTimeout(function(){ if(!document.hidden && Date.now()-t<3500) location.href=web },1600);
+  }
+  document.querySelectorAll('.lk').forEach(function(a){
+    a.addEventListener('click',function(e){
+      var app=a.dataset.app, web=a.href, u=new URL(web);
+      if(isAndroid){
+        e.preventDefault();
+        if(app==='telegram'){ tryApp('tg://resolve?domain='+u.pathname.slice(1), web); return }
+        location.href='intent://'+u.host+u.pathname+'#Intent;scheme=https;package='+ANDROID_PKG[app]+';S.browser_fallback_url='+encodeURIComponent(web)+';end';
+      } else if(isIOS){
+        if(app==='youtube'){ e.preventDefault(); tryApp('youtube://'+u.host+u.pathname, web) }
+        else if(app==='telegram'){ e.preventDefault(); tryApp('tg://resolve?domain='+u.pathname.slice(1), web) }
+        /* TikTok and Facebook: iOS opens their apps from https links via universal links */
+      }
+    });
+  });
+
+  /* ---------- 12 stars like the flag ---------- */
+  var sky=document.getElementById('sky'), pos=[[70,4],[88,4],[106,4],[124,4],[70,24],[88,24],[106,24],[124,24],[88,44],[106,44],[124,44],[142,24]];
+  pos.forEach(function(p,i){var s=document.createElement('i');s.className='star';s.style.left=p[0]+'px';s.style.top=p[1]+'px';s.style.animationDelay=(i*.21)+'s';sky.appendChild(s)});
+
+  /* ---------- floating particles in flag colours ---------- */
+  var c=document.getElementById('fx'),g=c.getContext('2d'),W,H,dpr,P=[];
+  function size(){dpr=Math.min(devicePixelRatio||1,2);W=c.width=innerWidth*dpr;H=c.height=innerHeight*dpr}
+  size(); addEventListener('resize',size);
+  var COL=['0,153,181','255,255,255','30,181,58','206,17,38'];
+  for(var i=0;i<38;i++)P.push({x:Math.random(),y:Math.random(),r:.8+Math.random()*2,v:.0004+Math.random()*.0012,c:COL[i%4],a:.25+Math.random()*.5,w:Math.random()*6});
+  var reduce=matchMedia('(prefers-reduced-motion: reduce)').matches;
+  (function tick(){
+    g.clearRect(0,0,W,H);
+    P.forEach(function(p){p.y-=p.v;p.w+=.015;if(p.y<-.03){p.y=1.03;p.x=Math.random()}
+      var x=(p.x+Math.sin(p.w)*.008)*W,y=p.y*H,r=p.r*dpr;
+      g.fillStyle='rgba('+p.c+','+p.a+')';g.beginPath();g.arc(x,y,r,0,6.283);g.fill()});
+    if(!reduce)requestAnimationFrame(tick);
+  })();
+})();
+</script>
+</body>
+</html>
