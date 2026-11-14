@@ -42,14 +42,10 @@
   .ribbon.r1{top:58%}
   .ribbon.r2{top:8%;height:46px;opacity:.09;animation-duration:12s;animation-direction:alternate-reverse}
   @keyframes slide{from{translate:-8% 0}to{translate:8% 0}}
-  /* tatami grid fading up */
-  .grid{position:absolute;inset:auto 0 0 0;height:45vh;opacity:.12;
-    background:repeating-linear-gradient(90deg,#fff 0 1px,transparent 1px 64px),repeating-linear-gradient(0deg,#fff 0 1px,transparent 1px 64px);
-    -webkit-mask:linear-gradient(to top,#000,transparent);mask:linear-gradient(to top,#000,transparent)}
   /* crescent + 12 stars, as on the flag */
-  .sky{position:absolute;left:18px;top:max(18px,env(safe-area-inset-top));width:150px;height:72px;opacity:.55}
-  .moon{position:absolute;left:0;top:6px;width:52px;height:52px;border-radius:50%;
-    box-shadow:inset 13px -2px 0 0 #fff;transform:rotate(-12deg)}
+  .sky{position:absolute;left:18px;top:calc(max(16px,env(safe-area-inset-top)) + 44px);width:104px;height:46px;opacity:.6}
+  .moon{position:absolute;left:0;top:2px;width:42px;height:42px;border-radius:50%;
+    box-shadow:inset 10px -2px 0 0 #fff;transform:rotate(-12deg)}
   .star{position:absolute;width:7px;height:7px;background:#fff;
     clip-path:polygon(50% 0,61% 35%,98% 35%,68% 57%,79% 91%,50% 70%,21% 91%,32% 57%,2% 35%,39% 35%);
     animation:tw 2.6s ease-in-out infinite}
@@ -146,7 +142,6 @@
   <div class="bg" aria-hidden="true">
     <div class="ribbon r2"></div>
     <div class="ribbon r1"></div>
-    <div class="grid"></div>
     <div class="sky" id="sky"><div class="moon"></div></div>
     <canvas id="fx"></canvas>
   </div>
@@ -237,7 +232,7 @@
   });
 
   /* ---------- 12 stars like the flag ---------- */
-  var sky=document.getElementById('sky'), pos=[[70,4],[88,4],[106,4],[124,4],[70,24],[88,24],[106,24],[124,24],[88,44],[106,44],[124,44],[142,24]];
+  var sky=document.getElementById('sky'), pos=[[70,6],[82,6],[94,6],[58,19],[70,19],[82,19],[94,19],[46,32],[58,32],[70,32],[82,32],[94,32]]; /* 3 + 4 + 5 = 12, as on the flag */
   pos.forEach(function(p,i){var s=document.createElement('i');s.className='star';s.style.left=p[0]+'px';s.style.top=p[1]+'px';s.style.animationDelay=(i*.21)+'s';sky.appendChild(s)});
 
   /* ---------- floating particles in flag colours ---------- */
